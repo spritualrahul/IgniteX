@@ -18,7 +18,7 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Our Work", href: "#work" },
@@ -36,12 +36,17 @@ export function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
-            <Link href="#" className="flex items-center text-2xl font-bold" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" className="w-12 h-12 mr-0 text-red-600">
+            <Link href="/" className="flex items-center text-3xl font-bold" style={{ fontFamily: 'Poppins, sans-serif' }}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" className="w-16 h-16 mr-0 text-red-600">
   <path d="M16 2c.3 0 .6.14.78.38 2.7 3.2 4.22 5.74 4.22 7.62 0 1.63-.92 2.45-2.74 2.45-1.23 0-2.28-.69-3.13-2.02-.13-.21-.45-.21-.58 0C11.5 13.2 10 15.7 10 18.5c0 3.31 2.69 6 6 6s6-2.69 6-6c0-3.13-2.04-6.45-4.89-10.72A1 1 0 0 0 16 2zm0 26c-4.42 0-8-3.58-8-8 0-3.53 2.09-7.18 5.56-12.08.36-.52 1.16-.52 1.52 0C21.91 12.82 24 16.47 24 20c0 4.42-3.58 8-8 8z"/>
   <path d="M16 24c-2.21 0-4-1.79-4-4 0-1.91 1.11-3.95 2.96-6.77.19-.29.62-.29.81 0C18.89 16.05 20 18.09 20 20c0 2.21-1.79 4-4 4z" fill="#ef4444"/>
 </svg>
-              <span className="text-red-600">ignite</span><span className="text-gray-600">X</span>
+              <div className="flex flex-col ml-1">
+                <div>
+                  <span className="text-black">ignite</span><span className="text-gray-900">X</span>
+                </div>
+                <div className="text-sm font-normal text-gray-500">Digital Innovation Group</div>
+              </div>
             </Link>
           </div>
           <div className="hidden md:block">
@@ -50,7 +55,7 @@ export function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-secondary hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-950 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.name}
                 </Link>
@@ -79,7 +84,7 @@ export function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-secondary hover:text-primary hover:bg-gray-50"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-950 hover:text-primary hover:bg-gray-50"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

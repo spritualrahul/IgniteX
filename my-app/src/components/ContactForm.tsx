@@ -48,7 +48,7 @@ export const ContactForm = () => {
 </div>
 <form onSubmit={handleSubmit} className="space-y-5">
             <div className="mb-2">
-              <label className="block text-gray-700 font-semibold mb-1"></label>
+              <label className="block text-gray-900 font-semibold mb-1"></label>
               <input
                 type="text"
                 name="name"
@@ -60,7 +60,7 @@ export const ContactForm = () => {
               />
             </div>
             <div className="mb-2">
-              <label className="block text-gray-700 font-semibold mb-1"></label>
+              <label className="block text-gray-900 font-semibold mb-1"></label>
               <input
                 type="email"
                 name="email"
@@ -72,7 +72,7 @@ export const ContactForm = () => {
               />
             </div>
             <div className="mb-2">
-              <label className="block text-gray-700 font-semibold mb-1"></label>
+              <label className="block text-gray-900 font-semibold mb-1"></label>
               <input
                 type="text"
                 name="subject"
@@ -84,7 +84,7 @@ export const ContactForm = () => {
               />
             </div>
             <div className="mb-2">
-              <label  className="block text-gray-700 font-semibold mb-1"></label>
+              <label  className="block text-gray-900 font-semibold mb-1"></label>
               <div className="flex gap-2">
                 <select
                   value={selectedCountry.name}
@@ -110,7 +110,7 @@ export const ContactForm = () => {
               </div>
             </div>
             <div>
-              <label className="block text-gray-700 font-semibold mb-1">Your Message</label>
+              <label className="block text-gray-900 font-semibold mb-1">Your Message</label>
               <textarea
                 name="message"
                 value={form.message}
@@ -133,13 +133,13 @@ export const ContactForm = () => {
         <div className="hidden md:flex flex-col justify-center items-start bg-white w-1/2 p-8 min-w-0">
           <div className="mb-8">
             <h3 className="text-xl font-bold text-red-700 mb-2">Contact Sales</h3>
-            <div className="text-lg font-semibold text-gray-800">8969156933</div>
-            <div className="text-base text-gray-700 mt-2">rahulkrmahato027@gmail.com</div>
+            <div className="text-lg font-semibold text-gray-950">8969156933</div>
+            <div className="text-base text-gray-900 mt-2">rahulkrmahato027@gmail.com</div>
           </div>
           <div>
             <h4 className="text-lg font-bold text-red-600 mb-1">Office Locations - India</h4>
-            <div className="text-base text-gray-800">Jamshedpur - 831005</div>
-            <div className="text-base text-gray-800">Bistupur</div>
+            <div className="text-base text-gray-950">Jamshedpur - 831005</div>
+            <div className="text-base text-gray-950">Bistupur</div>
           </div>
         </div>
       </div>
