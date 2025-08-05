@@ -44,7 +44,7 @@ export const ContactForm = () => {
         <div className="w-full md:w-1/2 p-8 min-w-0">
 
           <div className="mb-8">
-  <h2 className="text-4xl font-bold text-red-700 mb-6">Get in touch with us</h2>
+  <h2 className="text-4xl font-bold text-red-600 mb-6">Get in touch with us</h2>
 </div>
 <form onSubmit={handleSubmit} className="space-y-5">
             <div className="mb-2">
@@ -56,7 +56,7 @@ export const ContactForm = () => {
                 onChange={handleChange}
                 required
                 placeholder='Full Name'
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600"
               />
             </div>
             <div className="mb-2">
@@ -68,7 +68,7 @@ export const ContactForm = () => {
                 onChange={handleChange}
                 required
                 placeholder='Email'
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600"
               />
             </div>
             <div className="mb-2">
@@ -80,7 +80,7 @@ export const ContactForm = () => {
                 onChange={handleChange}
                 placeholder='Subject'
                 required
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600"
               />
             </div>
             <div className="mb-2">
@@ -90,7 +90,7 @@ export const ContactForm = () => {
                   value={selectedCountry.name}
                   onChange={handleCountryChange}
                   
-                  className="w-20 rounded-l px-1 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400 text-sm"
+                  className="w-20 rounded-l px-1 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 text-sm placeholder-gray-600"
                 >
                   {countries.map(country => (
                     <option key={country.name} value={country.name}>
@@ -104,20 +104,20 @@ export const ContactForm = () => {
                   value={form.phone}
                   onChange={handleChange}
                   required
-                  className="w-92 rounded-r px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400"
+                  className="w-92 rounded-r px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600"
                   placeholder="Phone number"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-gray-900 font-semibold mb-1">Your Message</label>
+              <label className="block text-gray-900 font-semibold mb-1"></label>
               <textarea
                 name="message"
                 value={form.message}
                 onChange={handleChange}
                 required
                 rows={6}
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-400 resize-none"
+                className="w-full max-w-md rounded px-4 py-10 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 resize-none placeholder-gray-600"
                 placeholder="Type your message here..."
               />
             </div>
