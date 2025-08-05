@@ -125,7 +125,7 @@ export const ContactForm = () => {
               type="submit"
               className="w-full max-w-md bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded transition-colors duration-200"
             >
-              Submitx
+              Submit
             </Button>
           </form>
         </div>
