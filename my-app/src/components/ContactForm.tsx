@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { FaFlag } from 'react-icons/fa';
+
 
 const countries = [
   { name: 'India', code: '+91', flag: '🇮🇳' },
@@ -34,7 +34,7 @@ export const ContactForm = () => {
     e.preventDefault();
     // You can add your form submission logic here
     alert('Form submitted!');
-    onClose();
+
   };
 
   return (
