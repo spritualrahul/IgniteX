@@ -5,6 +5,8 @@ import { CyclingHeadline } from '@/components/CyclingHeadline';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 
+import { ContactForm } from '@/components/ContactForm';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
@@ -29,14 +31,19 @@ export default function Home() {
               <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0">
                 We craft exceptional digital experiences that drive growth and engagement for your business. From SEO to app development, we&apos;ve got you covered.
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg h-14 px-8">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                
+              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="/contact">
+                  <Button
+                    size="lg"
+                    className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded shadow-lg text-lg"
+                  >
+                    Connect with us
+                  </Button>
+                </a>
               </div>
+
             </div>
+            
 
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -61,6 +68,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <footer className="w-full bg-gray-800 py-4 mt-12">
+        <div className="text-center text-gray-300 text-sm opacity-70">
+          All rights reserved © 2025 ignitex solutions limited
+        </div>
+      </footer>
     </main>
   );
 }
