@@ -11,7 +11,7 @@ const countries = [
   // Add more countries as needed
 ];
 
-export const ContactForm = () => {
+const ContactForm = () => {
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [form, setForm] = useState({
     name: '',
@@ -146,3 +146,5 @@ export const ContactForm = () => {
     </div>
   );
 };
+
+export default ContactForm;

@@ -3,13 +3,26 @@
 import { Navbar } from '@/components/Navbar';
 import { CyclingHeadline } from '@/components/CyclingHeadline';
 import { Button } from '@/components/ui/button';
-import { Play } from 'lucide-react';
+import dynamic from 'next/dynamic';
 
-import { ContactForm } from '@/components/ContactForm';
+const DeviceShowcase = dynamic(
+  () => import('@/components/DeviceShowcase'),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-gray-100 rounded-2xl">
+        <div className="animate-pulse text-gray-400">Loading 3D showcase...</div>
+      </div>
+    )
+  }
+);
+
 import ServicesSection from '@/components/ServicesSection';
 import WorkSection from '@/components/WorkSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import dynamic from 'next/dynamic';
+import StatisticsSection from '@/components/StatisticsSection';
+import InteractiveDemo from '@/components/InteractiveDemo';
+import ContactForm from '@/components/ContactForm';
 
 const TechBackgroundNew = dynamic(() => import('@/components/TechBackgroundNew'), {
   ssr: false,
@@ -56,34 +69,17 @@ export default function Home() {
             </div>
             
 
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <div className="aspect-w-16 aspect-h-9 bg-gray-100 rounded-2xl">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center">
-                      <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
-                        <Play className="h-8 w-8 text-primary" fill="currentColor" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center">
-                      <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center">
-                        <Play className="h-8 w-8 text-primary" fill="currentColor" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="relative w-full h-full">
+              <DeviceShowcase />
             </div>
           </div>
         </div>
       </section>
 
       <ServicesSection />
-
+      <InteractiveDemo />
       <WorkSection />
-
+      <StatisticsSection />
       <TestimonialsSection />
 
       <section id="contact" className="py-20 px-4 md:px-8 bg-gray-50">
