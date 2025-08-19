@@ -56,7 +56,7 @@ export const ContactForm = () => {
                 onChange={handleChange}
                 required
                 placeholder='Full Name'
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600"
+                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600 text-gray-900"
               />
             </div>
             <div className="mb-2">
@@ -68,7 +68,7 @@ export const ContactForm = () => {
                 onChange={handleChange}
                 required
                 placeholder='Email'
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600"
+                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600 text-gray-900"
               />
             </div>
             <div className="mb-2">
@@ -80,7 +80,7 @@ export const ContactForm = () => {
                 onChange={handleChange}
                 placeholder='Subject'
                 required
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600"
+                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600 text-gray-900"
               />
             </div>
             <div className="mb-2">
@@ -117,7 +117,7 @@ export const ContactForm = () => {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="w-full max-w-md rounded px-4 py-10 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 resize-none placeholder-gray-600"
+                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 resize-none placeholder-gray-600 text-gray-900 min-h-[120px]"
                 placeholder="Type your message here..."
               />
             </div>
