@@ -38,6 +38,34 @@ const testimonials = [
   }
 ];
 
+interface VariantState {
+  opacity: number;
+  y?: number;
+  scale?: number;
+  transition?: {
+    delay?: number;
+    duration: number;
+    ease: string;
+  };
+}
+
+type AnimationVariants = {
+  hidden: VariantState;
+  visible: (i?: number) => VariantState & {
+    transition: {
+      delay: number;
+      duration: number;
+      ease: string;
+    };
+  };
+  // Add specific variant types for other animation states
+  hover?: VariantState;
+  tap?: VariantState;
+  [key: string]: unknown;
+};
+
+import { easeOut } from 'framer-motion';
+
 const fadeIn = {
   hidden: { opacity: 0, y: 50 },
   visible: (i = 0) => ({
@@ -46,23 +74,23 @@ const fadeIn = {
     transition: {
       delay: 0.1 * i,
       duration: 0.6,
-      ease: "easeOut"
+      ease: easeOut
     },
   }),
-};
+} as const;
 
 const starVariants = {
   hidden: { scale: 0.8, opacity: 0 },
-  visible: (i: number) => ({
+  visible: (i = 0) => ({
     scale: 1,
     opacity: 1,
     transition: {
       delay: 0.1 * i,
       duration: 0.3,
-      ease: "easeOut"
+      ease: easeOut
     }
   })
-};
+} as const;
 
 export default function TestimonialsSection() {
   return (
@@ -79,7 +107,7 @@ export default function TestimonialsSection() {
           </h2>
           <div className="w-20 h-1 bg-red-600 mx-auto mb-10"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it. Here's what our clients have to say about working with us.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.
           </p>
         </motion.div>
 
@@ -104,7 +132,7 @@ export default function TestimonialsSection() {
                 </div>
               </div>
               
-              <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+              <p className="text-gray-700 mb-6 italic">&quot;{testimonial.content}&quot;</p>
               
               <div className="flex">
                 {[...Array(5)].map((_, i) => (

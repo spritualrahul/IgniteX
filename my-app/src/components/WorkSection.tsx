@@ -32,6 +32,8 @@ const projects = [
   // Add more projects as needed
 ];
 
+import { easeOut } from 'framer-motion';
+
 const fadeIn = {
   hidden: { opacity: 0, y: 50 },
   visible: (i = 0) => ({
@@ -40,18 +42,18 @@ const fadeIn = {
     transition: {
       delay: 0.1 * i,
       duration: 0.6,
-      ease: "easeOut"
+      ease: easeOut
     },
   }),
-};
+} as const;
 
 const imageHover = {
   scale: 1.03,
   transition: {
     duration: 0.3,
-    ease: "easeInOut"
+    ease: easeOut
   }
-};
+} as const;
 
 export default function WorkSection() {
   const controls = useAnimation();
@@ -78,7 +80,7 @@ export default function WorkSection() {
           </h2>
           <div className="w-20 h-1 bg-red-600 mx-auto mb-10"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Explore our portfolio of successful projects and see how we've helped businesses transform their digital presence.
+            Explore our portfolio of successful projects and see how we&apos;ve helped businesses transform their digital presence.
           </p>
         </motion.div>
 
@@ -133,7 +135,7 @@ export default function WorkSection() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <p className="text-gray-700 italic mb-4">"{project.testimonial.text}"</p>
+                    <p className="text-gray-700 italic mb-4">&quot;{project.testimonial.text}&quot;</p>
                     <div className="font-medium">
                       <div className="text-gray-900">{project.testimonial.author}</div>
                       <div className="text-red-600 text-sm">{project.testimonial.role}</div>

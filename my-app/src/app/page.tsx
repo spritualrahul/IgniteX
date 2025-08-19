@@ -3,7 +3,7 @@
 import { Navbar } from '@/components/Navbar';
 import { CyclingHeadline } from '@/components/CyclingHeadline';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 import { ContactForm } from '@/components/ContactForm';
 import ServicesSection from '@/components/ServicesSection';
@@ -94,7 +94,7 @@ export default function Home() {
             </h2>
             <div className="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Have a project in mind or want to discuss how we can help your business? Drop us a message and we'll get back to you soon.
+              Have a project in mind or want to discuss how we can help your business? Drop us a message and we&apos;ll get back to you soon.
             </p>
           </div>
           <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
