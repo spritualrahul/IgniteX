@@ -6,14 +6,25 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Play } from 'lucide-react';
 
 import { ContactForm } from '@/components/ContactForm';
+import ServicesSection from '@/components/ServicesSection';
+import WorkSection from '@/components/WorkSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import dynamic from 'next/dynamic';
+
+const TechBackgroundNew = dynamic(() => import('@/components/TechBackgroundNew'), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
-      <Navbar />
+    <main className="min-h-screen bg-white relative overflow-hidden">
+
+      <div className="relative z-10 bg-white/80 backdrop-blur-sm">
+        <Navbar />
 
       <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 -z-10">
+          <TechBackgroundNew />
           <div className="absolute inset-0 bg-gradient-to-b from-red-50 to-white"></div>
           <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-100 to-transparent"></div>
         </div>
@@ -69,11 +80,35 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="w-full bg-gray-800 py-4 mt-12">
+      <ServicesSection />
+
+      <WorkSection />
+
+      <TestimonialsSection />
+
+      <section id="contact" className="py-20 px-4 md:px-8 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+              Get in <span className="text-red-600">Touch</span>
+            </h2>
+            <div className="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Have a project in mind or want to discuss how we can help your business? Drop us a message and we'll get back to you soon.
+            </p>
+          </div>
+          <div className="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      <footer className="w-full bg-gray-800 py-4">
         <div className="text-center text-gray-300 text-sm opacity-70">
           All rights reserved © 2025 ignitex solutions limited
         </div>
       </footer>
+      </div>
     </main>
   );
 }
