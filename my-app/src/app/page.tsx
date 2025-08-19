@@ -1,31 +1,48 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/Navbar';
 import { CyclingHeadline } from '@/components/CyclingHeadline';
 import { Button } from '@/components/ui/button';
-import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
 
-const DeviceShowcase = dynamic(
-  () => import('@/components/DeviceShowcase'),
-  { 
-    ssr: false,
-    loading: () => (
-      <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-gray-100 rounded-2xl">
-        <div className="animate-pulse text-gray-400">Loading 3D showcase...</div>
-      </div>
-    )
-  }
-);
+// Lazy load heavy components
+const DeviceShowcase = dynamic(() => import('@/components/DeviceShowcase'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-gray-100 rounded-2xl">
+      <Skeleton className="w-full h-full" />
+    </div>
+  )
+});
 
-import ServicesSection from '@/components/ServicesSection';
-import WorkSection from '@/components/WorkSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
-import StatisticsSection from '@/components/StatisticsSection';
-import InteractiveDemo from '@/components/InteractiveDemo';
-import ContactForm from '@/components/ContactForm';
+const ServicesSection = dynamic(() => import('@/components/ServicesSection'), {
+  loading: () => <Skeleton className="w-full h-[500px]" />
+});
+
+const TestimonialsSection = dynamic(() => import('@/components/TestimonialsSection'), {
+  loading: () => <Skeleton className="w-full h-[400px]" />
+});
+
+const InteractiveDemo = dynamic(() => import('@/components/InteractiveDemo'), {
+  ssr: false,
+  loading: () => <Skeleton className="w-full h-[500px]" />
+});
+
+const StatisticsSection = dynamic(() => import('@/components/StatisticsSection'), {
+  loading: () => <Skeleton className="w-full h-[300px]" />
+});
+const WorkSection = dynamic(() => import('@/components/WorkSection'), {
+  loading: () => <Skeleton className="w-full h-[500px]" />
+});
+
+const ContactForm = dynamic(() => import('@/components/ContactForm'), {
+  loading: () => <Skeleton className="w-full h-[600px]" />
+});
 
 const TechBackgroundNew = dynamic(() => import('@/components/TechBackgroundNew'), {
   ssr: false,
+  loading: () => <div className="w-full h-screen fixed inset-0 bg-background" />
 });
 
 export default function Home() {

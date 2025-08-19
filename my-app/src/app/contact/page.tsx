@@ -1,6 +1,12 @@
-import React from 'react';
+'use client';
+
+import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/Navbar';
-import ContactForm from '@/components/ContactForm';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const ContactForm = dynamic(() => import('@/components/ContactForm'), {
+  loading: () => <Skeleton className="w-full h-[600px]" />
+});
 
 export default function ContactPage() {
   return (

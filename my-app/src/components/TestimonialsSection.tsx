@@ -38,31 +38,7 @@ const testimonials = [
   }
 ];
 
-interface VariantState {
-  opacity: number;
-  y?: number;
-  scale?: number;
-  transition?: {
-    delay?: number;
-    duration: number;
-    ease: string;
-  };
-}
-
-type AnimationVariants = {
-  hidden: VariantState;
-  visible: (i?: number) => VariantState & {
-    transition: {
-      delay: number;
-      duration: number;
-      ease: string;
-    };
-  };
-  // Add specific variant types for other animation states
-  hover?: VariantState;
-  tap?: VariantState;
-  [key: string]: unknown;
-};
+// Animation variants for framer-motion
 
 import { easeOut } from 'framer-motion';
 

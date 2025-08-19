@@ -1,7 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { Navbar } from '@/components/Navbar';
-import AboutSection from '@/components/AboutSection';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const AboutSection = dynamic(() => import('@/components/AboutSection'), {
+  loading: () => <Skeleton className="w-full h-[800px]" />
+});
 
 export default function AboutPage() {
   return (
