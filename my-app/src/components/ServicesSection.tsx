@@ -76,53 +76,43 @@ export default function ServicesSection({ showAll = false }) {
   };
 
   return (
-    <section id="services" className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="w-full max-w-[var(--max-width)] mx-auto">
+    <section id="services" className="py-20 px-4 md:px-8 bg-white">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-12 sm:mb-16 lg:mb-20 px-2"
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Our <span className="text-red-600">Services</span>
           </h2>
-          <div className="w-16 sm:w-20 h-1 bg-red-600 mx-auto mb-8 sm:mb-10"></div>
-          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <div className="w-20 h-1 bg-red-600 mx-auto mb-10"></div>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We offer a comprehensive range of digital services to help your business thrive in the online world.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayServices.map((service, index) => (
             <motion.div
               key={service.slug}
               custom={index}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true }}
               variants={fadeIn}
-              className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-gray-100 hover:border-red-50"
+              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
             >
-              <div className="p-5 sm:p-6 md:p-7">
-                <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-red-50 text-2xl mb-4 group-hover:bg-red-100 transition-colors duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-[0.9375rem] leading-relaxed mb-4">
-                  {service.description}
-                </p>
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="inline-flex items-center text-red-600 hover:text-red-700 font-medium text-sm sm:text-[0.9375rem] group-hover:translate-x-1 transition-all duration-300"
-                  aria-label={`Learn more about ${service.title}`}
-                >
-                  Learn more
-                  <ArrowRight className="ml-1 w-4 h-4 flex-shrink-0" />
-                </Link>
-              </div>
+              <div className="text-4xl mb-4">{service.icon}</div>
+              <h3 className="text-xl font-semibold mb-3 text-gray-800">{service.title}</h3>
+              <p className="text-gray-600 mb-4">{service.description}</p>
+              <Link 
+                href={`/services#${service.slug}`}
+                className="text-red-600 hover:text-red-700 font-medium inline-flex items-center"
+              >
+                Learn more <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </motion.div>
           ))}
         </div>

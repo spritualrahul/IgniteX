@@ -48,9 +48,9 @@ export function Navbar() {
         isScrolled ? "bg-white/95 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
-      <nav className="w-full max-w-[var(--max-width)] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          <div className="flex items-center flex-shrink-0">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <div className="flex-shrink-0">
             <style jsx global>{`
   @keyframes flame {
     0%, 100% {
@@ -137,16 +137,16 @@ export function Navbar() {
             </Link>
           </div>
           <div className="hidden md:block">
-            <div className="ml-4 md:ml-10 flex items-center space-x-1 md:space-x-2 lg:space-x-4">
+            <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className="px-2 py-1 md:px-3 md:py-2 text-sm md:text-base font-medium text-gray-700 hover:text-red-600 transition-colors whitespace-nowrap"
+                  className="text-gray-950 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
               <Button className="ml-4 bg-primary hover:bg-primary/90">
                 Get a Quote
@@ -154,25 +154,22 @@ export function Navbar() {
             </div>
           </div>
           <div className="md:hidden">
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-red-600 focus:outline-none transition-colors"
-              aria-expanded={isOpen}
-              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-label="Toggle menu"
+              className="text-secondary hover:bg-gray-100"
             >
-              {isOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
           </div>
         </div>
         {isOpen && (
           <div className="md:hidden bg-white rounded-lg shadow-lg mt-2 py-2">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => {
@@ -182,7 +179,7 @@ export function Navbar() {
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-950 hover:text-primary hover:bg-gray-50 cursor-pointer"
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
               <Button className="w-full mt-2 bg-primary hover:bg-primary/90">
                 Get a Quote
