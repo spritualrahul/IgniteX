@@ -13,25 +13,32 @@ export const CyclingHeadline: React.FC<CyclingHeadlineProps> = ({ constant, cont
   const [current, setCurrent] = useState(0);
   const [visibleCount, setVisibleCount] = useState(0);
   const [direction, setDirection] = useState<'in' | 'out'>('in');
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
+    
     if (direction === 'in') {
       if (visibleCount < contexts[current].length) {
-        timeout = setTimeout(() => setVisibleCount(visibleCount + 1), 110); // slower typing
+        setIsTyping(true);
+        timeout = setTimeout(() => setVisibleCount(visibleCount + 1), 100); // typing speed
       } else {
-        timeout = setTimeout(() => setDirection('out'), 1800); // pause longer
+        setIsTyping(false);
+        timeout = setTimeout(() => setDirection('out'), 1000); // pause before deleting
       }
     } else {
       if (visibleCount > 0) {
-        timeout = setTimeout(() => setVisibleCount(visibleCount - 1), 80); // slower deleting
+        setIsTyping(true);
+        timeout = setTimeout(() => setVisibleCount(visibleCount - 1), 70); // deleting speed
       } else {
+        setIsTyping(false);
         timeout = setTimeout(() => {
           setCurrent((prev) => (prev + 1) % contexts.length);
           setDirection('in');
         }, 500);
       }
     }
+    
     return () => clearTimeout(timeout);
   }, [visibleCount, direction, current, contexts]);
 
@@ -40,44 +47,63 @@ export const CyclingHeadline: React.FC<CyclingHeadlineProps> = ({ constant, cont
     else setVisibleCount(contexts[current].length);
   }, [current, direction, contexts]);
 
+  // Get the current visible text
+  const visibleText = [...contexts[current]].slice(0, visibleCount).join('');
+
+  // Add keyframe animation for gradient
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
-    <span
-      className={className}
-      style={fontFamily ? { fontFamily } : {}}
-    >
-      <span style={{ color: "rgb(58, 61, 65)", fontSize: "2em" }}>{constant} </span>
-      <span className="text-red-600" style={{ position: "relative", display: "inline-block", minWidth: `${Math.max(...contexts.map(c => c.length + 3))}ch`, width: `${Math.max(...contexts.map(c => c.length + 3))}ch` }}>
-        {[...contexts[current], ".", ".", "."].join("").split("").map((char, idx) => (
-          <span
-            key={idx}
-            style={{
-              opacity: idx < visibleCount ? 1 : 0,
-              transition: "none",
-              display: char === " " ? "inline-block" : undefined,
-              minWidth: char === " " ? "0.4em" : undefined,
-            }}
-          >
-            {char}
-          </span>
-        ))}
-        {/* Blinking cursor right after the last visible character */}
-        <span
-          className="inline-block align-baseline"
+    <div className="flex flex-col">
+      <span 
+        className={`bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent text-7xl md:text-8xl lg:text-9xl font-montserrat font-extrabold leading-[1.1] tracking-tight ${className}`}
+        style={{
+          ...(fontFamily ? { fontFamily } : {}),
+          textShadow: 'none',
+          WebkitTextFillColor: 'transparent',
+          backgroundSize: '200% auto',
+          animation: 'gradient 3s ease infinite',
+          display: 'inline-block',
+          lineHeight: '1.1',
+          margin: '1.5rem 0 2rem 0',
+          padding: '0.75rem 0',
+          letterSpacing: '-0.025em'
+        }}
+      >
+        {constant}
+      </span>
+      <div className="h-20 md:h-24 flex items-center mt-2">
+        <span 
+          className={`text-red-600 text-4xl md:text-5xl font-poppins font-semibold ${visibleCount > 0 ? 'visible' : 'invisible'}`}
           style={{
-            position: 'absolute',
-            left: `calc(${visibleCount}ch)`,
-            top: 0,
-            height: '100%',
-            animation: 'blink 1s steps(1) infinite',
-            fontWeight: 400,
-            fontSize: '1em',
-            color: '#dc2626', // Tailwind's red-600
-            transition: 'left 0.1s cubic-bezier(.4,0,.2,1)'
+            ...(fontFamily ? { fontFamily } : {}),
+            lineHeight: '1.2',
+            letterSpacing: '-0.01em'
           }}
         >
-          |
+          {visibleText}
+          <span 
+            className="inline-block h-10 w-1.5 bg-red-600 ml-3 align-middle"
+            style={{
+              animation: 'blink 0.7s steps(1) infinite',
+            }}
+          />
         </span>
-      </span>
-    </span>
+      </div>
+    </div>
   );
 };

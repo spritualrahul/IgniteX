@@ -1,28 +1,104 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function DeviceShowcase() {
+const COLORS = [
+  'from-blue-100/50 to-indigo-100/50',
+  'from-purple-50/50 to-blue-50/50',
+  'from-gray-50/50 to-blue-50/50',
+  'from-indigo-50/50 to-purple-50/50',
+];
+
+// Match the background with the page
+const backgroundGradient = 'transparent';
+
+interface FloatingShapeProps {
+  colorIndex: number;
+  size: number;
+  delay: number;
+  duration: number;
+  x: string | number;
+  y: string | number;
+}
+
+const FloatingShape: React.FC<FloatingShapeProps> = ({ colorIndex, size, delay, duration, x, y }) => {
+  return (
+    <motion.div
+      initial={{
+        x: x,
+        y: y,
+        scale: 0,
+        opacity: 0,
+      }}
+      animate={{
+        x: [Number(x), Number(x) + (Math.random() - 0.5) * 100],
+        y: [Number(y), Number(y) + (Math.random() - 0.5) * 100],
+        scale: [0, 1, 0],
+        opacity: [0, 0.7, 0],
+        rotate: [0, 360],
+      }}
+      transition={{
+        duration: duration || 15 + Math.random() * 30,
+        delay: delay || 0,
+        repeat: Infinity,
+        repeatType: 'loop' as const,
+        ease: 'linear',
+      }}
+      className={`absolute rounded-full bg-gradient-to-r ${COLORS[colorIndex % COLORS.length]}`}
+      style={{
+        width: size,
+        height: size,
+        filter: 'blur(80px)',
+        opacity: 0.15, // More transparent
+        mixBlendMode: 'multiply' // Blend better with the background
+      }}
+    />
+  );
+};
+
+interface Slide {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+const DeviceShowcase: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   
-  const slides = [
+  const slides: Slide[] = [
     {
       title: "Web Development",
       description: "Modern, responsive websites that drive results",
-      icon: "💻"
+      icon: "💻",
+      color: "from-purple-500 to-pink-500"
     },
     {
       title: "Mobile Apps",
       description: "Native and cross-platform mobile solutions",
-      icon: "📱"
+      icon: "📱",
+      color: "from-blue-500 to-cyan-500"
     },
     {
       title: "UI/UX Design",
       description: "Beautiful interfaces that users love",
-      icon: "🎨"
+      icon: "🎨",
+      color: "from-green-500 to-emerald-500"
     }
   ];
+
+  // Generate very subtle floating shapes
+  const shapes = Array.from({ length: 3 }).map((_, i) => ({
+    id: i,
+    size: 150 + Math.random() * 100, // Fewer, more subtle shapes
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    delay: Math.random() * 2,
+    duration: 40 + Math.random() * 60, // Even slower movement
+    colorIndex: Math.floor(Math.random() * COLORS.length),
+  }));
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -33,61 +109,98 @@ export default function DeviceShowcase() {
   }, [slides.length]);
 
   return (
-    <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-full max-w-2xl mx-auto px-4">
-          {/* Laptop Frame */}
-          <div className="relative mx-auto w-full max-w-2xl">
-            <div className="relative bg-gray-900 rounded-t-2xl overflow-hidden aspect-video">
-              <motion.div 
-                key={currentSlide}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex flex-col items-center justify-center text-white p-8 text-center"
-              >
-                <div className="text-6xl mb-4">{slides[currentSlide].icon}</div>
-                <h3 className="text-2xl font-bold mb-2">{slides[currentSlide].title}</h3>
-                <p className="text-gray-300">{slides[currentSlide].description}</p>
-              </motion.div>
-            </div>
-            <div className="h-4 bg-gray-800 rounded-b-lg mx-auto w-3/4">
-              <div className="h-1 w-12 bg-gray-700 rounded-full mx-auto mt-1"></div>
-            </div>
-          </div>
-          
-          {/* Phone Frame */}
-          <div className="absolute bottom-0 right-0 w-28 h-56 md:w-32 md:h-64 bg-gray-900 rounded-3xl p-1.5 md:p-2 border-4 border-gray-800 transform rotate-6 translate-y-8 md:translate-y-0">
-            <div className="w-full h-full bg-gray-800 rounded-2xl overflow-hidden">
-              <motion.div 
-                key={currentSlide}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="h-full flex items-center justify-center text-4xl"
-              >
-                {slides[currentSlide].icon}
-              </motion.div>
-            </div>
-          </div>
-          
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentSlide ? 'bg-red-600' : 'bg-gray-300'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
+    <div 
+      ref={containerRef}
+      className="relative w-full h-auto min-h-[50vh] py-12 overflow-visible"
+    >
+      {/* Animated Background */}
+      {shapes.map((shape) => (
+        <FloatingShape
+          key={shape.id}
+          colorIndex={shape.colorIndex}
+          size={shape.size}
+          delay={shape.delay}
+          duration={shape.duration}
+          x={`${shape.x}%`}
+          y={`${shape.y}%`}
+        />
+      ))}
+
+      {/* Content */}
+      <div className="absolute inset-0 flex items-center justify-end pr-8 md:pr-16 z-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ 
+              opacity: 1, 
+              y: 0, 
+              scale: 1,
+              transition: { duration: 0.5 }
+            }}
+            exit={{ 
+              opacity: 0, 
+              y: -50, 
+              scale: 1.1,
+              transition: { duration: 0.3 }
+            }}
+            className={`relative z-20 p-6 md:p-8 text-center max-w-3xl mx-4`}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ 
+                scale: 1, 
+                opacity: 1,
+                transition: { delay: 0.2, duration: 0.5 }
+              }}
+              className="text-7xl md:text-8xl mb-4"
+            >
+              {slides[currentSlide].icon}
+            </motion.div>
+            <motion.h3 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ 
+                y: 0, 
+                opacity: 1,
+                transition: { delay: 0.3, duration: 0.5 }
+              }}
+              className="text-2xl md:text-3xl font-bold mb-3 text-gray-800"
+            >
+              {slides[currentSlide].title}
+            </motion.h3>
+            <motion.p 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ 
+                y: 0, 
+                opacity: 1,
+                transition: { delay: 0.4, duration: 0.5 }
+              }}
+              className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto"
+            >
+              {slides[currentSlide].description}
+            </motion.p>
+            
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ 
+                scale: 1, 
+                opacity: 1,
+                transition: { delay: 0.5, duration: 0.5 }
+              }}
+              className="mt-8"
+            >
+              <button className="px-6 py-2 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 text-sm">
+                Get Started
+              </button>
+              <button className="ml-3 px-6 py-2 bg-transparent border border-gray-300 text-gray-700 rounded-full font-medium hover:bg-gray-100 transition-all duration-300 text-sm">
+                Learn More
+              </button>
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
-}
+};
+
+export default DeviceShowcase;

@@ -19,12 +19,21 @@ export function Navbar() {
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    const isHomePage = window.location.pathname === '/';
+    
     if (href === '/') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (!isHomePage) {
+        window.location.href = '/';
+      }
     } else if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (isHomePage) {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        window.location.href = `/${href}`;
       }
     } else {
       window.location.href = href;
@@ -139,14 +148,14 @@ export function Navbar() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
                   className="text-gray-950 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <Button className="ml-4 bg-primary hover:bg-primary/90">
                 Get a Quote
@@ -169,7 +178,7 @@ export function Navbar() {
           <div className="md:hidden bg-white rounded-lg shadow-lg mt-2 py-2">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   onClick={(e) => {
@@ -179,7 +188,7 @@ export function Navbar() {
                   className="block px-3 py-2 rounded-md text-base font-medium text-gray-950 hover:text-primary hover:bg-gray-50 cursor-pointer"
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <Button className="w-full mt-2 bg-primary hover:bg-primary/90">
                 Get a Quote
