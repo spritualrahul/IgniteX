@@ -108,7 +108,7 @@ export default function ServicesSection({ showAll = false }) {
               <h3 className="text-xl font-semibold mb-3 text-gray-800">{service.title}</h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
               <Link 
-                href={`/services#${service.slug}`}
+                href={`/services/${service.slug}`}
                 className="text-red-600 hover:text-red-700 font-medium inline-flex items-center"
               >
                 Learn more <ArrowRight className="ml-1 h-4 w-4" />
