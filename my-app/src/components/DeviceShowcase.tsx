@@ -10,8 +10,6 @@ const COLORS = [
   'from-indigo-50/50 to-purple-50/50',
 ];
 
-// Match the background with the page
-const backgroundGradient = 'transparent';
 
 interface FloatingShapeProps {
   colorIndex: number;

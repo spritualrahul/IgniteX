@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="35" viewBox="0 0 160 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 25L15 10H20L15 25H10Z" fill="#FF9900"/>
+  <path d="M25 10L20 25H25L30 10H25Z" fill="#FF9900"/>
+  <path d="M15 25L20 10L25 25H15Z" fill="#FF9900"/>
+  <text x="40" y="25" font-family="Arial" font-size="24" font-weight="bold" fill="#333">AWS</text>
+</svg>

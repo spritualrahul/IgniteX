@@ -3,12 +3,13 @@
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 
 const projects = [
   {
     title: 'Artivatic.ai',
     description: 'AI-powered insurance platform providing intelligent underwriting and risk assessment solutions.',
-    image: '/artivatic-preview.jpg',
+    image: '/images/projects/artivatic-preview.png',
     url: 'https://artivatic.ai',
     technologies: ['AI/ML', 'Insurance Tech', 'Cloud Architecture'],
     testimonial: {
@@ -20,7 +21,7 @@ const projects = [
   {
     title: 'Fitsib',
     description: 'Comprehensive fitness platform connecting trainers with clients for personalized workout experiences.',
-    image: '/fitsib-preview.jpg',
+    image: '/images/projects/fitsib-preview.png',
     url: 'https://fitsib.com',
     technologies: ['React', 'Node.js', 'MongoDB'],
     testimonial: {
@@ -99,10 +100,13 @@ export default function WorkSection() {
                 whileHover={imageHover}
               >
                 <div className="aspect-video bg-gray-200 relative">
-                  {/* Placeholder for project image */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-blue-50 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-gray-400">{project.title} Preview</span>
-                  </div>
+                  <Image 
+                    src={project.image} 
+                    alt={`${project.title} Preview`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <a 

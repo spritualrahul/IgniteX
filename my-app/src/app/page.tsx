@@ -7,6 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 
 // Lazy load heavy components
+const PartnersSection = dynamic(() => import('@/components/PartnersSection'), {
+  loading: () => <Skeleton className="w-full h-[300px]" />
+});
+
 const DeviceShowcase = dynamic(() => import('@/components/DeviceShowcase'), {
   ssr: false,
   loading: () => (
@@ -116,9 +120,11 @@ export default function Home() {
         </div>
       </section>
 
+      <PartnersSection />
+
       <footer className="w-full bg-gray-800 py-4">
         <div className="text-center text-gray-300 text-sm opacity-70">
-          All rights reserved © 2025 ignitex solutions limited
+          All rights reserved 2025 ignitex solutions limited
         </div>
       </footer>
       </div>

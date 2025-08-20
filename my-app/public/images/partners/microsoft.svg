@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="35" viewBox="0 0 160 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 0H50V15H0V0Z" fill="#F25022"/>
+  <path d="M55 0H105V15H55V0Z" fill="#7FBA00"/>
+  <path d="M0 20H50V35H0V20Z" fill="#00A4EF"/>
+  <path d="M55 20H105V35H55V20Z" fill="#FFB900"/>
+  <text x="115" y="25" font-family="Arial" font-size="24" font-weight="bold" fill="#333">Microsoft</text>
+</svg>

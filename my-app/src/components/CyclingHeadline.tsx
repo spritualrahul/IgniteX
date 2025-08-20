@@ -13,25 +13,20 @@ export const CyclingHeadline: React.FC<CyclingHeadlineProps> = ({ constant, cont
   const [current, setCurrent] = useState(0);
   const [visibleCount, setVisibleCount] = useState(0);
   const [direction, setDirection] = useState<'in' | 'out'>('in');
-  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
     
     if (direction === 'in') {
       if (visibleCount < contexts[current].length) {
-        setIsTyping(true);
         timeout = setTimeout(() => setVisibleCount(visibleCount + 1), 100); // typing speed
       } else {
-        setIsTyping(false);
         timeout = setTimeout(() => setDirection('out'), 1000); // pause before deleting
       }
     } else {
       if (visibleCount > 0) {
-        setIsTyping(true);
         timeout = setTimeout(() => setVisibleCount(visibleCount - 1), 70); // deleting speed
       } else {
-        setIsTyping(false);
         timeout = setTimeout(() => {
           setCurrent((prev) => (prev + 1) % contexts.length);
           setDirection('in');

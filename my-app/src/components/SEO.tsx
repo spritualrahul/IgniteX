@@ -25,7 +25,6 @@ export default function SEO({
   description = 'IgniteX is a digital innovation group specializing in web development, mobile apps, and digital transformation solutions.',
   canonical,
   image = '/images/og-image.jpg',
-  article = false,
   author = 'IgniteX Team',
   publishedTime,
   modifiedTime,
