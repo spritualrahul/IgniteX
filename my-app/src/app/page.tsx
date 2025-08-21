@@ -39,23 +39,37 @@ const ContactForm = dynamic(() => import('@/components/ContactForm'), {
   loading: () => <Skeleton className="w-full h-[600px]" />
 });
 
-const TechBackgroundNew = dynamic(() => import('@/components/TechBackgroundNew'), {
-  ssr: false,
-  loading: () => <div className="w-full h-screen fixed inset-0 bg-background" />
-});
+
+
+// import BackgroundAnimation from '@/components/BackgroundAnimation';
+
+import { useEffect, useState } from 'react';
+import Loading from '@/components/Loading';
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <main className="min-h-screen bg-white relative overflow-hidden">
-
-      <div className="relative z-10 bg-white/80 backdrop-blur-sm">
+      {/* <BackgroundAnimation /> */}
+      
+      <div className="relative z-10 bg-transparent">
         <Navbar />
 
       <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <TechBackgroundNew />
-          <div className="absolute inset-0 bg-white/90"></div>
-        </div>
+    
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
