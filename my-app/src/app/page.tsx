@@ -12,12 +12,7 @@ const PartnersSection = dynamic(() => import('@/components/PartnersSection'), {
 });
 
 const DeviceShowcase = dynamic(() => import('@/components/DeviceShowcase'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center bg-gray-100 rounded-2xl">
-      <Skeleton className="w-full h-full" />
-    </div>
-  )
+  ssr: false
 });
 
 const ServicesSection = dynamic(() => import('@/components/ServicesSection'), {
@@ -59,8 +54,7 @@ export default function Home() {
       <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <TechBackgroundNew />
-          <div className="absolute inset-0 bg-gradient-to-b from-red-50 to-white"></div>
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-red-100 to-transparent"></div>
+          <div className="absolute inset-0 bg-white/90"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

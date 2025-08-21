@@ -1,20 +1,24 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-// Initialize OpenAI client with error handling
+// Don't initialize OpenAI during build
 let openai: OpenAI | null = null;
 
-try {
-  if (!process.env.OPENAI_API_KEY) {
-    console.warn('OPENAI_API_KEY is not set in environment variables');
-  } else {
-    openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-    console.log('OpenAI client initialized successfully');
+if (process.env.NODE_ENV !== 'production' || process.env.NEXT_PHASE === 'phase-production-build') {
+  console.log('Skipping OpenAI client initialization during build');
+} else {
+  try {
+    if (!process.env.OPENAI_API_KEY) {
+      console.warn('OPENAI_API_KEY is not set in environment variables');
+    } else {
+      openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+      });
+      console.log('OpenAI client initialized successfully');
+    }
+  } catch (error) {
+    console.error('Failed to initialize OpenAI client:', error);
   }
-} catch (error) {
-  console.error('Failed to initialize OpenAI client:', error);
 }
 
 type RequestBody = {
@@ -23,6 +27,14 @@ type RequestBody = {
 };
 
 export async function POST(req: Request) {
+  // Handle build-time execution
+  if (process.env.NODE_ENV !== 'production' || process.env.NEXT_PHASE === 'phase-production-build') {
+    return NextResponse.json(
+      { message: 'Chat API is not available during build' },
+      { status: 503 }
+    );
+  }
+
   try {
     if (!openai) {
       console.error('OpenAI client not initialized - check API key');
