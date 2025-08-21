@@ -1,5 +1,4 @@
 import React from 'react';
-import { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import TeamSection from '@/components/TeamSection';
 
