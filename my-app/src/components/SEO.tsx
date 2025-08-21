@@ -4,74 +4,86 @@ import { usePathname } from 'next/navigation';
 import { NextSeo } from 'next-seo';
 import Script from 'next/script';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech';
+const defaultImage = '/images/og-image.jpg';
 
-interface SEOProps {
+type SEOMetadata = {
   title?: string;
   description?: string;
   canonical?: string;
   image?: string;
-  article?: boolean;
   author?: string;
   publishedTime?: string;
   modifiedTime?: string;
   section?: string;
   tags?: string[];
   type?: 'website' | 'article' | 'profile' | 'book' | 'video.movie';
-}
+  siteName?: string;
+};
 
 export default function SEO({
-  title = 'IgniteX - Digital Innovation Group',
-  description = 'IgniteX is a digital innovation group specializing in web development, mobile apps, and digital transformation solutions.',
+  title = 'IgniteX - Digital Innovation & Technology Solutions',
+  description = 'Transforming ideas into digital reality with cutting-edge technology, web development, and innovative solutions. Partner with us for your digital transformation.',
   canonical,
-  image = '/images/og-image.jpg',
+  image = defaultImage,
   author = 'IgniteX Team',
   publishedTime,
   modifiedTime,
   section,
   tags = [],
   type = 'website',
-}: SEOProps) {
+  // siteName is not used in this component
+}: SEOMetadata) {
   const pathname = usePathname();
   const url = canonical || `${siteUrl}${pathname}`;
   const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+  const fullTitle = title.includes('IgniteX') ? title : `${title} | IgniteX`;
   
   // Generate JSON-LD structured data
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': type === 'article' ? 'Article' : 'WebPage',
-    headline: title,
+    headline: fullTitle,
     description: description,
     image: ogImage,
-    author: {
-      '@type': 'Organization',
-      name: 'IgniteX',
-      url: siteUrl,
-      logo: `${siteUrl}/images/logo.png`,
-    },
+    url: url,
     publisher: {
       '@type': 'Organization',
       name: 'IgniteX',
+      url: siteUrl,
       logo: {
         '@type': 'ImageObject',
         url: `${siteUrl}/images/logo.png`,
+        width: 600,
+        height: 60
       },
+      sameAs: [
+        'https://twitter.com/ignitex',
+        'https://www.linkedin.com/company/ignitex',
+        'https://github.com/ignitex'
+      ]
+    },
+    author: {
+      '@type': 'Organization',
+      name: author,
+      url: siteUrl
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url
     },
     ...(type === 'article' && {
       datePublished: publishedTime,
       dateModified: modifiedTime || publishedTime,
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': url,
-      },
       articleSection: section,
       keywords: tags.join(', '),
       author: {
         '@type': 'Person',
-        name: author,
-      },
-    }),
-  };
+        name: author
+      }
+    })
+  }
+;
 
   return (
     <>
