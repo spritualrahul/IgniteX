@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
+import ChatBot from '@/components/ChatBotWrapper';
 
 // Configure fonts
 const inter = Inter({ 
@@ -102,6 +103,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased text-gray-900 bg-white">
         {children}
+        <ChatBot />
       </body>
     </html>
   );

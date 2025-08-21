@@ -1,22 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IgniteX - AI-Powered Chatbot Integration
+
+This project features a responsive AI chatbot built with Next.js, React, and OpenAI's GPT-3.5-turbo model. The chatbot provides customer support and assistance through a user-friendly interface.
+
+## Features
+
+- Real-time chat interface
+- Responsive design
+- Animated message transitions
+- Typing indicators
+- Error handling
+- Mobile-friendly
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 14.6.0 or later
+- npm or yarn
+- OpenAI API key
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Create a `.env.local` file in the root directory and add your OpenAI API key:
+
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The chatbot will appear as a floating button in the bottom-right corner of the screen.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

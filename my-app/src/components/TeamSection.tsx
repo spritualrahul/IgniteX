@@ -27,12 +27,6 @@ type TeamMember = {
   hasImage?: boolean;
 };
 
-// Preload critical images
-const preloadImages = [
-  { src: '/images/team/team-banner.jpg', as: 'image' },
-  // Add other team member images here
-];
-
 const TeamSection = () => {
   const teamMembers: TeamMember[] = [
     {
