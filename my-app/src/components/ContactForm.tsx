@@ -56,11 +56,17 @@ const ContactForm: React.FC = () => {
         setForm({ name: '', phone: '', email: '', subject: '', message: '' });
         setLoading(false);
       })
-      .catch((error: any) => {
-        console.error("EmailJS Error:", error);
-        alert("Oops! Something went wrong. Please try again.");
-        setLoading(false);
-      });
+     .catch((error: unknown) => {
+  if (error instanceof Error) {
+    console.error("EmailJS Error:", error.message);
+    alert(`Oops! Something went wrong: ${error.message}`);
+  } else {
+    console.error("EmailJS Error:", error);
+    alert("Oops! Something went wrong. Please try again.");
+  }
+  setLoading(false);
+});
+
   };
 
   return (
