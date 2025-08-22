@@ -36,7 +36,7 @@ const AboutSection = () => {
             variants={fadeIn}
             className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
           >
-            About <span className="text-red-600">IgniteX</span>
+            Aboutttt <span className="text-red-600">IgniteX</span>
           </motion.h2>
           
           <motion.div 
