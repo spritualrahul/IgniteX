@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-
+import emailjs from '@emailjs/browser';
+import { MdEmail, MdCall, MdLocationOn } from "react-icons/md";
 
 const countries = [
   { name: 'India', code: '+91', flag: '🇮🇳' },
@@ -11,7 +12,7 @@ const countries = [
   // Add more countries as needed
 ];
 
-const ContactForm = () => {
+const ContactForm: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [form, setForm] = useState({
     name: '',
@@ -20,6 +21,7 @@ const ContactForm = () => {
     subject: '',
     message: '',
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -30,116 +32,147 @@ const ContactForm = () => {
     if (country) setSelectedCountry(country);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // You can add your form submission logic here
-    alert('Form submitted!');
+    setLoading(true);
 
+    const templateParams = {
+      name: form.name,
+      email: form.email,
+      phone: `${selectedCountry.code} ${form.phone}`,
+      subject: form.subject,
+      message: form.message,
+    };
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ""
+      )
+      .then(() => {
+        alert("Your enquiry has been sent successfully!");
+        setForm({ name: '', phone: '', email: '', subject: '', message: '' });
+        setLoading(false);
+      })
+      .catch((error: any) => {
+        console.error("EmailJS Error:", error);
+        alert("Oops! Something went wrong. Please try again.");
+        setLoading(false);
+      });
   };
 
   return (
-    <div className="relative w-full flex items-center justify-center overflow-auto">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-full md:max-w-7xl p-0 flex flex-wrap min-w-0 overflow-hidden">
+    <div className="w-full flex items-center justify-center px-4 py-8">
+      <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
         {/* Left: Form */}
-        <div className="w-full md:w-1/2 p-8 min-w-0">
-
-          <div className="mb-8">
-  <h2 className="text-4xl font-bold text-red-600 mb-6">Get in touch with us</h2>
-</div>
-<form onSubmit={handleSubmit} className="space-y-5">
-            <div className="mb-2">
-              <label className="block text-gray-900 font-semibold mb-1"></label>
+        <div className="w-full md:w-1/2 p-6 sm:p-8 bg-white">
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-4xl font-bold text-red-600 mb-4 sm:mb-6 text-center md:text-left">
+              Get in touch with us
+            </h2>
+          </div>
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              required
+              placeholder="Full Name"
+              className="w-full rounded px-4 py-3 bg-gray-50 text-gray-900"
+            />
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              required
+              placeholder="Email"
+              className="w-full rounded px-4 py-3 bg-gray-50 text-gray-900"
+            />
+            <input
+              type="text"
+              name="subject"
+              value={form.subject}
+              onChange={handleChange}
+              placeholder="Subject"
+              required
+              className="w-full rounded px-4 py-3 bg-gray-50 text-gray-900"
+            />
+            <div className="flex flex-col sm:flex-row gap-2">
+              <select
+                value={selectedCountry.name}
+                onChange={handleCountryChange}
+                className="sm:w-28 w-full rounded px-2 py-3 bg-gray-50 text-sm text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                {countries.map((country) => (
+                  <option key={country.name} value={country.name}>
+                    {country.flag} {country.name}
+                  </option>
+                ))}
+              </select>
               <input
-                type="text"
-                name="name"
-                value={form.name}
+                type="tel"
+                name="phone"
+                value={form.phone}
                 onChange={handleChange}
                 required
-                placeholder='Full Name'
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600 text-gray-900"
+                className="w-full rounded px-4 py-3 bg-gray-50 text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Phone number"
               />
             </div>
-            <div className="mb-2">
-              <label className="block text-gray-900 font-semibold mb-1"></label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                placeholder='Email'
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600 text-gray-900"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="block text-gray-900 font-semibold mb-1"></label>
-              <input
-                type="text"
-                name="subject"
-                value={form.subject}
-                onChange={handleChange}
-                placeholder='Subject'
-                required
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600 text-gray-900"
-              />
-            </div>
-            <div className="mb-2">
-              <label  className="block text-gray-900 font-semibold mb-1"></label>
-              <div className="flex gap-2">
-                <select
-                  value={selectedCountry.name}
-                  onChange={handleCountryChange}
-                  
-                  className="w-20 rounded-l px-1 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 text-sm placeholder-gray-600"
-                >
-                  {countries.map(country => (
-                    <option key={country.name} value={country.name}>
-                      {country.flag} {country.name}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-92 rounded-r px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 placeholder-gray-600"
-                  placeholder="Phone number"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-gray-900 font-semibold mb-1"></label>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                required
-                rows={6}
-                className="w-full max-w-md rounded px-4 py-3 bg-gray-50 focus:outline-none focus:ring-0 focus:border-gray-300 resize-none placeholder-gray-600 text-gray-900 min-h-[120px]"
-                placeholder="Type your message here..."
-              />
-            </div>
+            <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              required
+              rows={6}
+              className="w-full rounded px-4 py-3 bg-gray-50 text-gray-900"
+              placeholder="Type your message here..."
+            />
             <Button
               type="submit"
-              className="w-full max-w-md bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded transition-colors duration-200"
+              disabled={loading}
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded transition-colors duration-200"
             >
-              Submit
+              {loading ? "Submitting..." : "Submit"}
             </Button>
           </form>
         </div>
+
         {/* Right: Contact Info */}
-        <div className="hidden md:flex flex-col justify-center items-start bg-white w-1/2 p-8 min-w-0">
-          <div className="mb-8">
-            <h3 className="text-xl font-bold text-red-700 mb-2">Contact Sales</h3>
-            <div className="text-lg font-semibold text-gray-950">8969156933</div>
-            <div className="text-base text-gray-900 mt-2">rahulkrmahato027@gmail.com</div>
+        <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-center">
+          <div className="mb-6 sm:mb-8">
+            <h3 className="text-lg sm:text-xl font-bold text-red-700 mb-3">Contact Sales</h3>
+
+            {/* Phone */}
+            <div className="flex items-center gap-3 text-base sm:text-lg font-semibold text-gray-950">
+              <MdCall className="text-green-600 text-xl sm:text-2xl shrink-0" />
+              <span className="break-words">+91 8969156933</span>
+            </div>
+
+            {/* Email */}
+            <div className="flex items-center gap-3 text-sm sm:text-base text-gray-900 mt-3">
+              <MdEmail className="text-red-600 text-xl sm:text-2xl shrink-0" />
+              <span className="break-words">rahulkrmahato027@gmail.com</span>
+            </div>
           </div>
+
+          {/* Location */}
           <div>
-            <h4 className="text-lg font-bold text-red-600 mb-1">Office Locations - India</h4>
-            <div className="text-base text-gray-950">Jamshedpur - 831005</div>
-            <div className="text-base text-gray-950">Bistupur</div>
+            <h4 className="text-lg font-bold text-red-600 mb-2">Office Locations - India</h4>
+
+            <div className="flex items-center gap-3 text-sm sm:text-base text-gray-950">
+              <MdLocationOn className="text-blue-600 text-xl sm:text-2xl shrink-0" />
+              <span className="break-words">Jamshedpur - 831005</span>
+            </div>
+
+            <div className="flex items-center gap-3 text-sm sm:text-base text-gray-950 mt-2">
+              <MdLocationOn className="text-blue-600 text-xl sm:text-2xl shrink-0" />
+              <span className="break-words">Bistupur</span>
+            </div>
           </div>
         </div>
       </div>
