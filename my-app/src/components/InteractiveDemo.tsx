@@ -10,6 +10,15 @@ const demos = [
     description: 'Custom websites built with modern technologies like Next.js, React, and Tailwind CSS for optimal performance and user experience.',
     icon: '🌐',
     color: 'from-blue-500 to-blue-600',
+    details: {
+      features: [
+        '⚡ Blazing fast performance with Next.js',
+        '🎨 Pixel-perfect UI with Tailwind CSS',
+        '🌍 SEO-friendly and scalable architecture',
+      ],
+      tools: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
+      useCase: 'We helped a retail brand increase conversions by 30% with a modern web app built using Next.js.',
+    },
   },
   {
     id: 'mobile',
@@ -17,6 +26,15 @@ const demos = [
     description: 'Cross-platform mobile applications using React Native, delivering native-like performance with a single codebase.',
     icon: '📱',
     color: 'from-purple-500 to-purple-600',
+    details: {
+      features: [
+        '📱 Single codebase for iOS & Android',
+        '🚀 Smooth animations and native-like performance',
+        '🔌 Easy integration with APIs & databases',
+      ],
+      tools: ['React Native', 'Expo', 'Firebase'],
+      useCase: 'Built a cross-platform e-commerce app with secure payments and real-time notifications.',
+    },
   },
   {
     id: 'uiux',
@@ -24,6 +42,15 @@ const demos = [
     description: 'Beautiful and intuitive user interfaces designed with the latest design trends and user experience principles in mind.',
     icon: '🎨',
     color: 'from-pink-500 to-pink-600',
+    details: {
+      features: [
+        '🎯 User-centric design approach',
+        '🖌️ Modern and trend-driven UI styles',
+        '📊 Prototyping & usability testing',
+      ],
+      tools: ['Figma', 'Adobe XD', 'Sketch'],
+      useCase: 'Designed a clean and intuitive dashboard for a SaaS product, boosting user engagement by 40%.',
+    },
   },
   {
     id: 'seo',
@@ -31,19 +58,30 @@ const demos = [
     description: 'Improve your online visibility and track performance with our comprehensive SEO and analytics solutions.',
     icon: '📊',
     color: 'from-green-500 to-green-600',
+    details: {
+      features: [
+        '🔍 Keyword optimization & content strategy',
+        '📈 Analytics integration with Google tools',
+        '⚡ Speed optimization for better ranking',
+      ],
+      tools: ['Google Analytics', 'Search Console', 'Ahrefs'],
+      useCase: 'Increased organic traffic for a client by 60% within 3 months through strategic SEO improvements.',
+    },
   },
 ];
 
 const InteractiveDemo = () => {
   const [activeTab, setActiveTab] = useState(demos[0].id);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
-  const activeDemo = demos.find(demo => demo.id === activeTab) || demos[0];
+  const activeDemo = demos.find((demo) => demo.id === activeTab) || demos[0];
 
   const handleTabChange = (tabId: string) => {
     if (!isAnimating && tabId !== activeTab) {
       setIsAnimating(true);
       setActiveTab(tabId);
+      setShowDetails(false); // reset details when switching tab
       setTimeout(() => setIsAnimating(false), 500);
     }
   };
@@ -62,6 +100,7 @@ const InteractiveDemo = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
           <div className="lg:col-span-1">
             <div className="space-y-2">
               {demos.map((demo) => (
@@ -69,8 +108,8 @@ const InteractiveDemo = () => {
                   key={demo.id}
                   onClick={() => handleTabChange(demo.id)}
                   className={`w-full text-left p-4 rounded-lg transition-all ${
-                    activeTab === demo.id 
-                      ? 'bg-gradient-to-r text-white shadow-lg transform -translate-x-1' 
+                    activeTab === demo.id
+                      ? 'bg-gradient-to-r text-white shadow-lg transform -translate-x-1'
                       : 'bg-gray-50 hover:bg-gray-100 text-gray-700'
                   } ${activeTab === demo.id ? demo.color : ''}`}
                 >
@@ -96,24 +135,59 @@ const InteractiveDemo = () => {
                 >
                   <div className="flex-1">
                     <div className="text-6xl mb-6">{activeDemo.icon}</div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">{activeDemo.title}</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {activeDemo.title}
+                    </h3>
                     <p className="text-gray-600 mb-8">{activeDemo.description}</p>
                   </div>
+
                   <div className="mt-auto">
-                    <div className="relative pt-1">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-red-200">
-                            Learn More
-                          </span>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-xs font-semibold inline-block text-red-600">
-                            →
-                          </span>
-                        </div>
-                      </div>
-                    </div>
+                    <button
+                      onClick={() => setShowDetails(!showDetails)}
+                      className="flex items-center text-red-600 font-semibold hover:underline"
+                    >
+                      {showDetails ? 'View Less ←' : 'View More →'}
+                    </button>
+
+                    <AnimatePresence>
+                      {showDetails && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ duration: 0.3 }}
+                          className="mt-6 space-y-6 text-gray-700"
+                        >
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Features</h4>
+                            <ul className="list-disc list-inside space-y-1">
+                              {activeDemo.details.features.map((feature, idx) => (
+                                <li key={idx}>{feature}</li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Tools</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {activeDemo.details.tools.map((tool, idx) => (
+                                <span
+                                  key={idx}
+                                  className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+                                >
+                                  {tool}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2">Use Case</h4>
+                            <p>{activeDemo.details.useCase}</p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
               </AnimatePresence>
