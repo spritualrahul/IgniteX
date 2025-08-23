@@ -49,24 +49,7 @@ const TeamSection = () => {
       },
       hasImage: true
     },
-    {
-      name: 'Tejaswini Gohil',
-      role: 'Senior Tech Lead',
-      image: {
-        src: '/images/team/tejaswini.jpg',
-        width: 500,
-        height: 500,
-        alt: 'Tejaswini Gohil - Senior Tech Lead',
-        loading: 'lazy'
-      },
-      bio: 'Seasoned technical lead with a proven track record of delivering complex projects on time and within budget. Expert in system architecture, code reviews, and mentoring development teams. Specializes in maintaining high code quality standards and implementing best practices. Strong background in UI/UX implementation and performance optimization.',
-      alignment: 'right',
-      social: {
-        linkedin: 'https://linkedin.com',
-        twitter: 'https://twitter.com',
-        email: 'mailto:tejaswini@ignitex.com'
-      },
-    },
+
     {
       name: 'Abhuday Pratap Singh',
       role: 'Co-Founder - Marketing & Performance',
@@ -78,7 +61,7 @@ const TeamSection = () => {
         loading: 'lazy'
       },
       bio: 'Results-driven marketing strategist with expertise in digital marketing, brand management, and customer acquisition. Specializes in data-driven marketing campaigns, SEO, and conversion rate optimization. Proven track record of developing successful marketing strategies that drive business growth and increase market share.',
-      alignment: 'left',
+      alignment: 'right',
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
@@ -86,11 +69,31 @@ const TeamSection = () => {
       },
       hasImage: true
     },
+
+    {
+      name: 'Tejaswini Gohil',
+      role: 'Senior Tech Lead',
+      image: {
+        src: '/images/team/Tejaswini.jpg',
+        width: 500,
+        height: 500,
+        alt: 'Tejaswini Gohil - Senior Tech Lead',
+        loading: 'lazy'
+      },
+      bio: 'Seasoned technical lead with a proven track record of delivering complex projects on time and within budget. Expert in system architecture, code reviews, and mentoring development teams. Specializes in maintaining high code quality standards and implementing best practices. Strong background in UI/UX implementation and performance optimization.',
+      alignment: 'left',
+      social: {
+        linkedin: 'https://linkedin.com',
+        twitter: 'https://twitter.com',
+        email: 'mailto:tejaswini@ignitex.com'
+      },
+    },
+    
     {
       name: 'Nitesh Tiwari',
       role: 'Content Creator Expert',
       image: {
-        src: '/images/team/nitesh.jpg',
+        src: '/images/team/Nitesh.jpg',
         width: 500,
         height: 500,
         alt: 'Nitesh Tiwari - Content Creator Expert',
@@ -143,15 +146,15 @@ const TeamSection = () => {
         </motion.div>
 
         {/* Team Banner Image */}
-        <div className="relative w-full h-96 mb-20 rounded-xl overflow-hidden shadow-xl">
+        {/* <div className="relative w-full h-96 mb-20 rounded-xl overflow-hidden shadow-xl">
           <Image
-            src="/images/team/team-banner.jpg"
+            src="/images/team/Team.jpg"
             alt="Our Amazing Team"
             fill
             className="object-cover"
             priority
           />
-        </div>
+        </div> */}
 
         {/* Team Members List */}
         <div className="space-y-32 max-w-6xl mx-auto">
@@ -172,19 +175,19 @@ const TeamSection = () => {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12`}
               >
-                {/* Member Image */}
-                <div className="w-full md:w-1/2">
-                  <div className="relative h-96 w-full rounded-xl overflow-hidden shadow-lg">
-                    <Image
-                      src={imageSrc}
-                      alt={typeof member.image === 'string' ? member.name : member.image.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
+               {/* Member Image */}
+<div className="w-full md:w-1/2 flex justify-center">
+  <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-xl overflow-hidden shadow-lg">
+    <Image
+      src={imageSrc}
+      alt={typeof member.image === 'string' ? member.name : member.image.alt}
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 100vw, 50vw"
+      loading="lazy"
+    />
+  </div>
+</div>
 
                 {/* Member Details */}
                 <div className={`w-full md:w-1/2 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
