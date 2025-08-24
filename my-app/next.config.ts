@@ -90,6 +90,10 @@ const nextConfig = {
         source: '/sitemap.xml',
         destination: '/api/sitemap',
       },
+      {
+        source: '/google5396855dfc341632.html',
+        destination: '/api/google-verification',
+      },
     ];
   },
 };
