@@ -90,7 +90,7 @@ const TeamSection = () => {
     },
     
     {
-      name: 'Nitesh Tiwari',
+      name: 'Nitesh Sahani',
       role: 'Content Creator Expert',
       image: {
         src: '/images/team/Nitesh.jpg',

@@ -4,16 +4,16 @@ import React, { useState } from 'react';
 import { Button } from './ui/button';
 import emailjs from '@emailjs/browser';
 import { MdEmail, MdCall, MdLocationOn } from "react-icons/md";
+import countries from './countries.json';
 
-const countries = [
-  { name: 'India', code: '+91', flag: '🇮🇳' },
-  { name: 'United States', code: '+1', flag: '🇺🇸' },
-  { name: 'United Kingdom', code: '+44', flag: '🇬🇧' },
-  // Add more countries as needed
-];
+interface Country {
+  name: string;
+  code: string;
+  flag: string;
+}
 
 const ContactForm: React.FC = () => {
-  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
+  const [selectedCountry, setSelectedCountry] = useState<Country>(countries[0]);
   const [form, setForm] = useState({
     name: '',
     phone: '',
@@ -56,17 +56,16 @@ const ContactForm: React.FC = () => {
         setForm({ name: '', phone: '', email: '', subject: '', message: '' });
         setLoading(false);
       })
-     .catch((error: unknown) => {
-  if (error instanceof Error) {
-    console.error("EmailJS Error:", error.message);
-    alert(`Oops! Something went wrong: ${error.message}`);
-  } else {
-    console.error("EmailJS Error:", error);
-    alert("Oops! Something went wrong. Please try again.");
-  }
-  setLoading(false);
-});
-
+      .catch((error: unknown) => {
+        if (error instanceof Error) {
+          console.error("EmailJS Error:", error.message);
+          alert(`Oops! Something went wrong: ${error.message}`);
+        } else {
+          console.error("EmailJS Error:", error);
+          alert("Oops! Something went wrong. Please try again.");
+        }
+        setLoading(false);
+      });
   };
 
   return (
