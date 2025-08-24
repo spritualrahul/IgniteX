@@ -26,11 +26,48 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: 'IgniteX - Digital Innovation & Technology Solutions',
+    default: 'IgniteX - Top Website Development & Digital Marketing Agency in Jamshedpur',
     template: '%s | IgniteX',
   },
-  description: 'IgniteX transforms ideas into digital reality with cutting-edge technology, web development, and innovative solutions. Partner with us for your digital transformation.',
-  keywords: ['digital innovation', 'web development', 'technology solutions', 'digital transformation', 'software development', 'IgniteX'],
+  description: 'Leading website development agency in Jamshedpur offering custom web design, e-commerce solutions, and full-stack development. Expert digital marketing and SEO services to grow your business online.',
+  keywords: [
+    // Core Services
+    'website development agency Jamshedpur',
+    'web design company Jamshedpur',
+    'best website developers in Jamshedpur',
+    'website development services Jamshedpur',
+    'full stack development Jamshedpur',
+    'CMS integration services Jamshedpur',
+    'e-commerce website development Jamshedpur',
+    'custom website design Jamshedpur',
+    
+    // Digital Marketing & SEO
+    'digital marketing agency Jamshedpur',
+    'SEO services in Jamshedpur',
+    'best SEO company Jamshedpur',
+    'performance marketing agency Jamshedpur',
+    'social media marketing Jamshedpur',
+    'PPC services Jamshedpur',
+    'content marketing services Jamshedpur',
+    
+    // Creative & Design
+    'graphic design company Jamshedpur',
+    'logo design Jamshedpur',
+    'UI/UX design services Jamshedpur',
+    'branding agency in Jamshedpur',
+    
+    // Wider Reach
+    'best website development agency in India',
+    'affordable website design services',
+    'professional web development company',
+    'top digital marketing agency India',
+    'custom web solutions for business',
+    'SEO and website development package',
+    'full stack development agency India',
+    
+    // Additional Keywords
+    'IgniteX', 'digital transformation', 'technology solutions'
+  ],
   authors: [{ name: 'IgniteX Team' }],
   creator: 'IgniteX',
   publisher: 'IgniteX',
@@ -39,8 +76,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'IgniteX - Digital Innovation & Technology Solutions',
-    description: 'Transforming ideas into digital reality with cutting-edge technology and innovative solutions.',
+    title: 'IgniteX - Top Web Design & Digital Marketing Agency in Jamshedpur',
+    description: 'Professional website development, e-commerce solutions, and digital marketing services in Jamshedpur. Grow your online presence with our expert team.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech',
     siteName: 'IgniteX',
     images: [
