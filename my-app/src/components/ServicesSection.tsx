@@ -300,12 +300,12 @@ export default function ServicesSection({ showAll = false }) {
                     <p className="text-gray-600 mb-6">
                       Contact us today to discuss your {selectedService.title.toLowerCase()} needs and how we can help bring your vision to life.
                     </p>
-                    <a
+                    <Link
                       href="/contact"
                       className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition-colors"
                     >
                       Get in Touch
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
