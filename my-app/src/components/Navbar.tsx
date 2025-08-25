@@ -4,18 +4,53 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "../components/ui/button";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      
+      // Update active section based on scroll position for home page
+      if (pathname === '/') {
+        const sections = ['work', 'testimonials', 'contact'];
+        const scrollPosition = window.scrollY + 100;
+
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const { offsetTop, offsetHeight } = element;
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(`#${section}`);
+              return;
+            }
+          }
+        }
+        
+        // If not in any section, we're at the top (home)
+        if (window.scrollY < 100) {
+          setActiveSection('/');
+        }
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
+
+  // Set initial active section based on pathname
+  useEffect(() => {
+    if (pathname !== '/') {
+      setActiveSection(pathname);
+    } else {
+      setActiveSection('/');
+    }
+  }, [pathname]);
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -39,6 +74,13 @@ export function Navbar() {
       window.location.href = href;
     }
     setIsOpen(false);
+  };
+
+  const isActive = (href: string) => {
+    if (pathname === '/' && href.startsWith('#')) {
+      return activeSection === href;
+    }
+    return pathname === href || activeSection === href;
   };
 
   const navItems = [
@@ -152,9 +194,25 @@ export function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => scrollToSection(e, item.href)}
-                  className="text-gray-950 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
+                  className={`relative px-3 py-2 text-sm font-medium transition-all duration-500 ease-in-out cursor-pointer group ${
+                    isActive(item.href)
+                      ? 'text-red-600 font-semibold'
+                      : 'text-gray-950 hover:text-red-500'
+                  }`}
                 >
                   {item.name}
+                  
+                  {/* Active underline with smooth transition */}
+                  <span 
+                    className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-red-600 to-orange-500 transition-all duration-500 ease-in-out ${
+                      isActive(item.href) 
+                        ? 'w-full opacity-100 shadow-sm shadow-red-500/50' 
+                        : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-60'
+                    }`}
+                  />
+                  
+                  {/* Hover effect underline */}
+                  <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-red-400/50 to-orange-400/50 transition-all duration-300 ease-out group-hover:w-full" />
                 </Link>
               ))}
               <Button className="ml-4 bg-primary hover:bg-primary/90">
@@ -185,9 +243,18 @@ export function Navbar() {
                     scrollToSection(e, item.href);
                     setIsOpen(false);
                   }}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-950 hover:text-primary hover:bg-gray-50 cursor-pointer"
+                  className={`relative block px-3 py-2 rounded-md text-base font-medium cursor-pointer transition-all duration-300 ease-in-out ${
+                    isActive(item.href)
+                      ? 'text-red-600 bg-red-50/80 border-l-4 border-red-500 font-semibold transform translate-x-1'
+                      : 'text-gray-950 hover:text-red-500 hover:bg-red-50/50 hover:translate-x-0.5'
+                  }`}
                 >
                   {item.name}
+                  
+                  {/* Mobile active indicator dot */}
+                  {isActive(item.href) && (
+                    <span className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                  )}
                 </Link>
               ))}
               <Button className="w-full mt-2 bg-primary hover:bg-primary/90">
