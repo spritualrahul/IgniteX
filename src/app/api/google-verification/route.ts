@@ -11,7 +11,8 @@ export async function GET() {
         'Content-Type': 'text/html',
       },
     });
-  } catch (error) {
+    } catch (error) {
+    console.error('Google verification file read error:', error);
     return new NextResponse('Not Found', { status: 404 });
   }
 }
