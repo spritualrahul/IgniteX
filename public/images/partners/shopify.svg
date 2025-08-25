@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="35" viewBox="0 0 160 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M15 15C15 10 18 5 25 5C32 5 35 10 35 15C35 20 32 25 25 25C18 25 15 20 15 15Z" fill="#95BF47"/>
+  <path d="M25 15C25 10 28 5 35 5C42 5 45 10 45 15C45 20 42 25 35 25C28 25 25 20 25 15Z" fill="#5E8E3E"/>
+  <path d="M35 15C35 10 38 5 45 5C52 5 55 10 55 15C55 20 52 25 45 25C38 25 35 20 35 15Z" fill="#95BF47"/>
+  <text x="65" y="25" font-family="Arial" font-size="24" font-weight="bold" fill="#333">Shopify</text>
+</svg>

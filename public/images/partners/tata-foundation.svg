@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="35" viewBox="0 0 160 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 10H30V25H10V10Z" fill="#486AAE"/>
+  <path d="M30 10H50V25H30V10Z" fill="#E31837"/>
+  <text x="60" y="25" font-family="Arial" font-size="24" font-weight="bold" fill="#333">Tata Foundation</text>
+</svg>

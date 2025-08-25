@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="35" viewBox="0 0 160 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 15C10 10 14 5 20 5C26 5 30 10 30 15C30 20 26 25 20 25C14 25 10 20 10 15Z" fill="#FF7A59"/>
+  <path d="M30 15C30 10 34 5 40 5C46 5 50 10 50 15C50 20 46 25 40 25C34 25 30 20 30 15Z" fill="#FF7A59"/>
+  <path d="M20 25C26 25 30 20 30 15H20V25Z" fill="#FF7A59"/>
+  <text x="60" y="25" font-family="Arial" font-size="24" font-weight="bold" fill="#333">HubSpot</text>
+</svg>
