@@ -14,18 +14,35 @@ export default function Footer() {
             <p className="text-gray-400 mb-4">
               Transforming ideas into digital reality with cutting-edge technology and innovative solutions.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaLinkedin size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaTwitter size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaGithub size={20} />
-              </a>
-            </div>
-          </div>
+  <div className="flex space-x-4">
+  <a 
+    href="https://www.linkedin.com/in/your-username" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="text-gray-400 hover:text-white transition-colors"
+  >
+    <FaLinkedin size={20} />
+  </a>
+
+  <a 
+    href="https://twitter.com/your-username" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="text-gray-400 hover:text-white transition-colors"
+  >
+    <FaTwitter size={20} />
+  </a>
+
+  <a 
+    href="https://github.com/your-username" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="text-gray-400 hover:text-white transition-colors"
+  >
+    <FaGithub size={20} />
+  </a>
+</div>
+</div>
 
           {/* Quick Links */}
           <div>
@@ -45,21 +62,21 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <FaEnvelope className="mt-1 mr-3 text-red-500" />
-                <a href="mailto:contact@ignitex.com" className="text-gray-400 hover:text-white transition-colors">
-                  contact@ignitex.com
+                <a href="mailto:ignitexsolution@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                 ignitexsolution@gmail.com
                 </a>
               </li>
               <li className="flex items-start">
                 <FaPhone className="mt-1 mr-3 text-red-500" />
                 <a href="tel:+1234567890" className="text-gray-400 hover:text-white transition-colors">
-                  +1 (234) 567-890
+                  +91 8969156933
                 </a>
               </li>
               <li className="flex items-start">
                 <FaMapMarkerAlt className="mt-1 mr-3 text-red-500" />
                 <span className="text-gray-400">
-                  123 Tech Street<br />
-                  Silicon Valley, CA 94025
+                  Jamshedpur<br />
+                  Jharkhand
                 </span>
               </li>
             </ul>
