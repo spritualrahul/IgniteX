@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
+import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
 
 // Configure fonts
 const inter = Inter({ 
@@ -132,6 +133,9 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         
+        {/* Google Tag Manager */}
+        <GoogleTagManager />
+        
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -139,6 +143,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased text-gray-900 bg-white">
+        <GTMNoScript />
         {children}
         <ChatBot />
       </body>
