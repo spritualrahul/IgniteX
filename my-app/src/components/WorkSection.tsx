@@ -7,6 +7,18 @@ import Image from 'next/image';
 
 const projects = [
   {
+    title: 'Reflect - Journal App',
+    description: 'A personal journaling application built with Next.js, TypeScript, and Neon DB. Features include rich text editing, mood tracking, and secure user authentication.',
+    image: '/images/projects/journal.png',
+    url: 'https://journal-app-blue-omega.vercel.app/',
+    technologies: ['Next.js', 'TypeScript', 'Neon DB', 'Tailwind CSS'],
+    testimonial: {
+      text: "A beautifully crafted journaling experience that makes daily reflection a joy. The clean interface and smooth performance make it a pleasure to use.",
+      author: "Personal Project",
+      role: "Developer & Designer"
+    }
+  },
+  {
     title: 'Artivatic.ai',
     description: 'AI-powered insurance platform providing intelligent underwriting and risk assessment solutions.',
     image: '/images/projects/artivatic-preview.png',
@@ -29,8 +41,7 @@ const projects = [
       author: "Rahul Sharma",
       role: "Founder, Fitsib"
     }
-  },
-  // Add more projects as needed
+  }
 ];
 
 import { easeOut } from 'framer-motion';
