@@ -9,7 +9,7 @@ const projects = [
   {
     title: 'Reflect - Journal App',
     description: 'A personal journaling application built with Next.js, TypeScript, and Neon DB. Features include rich text editing, mood tracking, and secure user authentication.',
-    image: '/images/projects/journal.png',
+    image: '/images/projects/Journal.png',
     url: 'https://journal-app-blue-omega.vercel.app/',
     technologies: ['Next.js', 'TypeScript', 'Neon DB', 'Tailwind CSS'],
     testimonial: {
