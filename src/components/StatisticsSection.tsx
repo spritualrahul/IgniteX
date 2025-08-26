@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 const StatCard = ({ value, label, icon }: { value: number; label: string; icon: string }) => {
@@ -11,23 +11,38 @@ const StatCard = ({ value, label, icon }: { value: number; label: string; icon: 
     threshold: 0.5,
   });
 
+  const [count, setCount] = useState(0);
+
   useEffect(() => {
     if (inView) {
       controls.start({
-        scale: [1, 1.1, 1],
-        transition: { duration: 0.5 },
+        scale: [1, 1.15, 1],
+        transition: { duration: 0.6, ease: 'easeInOut' },
       });
+
+      // Counter animation
+      let start = 0;
+      const duration = 3000; 
+      const stepTime = Math.abs(Math.floor(duration / value));
+
+      const timer = setInterval(() => {
+        start += 1;
+        setCount(start);
+        if (start >= value) clearInterval(timer);
+      }, stepTime);
+
+      return () => clearInterval(timer);
     }
-  }, [controls, inView]);
+  }, [controls, inView, value]);
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="bg-white p-8 rounded-xl shadow-lg text-center"
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl text-center transform transition duration-300 hover:-translate-y-2"
     >
       <motion.div
         animate={controls}
@@ -42,7 +57,7 @@ const StatCard = ({ value, label, icon }: { value: number; label: string; icon: 
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-4xl font-bold mb-2 text-gray-900"
       >
-        {value}+
+        {count}+
       </motion.div>
       <div className="text-gray-600">{label}</div>
     </motion.div>
@@ -64,27 +79,49 @@ const StatisticsSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             By The <span className="text-red-600">Numbers</span>
           </h2>
-          <div className="w-20 h-1 bg-red-600 mx-auto mb-10"></div>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="w-20 h-1 bg-red-600 mx-auto mb-10 origin-left"
+          ></motion.div>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Our journey in numbers, showcasing our growth and impact in the digital world.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.2 },
+            },
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {stats.map((stat, index) => (
-            <StatCard
+            <motion.div
               key={index}
-              value={stat.value}
-              label={stat.label}
-              icon={stat.icon}
-            />
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+            >
+              <StatCard value={stat.value} label={stat.label} icon={stat.icon} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
