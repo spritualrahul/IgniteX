@@ -164,7 +164,11 @@ const TeamSection = () => {
               ? member.image.startsWith('http') 
                 ? member.image 
                 : `/images/team/${member.image.split('/').pop()}`
-              : member.image.src;
+              : member.image?.src || '';
+            
+            const imageAlt = typeof member.image === 'string' 
+              ? member.name 
+              : member.image?.alt || member.name;
 
             return (
               <motion.div 
@@ -180,11 +184,18 @@ const TeamSection = () => {
   <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-xl overflow-hidden shadow-lg">
     <Image
       src={imageSrc}
-      alt={typeof member.image === 'string' ? member.name : member.image.alt}
-      fill
-      className="object-cover"
+      alt={imageAlt}
+      width={500}
+      height={500}
+      className="object-cover w-full h-full"
       sizes="(max-width: 768px) 100vw, 50vw"
       loading="lazy"
+      onError={(e) => {
+        // Fallback to a placeholder image if the main image fails to load
+        const target = e.target as HTMLImageElement;
+        target.onerror = null;
+        target.src = '/images/placeholder-user.jpg';
+      }}
     />
   </div>
 </div>

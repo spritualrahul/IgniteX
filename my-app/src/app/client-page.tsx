@@ -26,10 +26,6 @@ const PartnersSection = dynamic(
   { loading: () => <Skeleton className="w-full h-[300px]" /> }
 );
 
-const Footer = dynamic(
-  () => import('@/components/Footer'),
-  { ssr: false }
-);
 
 const ServicesSection = dynamic(
   () => import('@/components/ServicesSection'),
@@ -112,7 +108,6 @@ export default function ClientPage() {
       <StatisticsSection />
       <ContactForm />
       <PartnersSection />
-      <Footer />
     </div>
   );
 }

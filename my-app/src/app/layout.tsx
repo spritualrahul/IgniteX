@@ -3,6 +3,7 @@ import { Inter, Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
 import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
+import Footer from '@/components/Footer';
 
 // Configure fonts
 const inter = Inter({ 
@@ -142,9 +143,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="font-sans antialiased text-gray-900 bg-white">
+      <body className="font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen">
         <GTMNoScript />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
         <ChatBot />
       </body>
     </html>
