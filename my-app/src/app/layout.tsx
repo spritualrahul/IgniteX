@@ -87,7 +87,7 @@ export const metadata: Metadata = {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'IgniteX - Digital Innovation Group',
+        alt: 'IgniteX - Beyond deadline before time',
       },
     ],
     locale: 'en_US',

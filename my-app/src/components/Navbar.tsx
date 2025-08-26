@@ -105,9 +105,9 @@ export function Navbar() {
 <Link href="/" className="flex items-center text-3xl font-bold" style={{ fontFamily: 'Poppins, sans-serif' }}>
   <div className="flex flex-col">
     <div className="relative">
-      <span className="text-2xl font-bold text-gray-900">ignite</span><span className="text-2xl font-bold text-red-600">X</span>
+      <span className="text-3xl md:text-4xl font-bold text-gray-900">ignite</span><span className="text-3xl md:text-4xl font-bold text-red-600">X</span>
     </div>
-    <div className="text-sm font-normal text-gray-500">Digital Innovation Group</div>
+    <div className="text-sm font-normal text-gray-500">Beyond deadline before time</div>
   </div>
             </Link>
           </div>

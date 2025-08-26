@@ -190,7 +190,7 @@ export default function ServicesSection({ showAll = false }) {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-            Our <span className="text-red-600">Services</span>
+            Services <span className="text-red-600">We Provide</span>
           </h2>
           <div className="w-20 h-1 bg-red-600 mx-auto mb-10"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">

@@ -90,7 +90,7 @@ export default function SEO({
       <NextSeo
         title={title}
         titleTemplate="%s | IgniteX"
-        defaultTitle="IgniteX - Digital Innovation Group"
+        defaultTitle="IgniteX - Beyond deadline before time"
         description={description}
         canonical={url}
         openGraph={{

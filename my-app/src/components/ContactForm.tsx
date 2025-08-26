@@ -5,6 +5,12 @@ import { Button } from './ui/button';
 import emailjs from '@emailjs/browser';
 import { MdEmail, MdCall, MdLocationOn } from "react-icons/md";
 import countries from './countries.json';
+import dynamic from 'next/dynamic';
+
+const LottieAnimation = dynamic(() => import('@lottiefiles/dotlottie-react').then((mod) => mod.DotLottieReact), {
+  ssr: false,
+  loading: () => <div className="w-full h-64 bg-gray-100 rounded-lg" />
+});
 
 interface Country {
   name: string;
@@ -148,36 +154,38 @@ const ContactForm: React.FC = () => {
         </div>
 
         {/* Right: Contact Info */}
-        <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-center">
-          <div className="mb-6 sm:mb-8">
-            <h3 className="text-lg sm:text-xl font-bold text-red-700 mb-3">Contact Sales</h3>
-
-            {/* Phone */}
-            <div className="flex items-center gap-3 text-base sm:text-lg font-semibold text-gray-950">
-              <MdCall className="text-green-600 text-xl sm:text-2xl shrink-0" />
-              <span className="break-words">+91 8969156933</span>
+        <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col">
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl font-bold text-red-700 mb-3">Contact Sales</h3>
+              <div className="flex items-center gap-3 text-base sm:text-lg font-semibold text-gray-950">
+                <MdCall className="text-green-600 text-xl sm:text-2xl shrink-0" />
+                <span className="break-words">+91 8969156933</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm sm:text-base text-gray-900 mt-3">
+                <MdEmail className="text-red-600 text-xl sm:text-2xl shrink-0" />
+                <span className="break-words">rahulkrmahato027@gmail.com</span>
+              </div>
             </div>
-
-            {/* Email */}
-            <div className="flex items-center gap-3 text-sm sm:text-base text-gray-900 mt-3">
-              <MdEmail className="text-red-600 text-xl sm:text-2xl shrink-0" />
-              <span className="break-words">rahulkrmahato027@gmail.com</span>
+            <div>
+              <h4 className="text-lg font-bold text-red-600 mb-2">Office Locations - India</h4>
+              <div className="flex items-center gap-3 text-sm sm:text-base text-gray-950">
+                <MdLocationOn className="text-blue-600 text-xl sm:text-2xl shrink-0" />
+                <span className="break-words">Jamshedpur - 831005</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm sm:text-base text-gray-950 mt-2">
+                <MdLocationOn className="text-blue-600 text-xl sm:text-2xl shrink-0" />
+                <span className="break-words">Bistupur</span>
+              </div>
             </div>
           </div>
-
-          {/* Location */}
-          <div>
-            <h4 className="text-lg font-bold text-red-600 mb-2">Office Locations - India</h4>
-
-            <div className="flex items-center gap-3 text-sm sm:text-base text-gray-950">
-              <MdLocationOn className="text-blue-600 text-xl sm:text-2xl shrink-0" />
-              <span className="break-words">Jamshedpur - 831005</span>
-            </div>
-
-            <div className="flex items-center gap-3 text-sm sm:text-base text-gray-950 mt-2">
-              <MdLocationOn className="text-blue-600 text-xl sm:text-2xl shrink-0" />
-              <span className="break-words">Bistupur</span>
-            </div>
+          <div className="mt-8 h-64 md:h-auto md:flex-1">
+            <LottieAnimation
+              src="/Contact.lottie"
+              loop
+              autoplay
+              className="w-full h-full"
+            />
           </div>
         </div>
       </div>

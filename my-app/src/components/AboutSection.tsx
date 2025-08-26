@@ -1,8 +1,21 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+
+interface TabItem {
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+}
+
+interface ExpandableTabProps {
+  item: TabItem;
+  defaultOpen?: boolean;
+}
 
 const AboutSection = () => {
   const fadeIn = {
@@ -91,7 +104,7 @@ const AboutSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
-          className="mt-20 max-w-5xl mx-auto"
+          className="mt-20 max-w-4xl mx-auto"
         >
           <motion.h3 
             variants={fadeIn}
@@ -102,71 +115,57 @@ const AboutSection = () => {
           
           <motion.div 
             variants={fadeIn}
-            className="w-16 h-1 bg-red-600 mx-auto mb-12"
+            className="w-20 h-1 bg-red-600 mx-auto mb-12"
           />
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="space-y-6">
             {[
               {
-                icon: '👨‍💻',
                 title: 'Expert Team',
-                description: 'Our team consists of industry veterans and passionate professionals with years of experience in delivering exceptional digital solutions.',
-                color: 'from-blue-500 to-blue-600'
+                description: 'Our team consists of highly skilled professionals with years of experience in the industry.',
+                icon: '👨‍💻',
+                features: [
+                  'Certified professionals',
+                  'Years of industry experience',
+                  'Diverse skill sets',
+                  'Continuous learning'
+                ]
               },
               {
-                icon: '⚡',
                 title: 'Cutting-Edge Technology',
-                description: 'We stay ahead of the curve by leveraging the latest technologies and frameworks to build scalable and future-proof solutions.',
-                color: 'from-purple-500 to-purple-600'
+                description: 'We leverage the latest technologies and frameworks to build scalable and efficient solutions.',
+                icon: '⚡',
+                features: [
+                  'Modern tech stack',
+                  'Regular updates',
+                  'Future-proof solutions',
+                  'Scalable architecture'
+                ]
               },
               {
-                icon: '🎯',
-                title: 'Client-First Approach',
-                description: 'Your success is our priority. We work closely with you to understand your vision and deliver solutions that exceed expectations.',
-                color: 'from-green-500 to-green-600'
-              },
-              {
-                icon: '📈',
-                title: 'Proven Results',
-                description: 'Our track record speaks for itself. We deliver measurable results that drive growth and success for our clients.',
-                color: 'from-red-500 to-red-600'
-              },
-              {
-                icon: '⏱️',
                 title: 'Timely Delivery',
-                description: 'We respect your time and deliver projects on schedule without compromising on quality or functionality.',
-                color: 'from-yellow-500 to-yellow-600'
+                description: 'We understand the importance of deadlines and have a proven track record of delivering projects on time, every time.',
+                icon: '⏱️',
+                features: [
+                  'Strict project timelines',
+                  'Agile methodology',
+                  'Milestone-based delivery',
+                  'Transparent progress tracking'
+                ]
               },
               {
-                icon: '🔄',
-                title: 'Continuous Support',
-                description: 'Our relationship doesn\'t end at delivery. We provide ongoing support and maintenance to ensure your success.',
-                color: 'from-indigo-500 to-indigo-600'
-              },
-              {
-                icon: '🔒',
-                title: 'Security First',
-                description: 'We implement robust security measures to protect your data and ensure compliance with industry standards.',
-                color: 'from-pink-500 to-pink-600'
-              },
-              {
-                icon: '💡',
-                title: 'Innovative Solutions',
-                description: 'We think outside the box to provide creative and effective solutions to complex business challenges.',
-                color: 'from-teal-500 to-teal-600'
+                title: 'Affordable Pricing',
+                description: 'We offer competitive and transparent pricing models that provide excellent value without compromising on quality.',
+                icon: '💰',
+                features: [
+                  'Flexible pricing options',
+                  'No hidden costs',
+                  'Cost-effective solutions',
+                  'Value for money'
+                ]
               }
             ].map((item, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className={`bg-gradient-to-r ${item.color} p-0.5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
-              >
-                <div className="bg-white p-6 rounded-xl h-full">
-                  <div className="text-4xl mb-4">{item.icon}</div>
-                  <h4 className="text-xl font-bold mb-3 text-gray-800">{item.title}</h4>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              </motion.div>
+              <ExpandableTab key={index} item={item} defaultOpen={index === 0} />
             ))}
           </div>
           
@@ -190,6 +189,62 @@ const AboutSection = () => {
         </motion.div>
       </div>
     </section>
+  );
+};
+
+const ExpandableTab: React.FC<ExpandableTabProps> = ({ item, defaultOpen = false }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3 }}
+      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-100"
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
+        aria-expanded={isOpen}
+      >
+        <div className="flex items-center">
+          <span className="text-2xl mr-4">{item.icon}</span>
+          <h4 className="text-xl font-semibold text-gray-800">{item.title}</h4>
+        </div>
+        {isOpen ? (
+          <ChevronUp className="h-5 w-5 text-gray-500 transition-transform" />
+        ) : (
+          <ChevronDown className="h-5 w-5 text-gray-500 transition-transform" />
+        )}
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="px-6 pb-6 pt-2">
+              <p className="text-gray-600 mb-4">{item.description}</p>
+              <ul className="space-y-2">
+                {item.features.map((feature: string, i: number) => (
+                  <li key={i} className="flex items-start">
+                    <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 
