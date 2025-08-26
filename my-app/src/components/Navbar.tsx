@@ -103,11 +103,27 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
 <Link href="/" className="flex items-center text-3xl font-bold" style={{ fontFamily: 'Poppins, sans-serif' }}>
-  <div className="flex flex-col">
-    <div className="relative">
-      <span className="text-3xl md:text-4xl font-bold text-gray-900">ignite</span><span className="text-3xl md:text-4xl font-bold text-red-600">X</span>
+  <div className="flex flex-col group">
+    <div className="relative flex items-end pb-1">
+      <span className="text-3xl md:text-4xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-700 to-red-800 transition-all duration-500 group-hover:from-red-500 group-hover:to-red-700">
+        ignite
+      </span>
+      <span className="relative">
+        <span className="text-4xl md:text-5xl font-black leading-none text-gray-900">X</span>
+        <span 
+className="absolute inset-0 text-4xl md:text-5xl font-black leading-none bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-700 transition-all duration-500 group-hover:from-red-500 group-hover:to-red-700"
+          style={{
+            clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0% 100%)',
+            WebkitClipPath: 'polygon(0 0, 50% 0, 50% 100%, 0% 100%)'
+          }}
+        >
+          X
+        </span>
+      </span>
     </div>
-    <div className="text-sm font-normal text-gray-500">Beyond deadline before time</div>
+    <div className="text-sm font-semibold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 group-hover:from-red-500 group-hover:to-red-700 transition-all duration-300 ml-1">
+      Beyond deadline before time
+    </div>
   </div>
             </Link>
           </div>
