@@ -164,7 +164,7 @@ const ContactForm: React.FC = () => {
               </div>
               <div className="flex items-center gap-3 text-sm sm:text-base text-gray-900 mt-3">
                 <MdEmail className="text-red-600 text-xl sm:text-2xl shrink-0" />
-                <span className="break-words">rahulkrmahato027@gmail.com</span>
+                <span className="break-words">ignitexsolution@gmail.com</span>
               </div>
             </div>
             <div>
