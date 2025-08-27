@@ -87,7 +87,7 @@ export function Navbar() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/services" },
-    { name: "Our Work", href: "#work" },
+    { name: "Portfolio", href: "#work" },
     { name: "Teams", href: "/team" },
     { name: "Testimonials", href: "#testimonials" },
     { name: "Contact", href: "#contact" },
