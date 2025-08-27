@@ -5,12 +5,6 @@ import { Button } from './ui/button';
 import emailjs from '@emailjs/browser';
 import { MdEmail, MdCall, MdLocationOn } from "react-icons/md";
 import countries from './countries.json';
-import dynamic from 'next/dynamic';
-
-const LottieAnimation = dynamic(() => import('@lottiefiles/dotlottie-react').then((mod) => mod.DotLottieReact), {
-  ssr: false,
-  loading: () => <div className="w-full h-64 bg-gray-100 rounded-lg" />
-});
 
 interface Country {
   name: string;
@@ -75,8 +69,9 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex items-center justify-center px-4 py-8">
+    <div id="contact" className="w-full flex items-center justify-center px-4 py-8">
       <div className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
+        
         {/* Left: Form */}
         <div className="w-full md:w-1/2 p-6 sm:p-8 bg-white">
           <div className="mb-6 sm:mb-8">
@@ -179,15 +174,7 @@ const ContactForm: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="mt-8 h-64 md:h-auto md:flex-1">
-            <LottieAnimation
-              src="/9ecEztTJS9.lottie"
-              loop
-              autoplay
-              className="w-full h-full"
-            />
-          </div>
-        </div>
+</div>
       </div>
     </div>
   );

@@ -69,7 +69,7 @@ export default function Footer() {
               <li className="flex items-start">
                 <FaPhone className="mt-1 mr-3 text-red-500" />
                 <a href="tel:+1234567890" className="text-gray-400 hover:text-white transition-colors">
-                  +91 8969156933
+                  +91 8935860306
                 </a>
               </li>
               <li className="flex items-start">

@@ -11,7 +11,8 @@ export async function GET() {
         'Content-Type': 'text/html',
       },
     });
-  } catch (error) {
+  } catch {
+    // removed "error" to avoid unused variable warning
     return new NextResponse('Not Found', { status: 404 });
   }
 }
