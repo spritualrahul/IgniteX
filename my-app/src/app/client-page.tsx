@@ -106,7 +106,9 @@ export default function ClientPage() {
       <TestimonialsSection />
       <InteractiveDemo />
       <StatisticsSection />
-      <ContactForm />
+      <section id="contact" className="scroll-mt-20">
+        <ContactForm />
+      </section>
       <PartnersSection />
     </div>
   );
