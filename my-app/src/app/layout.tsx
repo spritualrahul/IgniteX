@@ -4,6 +4,7 @@ import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
 import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
 import Footer from '@/components/Footer';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // Configure fonts
 const inter = Inter({ 
@@ -150,6 +151,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <ChatBot />
+        <SpeedInsights />
       </body>
     </html>
   );
