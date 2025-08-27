@@ -18,46 +18,46 @@ const services: Service[] = [
   {
     title: 'Web Development',
     description: 'Custom websites and web applications built with modern technologies for optimal performance and user experience.',
-    longDescription: 'At IgniteX, we specialize in creating beautiful, functional, and high-performing websites and web applications. Our team of expert developers uses the latest technologies including Next.js, React, and Tailwind CSS to build responsive, fast, and SEO-friendly websites that drive results.',
+    longDescription: 'At IgniteX, we create beautiful, functional, and high-performing websites and web applications. Our expert developers use Next.js, React, and Tailwind CSS to build responsive, fast, and SEO-friendly websites that drive real business results.',
     icon: '🌐',
     slug: 'web-development',
     features: [
-      'Custom Development',
+      'Custom Website Development',
+      'E-commerce Solutions',
       'Responsive Design',
       'Performance Optimization',
-      'SEO Friendly',
-      'Security First',
+      'SEO Implementation',
       'Ongoing Support'
     ]
   },
   {
-    title: 'Landing Pages',
-    description: 'High-converting landing pages designed to capture leads and drive business growth.',
-    longDescription: 'Our landing pages are designed with one goal in mind: conversion. We combine compelling copy, strategic design, and proven conversion elements to create landing pages that turn visitors into customers.',
-    icon: '📄',
-    slug: 'landing-pages',
+    title: 'Digital Marketing',
+    description: 'Data-driven marketing strategies to grow your online presence and drive targeted traffic.',
+    longDescription: 'Our digital marketing services help businesses increase their online visibility, attract qualified leads, and convert them into loyal customers through strategic campaigns across multiple channels.',
+    icon: '📈',
+    slug: 'digital-marketing',
     features: [
-      'High Conversion Rates',
-      'Mobile-Responsive',
-      'A/B Testing',
-      'Fast Loading',
-      'Lead Capture Forms',
-      'Analytics Integration'
+      'SEO & Content Strategy',
+      'PPC & Social Media Ads',
+      'Email Marketing',
+      'Conversion Optimization',
+      'Analytics & Reporting',
+      'Marketing Automation'
     ]
   },
   {
-    title: 'Full Stack Projects',
-    description: 'End-to-end development of complex web applications with both frontend and backend components.',
-    longDescription: 'From concept to deployment, we handle every aspect of full-stack development. Our expertise spans across frontend technologies like React and Next.js to backend systems using Node.js, Python, and various databases.',
-    icon: '💻',
-    slug: 'full-stack-projects',
+    title: 'AI & SaaS Solutions',
+    description: 'Custom AI applications and scalable SaaS platforms to transform your business operations.',
+    longDescription: 'We build intelligent, scalable SaaS solutions powered by AI and machine learning. Our expertise includes developing custom LLM applications, process automation, and data analytics platforms that drive business growth and efficiency.',
+    icon: '🤖',
+    slug: 'ai-saas',
     features: [
-      'End-to-End Development',
-      'API Integration',
-      'Database Design',
-      'Cloud Deployment',
-      'Scalable Architecture',
-      'Maintenance & Support'
+      'Custom AI/ML Solutions',
+      'SaaS Product Development',
+      'LLM Integration',
+      'Process Automation',
+      'Data Analytics & BI',
+      'Cloud Infrastructure'
     ]
   },
   {
@@ -106,48 +106,93 @@ const services: Service[] = [
     ]
   },
   {
-    title: 'Digital Marketing',
-    description: 'Comprehensive digital marketing strategies to grow your online presence and reach your target audience.',
-    longDescription: 'Our digital marketing services help you reach and engage your target audience through strategic campaigns across multiple channels including social media, email, and search engines.',
-    icon: '📈',
-    slug: 'digital-marketing',
-    features: [
-      'Social Media Marketing',
-      'Email Campaigns',
-      'Content Marketing',
-      'PPC Advertising',
-      'Analytics & Reporting',
-      'Conversion Optimization'
-    ]
-  },
-  {
-    title: 'Video Editing',
-    description: 'Professional video editing services to create engaging and high-quality video content.',
-    longDescription: 'Our video editing services transform your raw footage into polished, professional videos that captivate your audience and deliver your message effectively.',
-    icon: '🎬',
-    slug: 'video-editing',
-    features: [
-      'Professional Editing',
-      'Color Correction',
-      'Motion Graphics',
-      'Audio Enhancement',
-      'Special Effects',
-      'Multiple Format Export'
-    ]
-  },
-  {
-    title: 'Graphic Design',
-    description: 'Creative and visually appealing designs for all your branding and marketing needs.',
-    longDescription: 'Our graphic design services help you create a strong visual identity that resonates with your target audience and sets you apart from competitors.',
+    title: 'Creative Design',
+    description: 'Stunning visual content that captures your brand identity and engages your audience.',
+    longDescription: 'Our creative design services deliver compelling visuals that tell your brand story. From logos to marketing materials, we create designs that make an impact and drive engagement.',
     icon: '🎨',
-    slug: 'graphic-design',
+    slug: 'creative-design',
     features: [
-      'Logo Design',
-      'Brand Identity',
-      'Print Materials',
-      'Digital Graphics',
-      'Social Media Assets',
-      'Marketing Collateral'
+      'Logo & Brand Identity',
+      'Print & Digital Design',
+      'Social Media Graphics',
+      'Marketing Collaterals',
+      'UI/UX Design',
+      'Brand Guidelines'
+    ]
+  },
+  {
+    title: 'Video Production',
+    description: 'End-to-end video production services from concept to final cut.',
+    longDescription: 'We produce professional videos that tell your brand story, from concept development and scripting to filming, editing, and post-production.',
+    icon: '🎬',
+    slug: 'video-production',
+    features: [
+      'Concept Development',
+      'Scriptwriting',
+      'Professional Filming',
+      'Editing & Post-Production',
+      'Motion Graphics',
+      'Animation'
+    ]
+  },
+  {
+    title: 'E-commerce Solutions',
+    description: 'Complete e-commerce platforms designed to drive sales and growth.',
+    longDescription: 'We build powerful e-commerce solutions with seamless user experiences, secure payment gateways, and conversion-optimized designs to maximize your online sales.',
+    icon: '🛒',
+    slug: 'ecommerce-solutions',
+    features: [
+      'Online Store Development',
+      'Payment Gateway Integration',
+      'Inventory Management',
+      'Mobile Optimization',
+      'SEO for E-commerce',
+      'Performance Analytics'
+    ]
+  },
+  {
+    title: 'Content Marketing',
+    description: 'Strategic content that engages audiences and drives results.',
+    longDescription: 'Our content marketing services combine compelling storytelling with data-driven strategies to attract, engage, and convert your target audience.',
+    icon: '✍️',
+    slug: 'content-marketing',
+    features: [
+      'Content Strategy',
+      'Blog Writing',
+      'Copywriting',
+      'SEO Content',
+      'Content Calendar',
+      'Performance Analysis'
+    ]
+  },
+  {
+    title: 'Brand Strategy',
+    description: 'Building powerful brands that connect with your audience.',
+    longDescription: 'We help define and articulate your brand identity, voice, and positioning to create meaningful connections with your target market.',
+    icon: '🎯',
+    slug: 'brand-strategy',
+    features: [
+      'Brand Positioning',
+      'Messaging Strategy',
+      'Competitive Analysis',
+      'Target Audience Research',
+      'Brand Voice & Tone',
+      'Brand Guidelines'
+    ]
+  },
+  {
+    title: 'Social Media Management',
+    description: 'Strategic social media presence that grows your brand.',
+    longDescription: 'We develop and execute social media strategies that increase brand awareness, engagement, and conversions across all major platforms.',
+    icon: '📱',
+    slug: 'social-media-management',
+    features: [
+      'Social Media Strategy',
+      'Content Creation',
+      'Paid Advertising',
+      'Engagement & Community Building',
+      'Analytics & Reporting',
+      'Influencer Partnerships'
     ]
   }
 ];

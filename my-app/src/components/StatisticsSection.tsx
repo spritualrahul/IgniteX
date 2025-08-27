@@ -66,10 +66,10 @@ const StatCard = ({ value, label, icon }: { value: number; label: string; icon: 
 
 const StatisticsSection = () => {
   const stats = [
-    { value: 50, label: 'Projects Completed', icon: '🚀' },
-    { value: 30, label: 'Happy Clients', icon: '😊' },
-    { value: 5, label: 'Years Experience', icon: '⏳' },
-    { value: 10, label: 'Team Members', icon: '👥' },
+    { value: 50, label: 'Websites Launched', icon: '🌐' },
+    { value: 80, label: 'Average ROI %', icon: '📈' },
+    { value: 15, label: 'AI Solutions', icon: '🤖' },
+    { value: 100, label: 'Design Projects', icon: '🎨' },
   ];
 
   return (
