@@ -181,7 +181,7 @@ const ContactForm: React.FC = () => {
           </div>
           <div className="mt-8 h-64 md:h-auto md:flex-1">
             <LottieAnimation
-              src="/Contact.lottie"
+              src="/9ecEztTJS9.lottie"
               loop
               autoplay
               className="w-full h-full"
