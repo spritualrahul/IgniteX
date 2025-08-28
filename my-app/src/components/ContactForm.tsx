@@ -9,7 +9,7 @@ import dynamic from 'next/dynamic';
 
 const LottieAnimation = dynamic(() => import('@lottiefiles/dotlottie-react').then((mod) => mod.DotLottieReact), {
   ssr: false,
-  loading: () => <div className="w-full h-64 bg-gray-100 rounded-lg" />
+  loading: () => <div className="w-full h-40 sm:h-64 bg-gray-100 rounded-lg" />
 });
 
 interface Country {
@@ -179,7 +179,8 @@ const ContactForm: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="mt-8 h-64 md:h-auto md:flex-1">
+          {/* Animation (small on mobile, expands on bigger screens) */}
+          <div className="mt-6 sm:mt-8 h-40 sm:h-64 md:h-80 lg:h-full">
             <LottieAnimation
               src="9ecEztTJS9.lottie"
               loop
