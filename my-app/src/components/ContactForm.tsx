@@ -159,13 +159,23 @@ const ContactForm: React.FC = () => {
             <div className="mb-6 sm:mb-8">
               <h3 className="text-lg sm:text-xl font-bold text-red-700 mb-3">Contact Sales</h3>
               <div className="flex items-center gap-3 text-base sm:text-lg font-semibold text-gray-950">
-                <MdCall className="text-green-600 text-xl sm:text-2xl shrink-0" />
-                <span className="break-words">+91 8969156933</span>
-              </div>
+  <MdCall className="text-green-600 text-xl sm:text-2xl shrink-0" />
+  <a 
+    href="tel:+918969156933" 
+    className="break-words hover:underline"
+  >
+    +91 8969156933
+  </a>
+</div>
               <div className="flex items-center gap-3 text-sm sm:text-base text-gray-900 mt-3">
-                <MdEmail className="text-red-600 text-xl sm:text-2xl shrink-0" />
-                <span className="break-words">ignitexsolution@gmail.com</span>
-              </div>
+  <MdEmail className="text-red-600 text-xl sm:text-2xl shrink-0" />
+  <a 
+    href="mailto:ignitexsolution@gmail.com" 
+    className="break-words hover:underline"
+  >
+    ignitexsolution@gmail.com
+  </a>
+</div>
             </div>
             <div>
               <h4 className="text-lg font-bold text-red-600 mb-2">Office Locations - India</h4>
