@@ -119,7 +119,8 @@ export default function WorkSection() {
                     className="object-cover"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                {/* ✅ Fix: always visible on mobile, hover on large screens */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                   <a 
                     href={project.url} 
                     target="_blank" 
