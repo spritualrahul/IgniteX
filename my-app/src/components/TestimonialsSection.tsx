@@ -39,17 +39,16 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-  // speed settings
-  const SPEED = 60; // px per second
-  const CARD_WIDTH = 360; // card width
-  const GAP = 28; // gap between cards
+  const SPEED = 60; 
+  const CARD_WIDTH = 360; 
+  const GAP = 28; 
 
   const totalWidth = (CARD_WIDTH + GAP) * testimonials.length;
 
   return (
     <section
       id="testimonials"
-      className="py-20 px-4 md:px-8 bg-gray-50 overflow-hidden" // ⬅ bg color here
+      className="py-20 px-4 md:px-8 bg-gray-50 overflow-hidden" 
     >
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">

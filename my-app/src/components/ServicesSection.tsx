@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { X, ArrowRight } from 'lucide-react';
 
@@ -200,9 +200,24 @@ const services: Service[] = [
 export default function ServicesSection({ showAll = false }) {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
-  const displayServices = showAll ? services : services.slice(0, 6);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); 
+    };
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  let displayServices: Service[];
+  if (showAll) {
+    displayServices = services;
+  } else {
+    displayServices = isMobile ? services.slice(0, 3) : services.slice(0, 6);
+  }
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: (i = 0) => ({
@@ -257,7 +272,7 @@ export default function ServicesSection({ showAll = false }) {
               <div className="text-4xl mb-4">{service.icon}</div>
               <h3 className="text-xl font-semibold mb-3 text-gray-800">{service.title}</h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
-              <button 
+              <button
                 onClick={() => openModal(service)}
                 className="text-red-600 hover:text-red-700 font-medium inline-flex items-center"
               >
@@ -285,12 +300,10 @@ export default function ServicesSection({ showAll = false }) {
         )}
       </div>
 
-      {/* Service Details Modal */}
       <AnimatePresence>
         {isModalOpen && selectedService && (
           <div className="fixed inset-0 z-[9999] overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              {/* Overlay */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -298,8 +311,6 @@ export default function ServicesSection({ showAll = false }) {
                 className="fixed inset-0 bg-black/70 backdrop-blur-sm"
                 onClick={closeModal}
               />
-              
-              {/* Modal Content */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -307,7 +318,7 @@ export default function ServicesSection({ showAll = false }) {
                 transition={{ duration: 0.2 }}
                 className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden z-[9999]"
               >
-                {/* Header */}
+
                 <div className="p-6 border-b border-gray-200">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
@@ -324,22 +335,24 @@ export default function ServicesSection({ showAll = false }) {
                   </div>
                 </div>
                 
-                {/* Body */}
                 <div className="p-6 max-h-[70vh] overflow-y-auto">
                   <p className="text-gray-700 mb-6">{selectedService.longDescription}</p>
-                  
                   <h4 className="text-xl font-semibold mb-4 text-gray-900">Key Features</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     {selectedService.features.map((feature, index) => (
                       <div key={index} className="flex items-start">
-                        <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg
+                          className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span className="text-gray-700">{feature}</span>
                       </div>
                     ))}
                   </div>
-                  
                   <div className="mt-8 pt-6 border-t border-gray-200">
                     <h4 className="text-xl font-semibold text-gray-900 mb-4">Ready to get started?</h4>
                     <p className="text-gray-600 mb-6">
