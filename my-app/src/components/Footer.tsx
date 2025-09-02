@@ -90,7 +90,7 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Your email"
-                className="px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-500 text-gray-900 w-full"
+                className="px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-500 text-white w-full"
                 required
               />
               <button
