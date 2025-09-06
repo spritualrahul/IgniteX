@@ -157,7 +157,7 @@ const ContactForm: React.FC = () => {
         <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col">
           <div className="flex-1 flex flex-col justify-center">
             <div className="mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-xl font-bold text-red-700 mb-3">Contact Sales</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-red-700 mb-3">Reach Out</h3>
               <div className="flex items-center gap-3 text-base sm:text-lg font-semibold text-gray-950">
   <MdCall className="text-green-600 text-xl sm:text-2xl shrink-0" />
   <a 
