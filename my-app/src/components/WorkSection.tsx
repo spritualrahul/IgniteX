@@ -157,9 +157,9 @@ export default function WorkSection() {
                 {projects[currentIndex].testimonial && (
                   <motion.div 
                     className="bg-white p-4 md:p-6 rounded-lg shadow-md border-l-4 border-red-500"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 }}
+                   initial={{ opacity: 0, x: -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5, ease: easeOut }}
                   >
                     <p className="text-gray-700 italic mb-4 text-sm md:text-base">&quot;{projects[currentIndex].testimonial.text}&quot;</p>
                     <div className="font-medium">
@@ -172,22 +172,28 @@ export default function WorkSection() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-4">
-            <button
-              onClick={handlePrev}
-              className="p-2 md:p-3 rounded-full bg-white shadow-md hover:bg-gray-100 transition-colors"
-              aria-label="Previous project"
-            >
-              <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-gray-700" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="p-2 md:p-3 rounded-full bg-white shadow-md hover:bg-gray-100 transition-colors"
-              aria-label="Next project"
-            >
-              <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-gray-700" />
-            </button>
-          </div>
+         {/* Left arrow */}
+<div className="absolute left-0 top-1/2 -translate-y-1/2">
+  <button
+    onClick={handlePrev}
+    className="p-2 md:p-3 rounded-full bg-white/30 hover:bg-white/50 transition-colors backdrop-blur-md"
+    aria-label="Previous project"
+  >
+    <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-gray-900" />
+  </button>
+</div>
+
+{/* Right arrow */}
+<div className="absolute right-0 top-1/2 -translate-y-1/2">
+  <button
+    onClick={handleNext}
+    className="p-2 md:p-3 rounded-full bg-white/30 hover:bg-white/50 transition-colors backdrop-blur-md"
+    aria-label="Next project"
+  >
+    <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-gray-900" />
+  </button>
+</div>
+
         </div>
       </div>
     </section>
