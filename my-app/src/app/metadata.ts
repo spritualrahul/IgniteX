@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   authors: [{ name: 'IgniteX Team' }],
   creator: 'IgniteX',
   publisher: 'IgniteX',
+
+   icons: {
+    icon: '/logo.png',       
+    shortcut: '/logo.png',   
+    apple: '/logo.png',      
+  },
+
   openGraph: {
     title: 'IgniteX | Web Development & Digital Marketing Agency',
     description: 'Transform your digital presence with our expert web development, SEO, and digital marketing services. Grow your business online with IgniteX.',
