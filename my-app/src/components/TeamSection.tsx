@@ -70,24 +70,24 @@ const TeamSection = () => {
       hasImage: true
     },
 
-    {
-      name: 'Tejaswini Gohil',
-      role: 'Senior Tech Lead',
-      image: {
-        src: '/images/team/Tejaswini.jpg',
-        width: 500,
-        height: 500,
-        alt: 'Tejaswini Gohil - Senior Tech Lead',
-        loading: 'lazy'
-      },
-      bio: 'Seasoned technical lead with a proven track record of delivering complex projects on time and within budget. Expert in system architecture, code reviews, and mentoring development teams. Specializes in maintaining high code quality standards and implementing best practices. Strong background in UI/UX implementation and performance optimization.',
-      alignment: 'left',
-      social: {
-        linkedin: 'https://linkedin.com',
-        twitter: 'https://twitter.com',
-        email: 'mailto:tejaswini@ignitex.com'
-      },
-    },
+    // {
+    //   name: 'Tejaswini Gohil',
+    //   role: 'Senior Tech Lead',
+    //   image: {
+    //     src: '/images/team/Tejaswini.jpg',
+    //     width: 500,
+    //     height: 500,
+    //     alt: 'Tejaswini Gohil - Senior Tech Lead',
+    //     loading: 'lazy'
+    //   },
+    //   bio: 'Seasoned technical lead with a proven track record of delivering complex projects on time and within budget. Expert in system architecture, code reviews, and mentoring development teams. Specializes in maintaining high code quality standards and implementing best practices. Strong background in UI/UX implementation and performance optimization.',
+    //   alignment: 'left',
+    //   social: {
+    //     linkedin: 'https://linkedin.com',
+    //     twitter: 'https://twitter.com',
+    //     email: 'mailto:tejaswini@ignitex.com'
+    //   },
+    // },
     
     {
       name: 'Nitesh Sahani',
@@ -100,7 +100,7 @@ const TeamSection = () => {
         loading: 'lazy'
       },
       bio: 'Creative content strategist and digital storyteller with expertise in creating engaging multimedia content. Specializes in video production, social media content, and brand storytelling. Skilled in developing content strategies that increase audience engagement and brand awareness across multiple digital platforms.',
-      alignment: 'right',
+      alignment: 'left',
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
@@ -118,7 +118,7 @@ const TeamSection = () => {
         loading: 'lazy'
       },
       bio: 'Experienced QA professional specializing in software testing and test automation. Proficient in designing and implementing automated test frameworks, API testing, and performance testing. Skilled in tools like Selenium, Appium, JUnit, and TestNG. Committed to ensuring software quality and delivering bug-free applications through comprehensive testing strategies.',
-      alignment: 'left',
+      alignment: 'right',
       social: {
         linkedin: 'https://linkedin.com',
         github: 'https://github.com',
