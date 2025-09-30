@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/', '/private/'],
     },
-    sitemap: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech'}/sitemap.xml`,
-    host: process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech',
+    sitemap: 'https://www.ignitexsolution.com/sitemap.xml',
+    host: 'https://www.ignitexsolution.com',
   };
 }

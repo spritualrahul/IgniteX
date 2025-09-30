@@ -8,7 +8,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'ignitex.tech',
+        hostname: 'www.ignitexsolution.com',
       },
     ],
     formats: ['image/avif', 'image/webp'],
@@ -17,7 +17,7 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   env: {
-    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech',
+    NEXT_PUBLIC_SITE_URL: 'https://www.ignitexsolution.com',
   },
   reactStrictMode: true,
   productionBrowserSourceMaps: true,

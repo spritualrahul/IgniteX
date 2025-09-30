@@ -8,7 +8,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ignitex.com/services',
+    url: 'https://www.ignitexsolution.com/services',
     siteName: 'IgniteX',
   },
   twitter: {

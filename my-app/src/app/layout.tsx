@@ -5,6 +5,7 @@ import ChatBot from '@/components/ChatBotWrapper';
 import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { OrganizationSchema, WebSiteSchema } from '@/components/JsonLd';
 
 // Configure fonts
 const inter = Inter({ 
@@ -74,14 +75,14 @@ export const metadata: Metadata = {
   authors: [{ name: 'IgniteX Team' }],
   creator: 'IgniteX',
   publisher: 'IgniteX',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech'),
+  metadataBase: new URL('https://www.ignitexsolution.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'IgniteX - Top Web Design & Digital Marketing Agency in Jamshedpur',
     description: 'Professional website development, e-commerce solutions, and digital marketing services in Jamshedpur. Grow your online presence with our expert team.',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech',
+    url: 'https://www.ignitexsolution.com',
     siteName: 'IgniteX',
     images: [
       {
@@ -137,6 +138,10 @@ export default function RootLayout({
         
         {/* Google Tag Manager */}
         <GoogleTagManager />
+        
+        {/* Structured Data - JSON-LD */}
+        <OrganizationSchema />
+        <WebSiteSchema />
         
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://www.google-analytics.com" />

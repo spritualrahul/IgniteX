@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Transform your digital presence with our expert web development, SEO, and digital marketing services. Grow your business online with IgniteX.',
   keywords: 'web development, SEO services, digital marketing, graphic design, video editing, website design, e-commerce development',
   alternates: {
-    canonical: 'https://ignitex.com',
+    canonical: 'https://www.ignitexsolution.com',
   },
   other: {
     'google-site-verification': 'google5396855dfc341632.html'
