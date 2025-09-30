@@ -1,8 +1,23 @@
-'use client';
-
 import dynamic from 'next/dynamic';
+import { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import { Skeleton } from '@/components/ui/skeleton';
+
+export const metadata: Metadata = {
+  title: 'Contact Us | IgniteX - Get in Touch for Digital Solutions',
+  description: 'Contact IgniteX for web development, digital marketing, and creative solutions. Reach out to our team in Jamshedpur for a free consultation and transform your digital presence.',
+  keywords: 'contact IgniteX, web development inquiry, digital marketing consultation, get a quote, Jamshedpur digital agency',
+  alternates: {
+    canonical: 'https://www.ignitexsolution.com/contact',
+  },
+  openGraph: {
+    title: 'Contact IgniteX | Get Your Free Consultation',
+    description: 'Ready to transform your digital presence? Contact our expert team today.',
+    url: 'https://www.ignitexsolution.com/contact',
+    siteName: 'IgniteX',
+    type: 'website',
+  },
+};
 
 const ContactForm = dynamic(() => import('@/components/ContactForm'), {
   loading: () => <Skeleton className="w-full h-[600px]" />

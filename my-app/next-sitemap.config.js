@@ -1,15 +1,31 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  siteUrl: 'https://www.ignitexsolution.com',
   generateRobotsTxt: true,
+  generateIndexSitemap: true,
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         allow: '/',
+        disallow: ['/admin/*', '/api/*'],
       },
     ],
+    additionalSitemaps: [
+      'https://www.ignitexsolution.com/sitemap.xml',
+      'https://www.ignitexsolution.com/server-sitemap.xml',
+    ],
   },
+  exclude: ['/server-sitemap.xml', '/admin/*'],
   outDir: 'out',
-  exclude: ['/server-sitemap.xml'],
+  changefreq: 'daily',
+  priority: 0.7,
+  sitemapSize: 5000,
+  autoLastmod: true,
+  // Add any additional paths that should be included in the sitemap
+  // additionalPaths: async (config) => {
+  //   const result = []
+  //   // Add dynamic paths here if needed
+  //   return result
+  // },
 }

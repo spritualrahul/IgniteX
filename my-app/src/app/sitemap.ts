@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech';
+const baseUrl = 'https://www.ignitexsolution.com';
 
 // Core pages with specific priorities
 const corePages = [
