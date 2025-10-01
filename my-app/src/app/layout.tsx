@@ -3,6 +3,7 @@ import { Inter, Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
 import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from '@/components/JsonLd';
@@ -114,8 +115,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
-    yandex: 'YANDEX_VERIFICATION_CODE',
+    google: 'google5396855dfc341632', // Verified via Google Search Console
   },
   category: 'technology',
 };
@@ -138,6 +138,9 @@ export default function RootLayout({
         
         {/* Google Tag Manager */}
         <GoogleTagManager />
+        
+        {/* Google Analytics */}
+        <GoogleAnalytics />
         
         {/* Structured Data - JSON-LD */}
         <OrganizationSchema />

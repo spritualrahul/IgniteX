@@ -34,7 +34,7 @@ export function OrganizationSchema() {
         ],
         contactPoint: {
           '@type': 'ContactPoint',
-          telephone: '+91-XXXXXXXXXX', // TODO: Add your actual phone number
+          telephone: '+91-8935860306',
           contactType: 'customer service',
           email: 'contact@ignitexsolution.com',
           areaServed: 'IN',
@@ -78,7 +78,7 @@ export function LocalBusinessSchema() {
         image: 'https://www.ignitexsolution.com/logo.png',
         description: 'Leading website development and digital marketing agency in Jamshedpur. 50+ websites launched with 80% average ROI for clients.',
         url: 'https://www.ignitexsolution.com',
-        telephone: '+91-XXXXXXXXXX', // TODO: Add your actual phone number
+        telephone: '+91-8935860306',
         email: 'contact@ignitexsolution.com',
         address: {
           '@type': 'PostalAddress',
