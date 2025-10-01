@@ -5,7 +5,7 @@ import ChatBot from '@/components/ChatBotWrapper';
 import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { OrganizationSchema, WebSiteSchema } from '@/components/JsonLd';
+import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from '@/components/JsonLd';
 
 // Configure fonts
 const inter = Inter({ 
@@ -142,6 +142,7 @@ export default function RootLayout({
         {/* Structured Data - JSON-LD */}
         <OrganizationSchema />
         <WebSiteSchema />
+        <LocalBusinessSchema />
         
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://www.google-analytics.com" />
