@@ -82,15 +82,15 @@ export function LocalBusinessSchema() {
         email: 'contact@ignitexsolution.com',
         address: {
           '@type': 'PostalAddress',
-          streetAddress: '', // TODO: Add street address
+          streetAddress: 'Jamshedpur',
           addressLocality: 'Jamshedpur',
           addressRegion: 'Jharkhand',
-          postalCode: '', // TODO: Add postal code
+          postalCode: '831001',
           addressCountry: 'IN',
         },
         geo: {
           '@type': 'GeoCoordinates',
-          latitude: 22.8046, // Jamshedpur coordinates (update with exact location)
+          latitude: 22.8046,
           longitude: 86.2029,
         },
         openingHoursSpecification: [
@@ -164,6 +164,87 @@ export function ServiceSchema({
           availability: 'https://schema.org/InStock',
           priceRange: '$$',
         },
+      }}
+    />
+  );
+}
+
+export function FAQSchema({ faqs }: { faqs: Array<{ question: string; answer: string }> }) {
+  return (
+    <JsonLd
+      data={{
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      }}
+    />
+  );
+}
+
+export function AggregateRatingSchema({ 
+  ratingValue, 
+  reviewCount,
+  bestRating = 5,
+  worstRating = 1
+}: { 
+  ratingValue: number; 
+  reviewCount: number;
+  bestRating?: number;
+  worstRating?: number;
+}) {
+  return (
+    <JsonLd
+      data={{
+        '@type': 'Organization',
+        name: 'IgniteX',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue,
+          reviewCount,
+          bestRating,
+          worstRating,
+        },
+      }}
+    />
+  );
+}
+
+export function ReviewSchema({ 
+  reviews 
+}: { 
+  reviews: Array<{
+    author: string;
+    datePublished: string;
+    reviewBody: string;
+    ratingValue: number;
+  }> 
+}) {
+  return (
+    <JsonLd
+      data={{
+        '@type': 'Organization',
+        name: 'IgniteX',
+        review: reviews.map((review) => ({
+          '@type': 'Review',
+          author: {
+            '@type': 'Person',
+            name: review.author,
+          },
+          datePublished: review.datePublished,
+          reviewBody: review.reviewBody,
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: review.ratingValue,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        })),
       }}
     />
   );

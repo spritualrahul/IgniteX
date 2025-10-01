@@ -2,6 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import TeamSection from '@/components/TeamSection';
+import { BreadcrumbListSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Our Team | IgniteX - Meet Our Expert Team',
@@ -22,6 +23,12 @@ export const metadata: Metadata = {
 export default function TeamPage() {
   return (
     <>
+      <BreadcrumbListSchema 
+        items={[
+          { name: 'Home', url: 'https://www.ignitexsolution.com' },
+          { name: 'Team', url: 'https://www.ignitexsolution.com/team' }
+        ]} 
+      />
       <Navbar />
      
       <TeamSection />

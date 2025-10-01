@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import { Skeleton } from '@/components/ui/skeleton';
+import { BreadcrumbListSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'About Us | IgniteX - Leading Digital Agency in Jamshedpur',
@@ -25,11 +26,19 @@ const AboutSection = dynamic(() => import('@/components/AboutSection'), {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <Navbar />
-      <div className="pt-24">
-        <AboutSection />
-      </div>
-    </main>
+    <>
+      <BreadcrumbListSchema 
+        items={[
+          { name: 'Home', url: 'https://www.ignitexsolution.com' },
+          { name: 'About', url: 'https://www.ignitexsolution.com/about' }
+        ]} 
+      />
+      <main className="min-h-screen bg-white">
+        <Navbar />
+        <div className="pt-24">
+          <AboutSection />
+        </div>
+      </main>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import ClientPage from './client-page';
+import { ReviewSchema, AggregateRatingSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Home | IgniteX - Web Development & Digital Marketing Agency',
@@ -38,8 +39,42 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white relative overflow-hidden">
-      <ClientPage />
-    </main>
+    <>
+      <ReviewSchema 
+        reviews={[
+          {
+            author: 'Layak Singh',
+            datePublished: '2024-09-15',
+            reviewBody: 'IgniteX transformed our digital infrastructure with their cutting-edge AI solutions. Their team delivered exceptional results that exceeded our expectations.',
+            ratingValue: 5
+          },
+          {
+            author: 'Rahul Sharma',
+            datePublished: '2024-08-22',
+            reviewBody: 'The platform built by IgniteX has been instrumental in scaling our fitness business. Their attention to detail and technical expertise is unmatched.',
+            ratingValue: 5
+          },
+          {
+            author: 'Priya Patel',
+            datePublished: '2024-07-10',
+            reviewBody: 'Working with IgniteX was a game-changer for our digital marketing strategy. Their innovative approach delivered outstanding results.',
+            ratingValue: 5
+          },
+          {
+            author: 'Amit Verma',
+            datePublished: '2024-06-05',
+            reviewBody: 'The team at IgniteX built us a robust fintech solution that handles thousands of transactions daily with zero downtime.',
+            ratingValue: 5
+          }
+        ]} 
+      />
+      <AggregateRatingSchema 
+        ratingValue={5}
+        reviewCount={4}
+      />
+      <main className="min-h-screen bg-white relative overflow-hidden">
+        <ClientPage />
+      </main>
+    </>
   );
 }

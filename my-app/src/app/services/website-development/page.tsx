@@ -2,6 +2,7 @@ import { Navbar } from '@/components/Navbar';
 import SEO from '@/components/SEO';
 import { Check, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { BreadcrumbListSchema, ServiceSchema } from '@/components/JsonLd';
 
 export const metadata = {
   title: 'Website Development Services | IgniteX - Custom Web Design & Development',
@@ -69,6 +70,18 @@ export default function WebsiteDevelopmentPage() {
 
   return (
     <>
+      <BreadcrumbListSchema 
+        items={[
+          { name: 'Home', url: 'https://www.ignitexsolution.com' },
+          { name: 'Services', url: 'https://www.ignitexsolution.com/services' },
+          { name: 'Website Development', url: 'https://www.ignitexsolution.com/services/website-development' }
+        ]} 
+      />
+      <ServiceSchema 
+        name="Website Development Services"
+        description="Professional website development services to create fast, modern, and high-converting websites that drive business growth. Custom designs, lightning-fast performance, mobile-first UX, and technical SEO optimization."
+        url="https://www.ignitexsolution.com/services/website-development"
+      />
       <SEO 
         title="Website Development Services | IgniteX"
         description="Professional website development services for modern, high-converting websites."
