@@ -250,12 +250,20 @@ export default function ServicesSection({ showAll = false }) {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-            Services <span className="text-red-600">We Provide</span>
-          </h2>
+  <span className="text-red-600">Reliable</span> Services You Can Count On
+</h2>
+
           <div className="w-20 h-1 bg-red-600 mx-auto mb-10"></div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We offer a comprehensive range of digital services to help your business thrive in the online world.
-          </p>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+  We design and develop powerful <span className="font-medium text-gray-800">websites</span> and <span className="font-medium text-gray-800">apps</span> that combine 
+  <span className="font-medium text-gray-800"> creativity</span>, <span className="font-medium text-gray-800">performance</span>, and 
+  <span className="font-medium text-gray-800"> security</span>.  
+  Our goal? To empower <span className="text-red-600">students</span>, <span className="text-blue-600">businesses</span>, and 
+  <span className="text-green-600"> creators</span> to grow in the digital era with solutions that are 
+  <span className="font-medium text-gray-800"> fast</span>, <span className="font-medium text-gray-800">scalable</span>, and 
+  <span className="font-medium text-gray-800"> user-friendly</span>.
+</p>
+
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -296,7 +304,20 @@ export default function ServicesSection({ showAll = false }) {
               View All Services
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-          </motion.div>
+
+             <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-20"
+        >
+          <p className="text-lg text-gray-700 font-medium">
+  From a <span className="text-red-500">blog</span> or <span className="text-blue-500">portfolio</span> to a 
+  <span className="text-green-500"> business or AI-powered app</span>. we make your ideas come alive online.
+</p>
+
+        </motion.div>
+          </motion.div> 
         )}
       </div>
 
