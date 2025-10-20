@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
-import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
+// import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -137,7 +137,7 @@ export default function RootLayout({
         <meta name="msapplication-config" content="/browserconfig.xml" />
         
         {/* Google Tag Manager */}
-        <GoogleTagManager />
+        {/* <GoogleTagManager /> */}
         
         {/* Google Analytics */}
         <GoogleAnalytics />
@@ -154,7 +154,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen">
-        <GTMNoScript />
+        {/* <GTMNoScript /> */}
         <main className="flex-grow">
           {children}
         </main>

@@ -70,24 +70,42 @@ const TeamSection = () => {
       hasImage: true
     },
 
-    // {
-    //   name: 'Tejaswini Gohil',
-    //   role: 'Senior Tech Lead',
-    //   image: {
-    //     src: '/images/team/Tejaswini.jpg',
-    //     width: 500,
-    //     height: 500,
-    //     alt: 'Tejaswini Gohil - Senior Tech Lead',
-    //     loading: 'lazy'
-    //   },
-    //   bio: 'Seasoned technical lead with a proven track record of delivering complex projects on time and within budget. Expert in system architecture, code reviews, and mentoring development teams. Specializes in maintaining high code quality standards and implementing best practices. Strong background in UI/UX implementation and performance optimization.',
-    //   alignment: 'left',
-    //   social: {
-    //     linkedin: 'https://linkedin.com',
-    //     twitter: 'https://twitter.com',
-    //     email: 'mailto:tejaswini@ignitex.com'
-    //   },
-    // },
+    {
+      name: 'Tejaswini Gohil',
+      role: 'Senior Tech Lead',
+      image: {
+        src: '/images/team/Tejaswini.jpg',
+        width: 500,
+        height: 500,
+        alt: 'Tejaswini Gohil - Senior Tech Lead',
+        loading: 'lazy'
+      },
+      bio: 'Seasoned technical lead with a proven track record of delivering complex projects on time and within budget. Expert in system architecture, code reviews, and mentoring development teams. Specializes in maintaining high code quality standards and implementing best practices. Strong background in UI/UX implementation and performance optimization.',
+      alignment: 'left',
+      social: {
+        linkedin: 'https://linkedin.com',
+        twitter: 'https://twitter.com',
+        email: 'mailto:tejaswini@ignitex.com'
+      },
+    },
+    {
+      name: 'Trinath panigrahi',
+      role: 'Business and Data Analyst',
+      image: {
+        src: '/images/team/Trinath.png',
+        width: 500,
+        height: 500,
+        alt: 'Trinath panigrahi - Business and Data Analyst',
+        loading: 'lazy'
+      },
+      bio: 'Results-driven Business and Data Analyst with expertise in Data Analysis, Business Intelligence, process optimization, and automation. Skilled in bridging the gap between business objectives and technical execution, ensuring on-time and within-budget delivery. Proficient in Agile methodologies, stakeholder communication, and process optimization to enhance project efficiency and business value.',
+      alignment: 'right',
+      social: {
+        linkedin: 'https://linkedin.com',
+        github: 'https://github.com',
+        email: 'mailto:trinath@ignitex.com'
+      }
+    },
     
     {
       name: 'Nitesh Sahani',
@@ -107,24 +125,7 @@ const TeamSection = () => {
         email: 'mailto:nitesh@ignitex.com'
       }
     },
-    {
-      name: 'Rohit Kumar',
-      role: 'Software Testing & Automation Engineer',
-      image: {
-        src: '/images/team/rohit.jpg',
-        width: 500,
-        height: 500,
-        alt: 'Rohit Kumar - Software Testing & Automation Engineer',
-        loading: 'lazy'
-      },
-      bio: 'Experienced QA professional specializing in software testing and test automation. Proficient in designing and implementing automated test frameworks, API testing, and performance testing. Skilled in tools like Selenium, Appium, JUnit, and TestNG. Committed to ensuring software quality and delivering bug-free applications through comprehensive testing strategies.',
-      alignment: 'right',
-      social: {
-        linkedin: 'https://linkedin.com',
-        github: 'https://github.com',
-        email: 'mailto:rohit@ignitex.tech'
-      }
-    },
+    
   ];
 
   return (
