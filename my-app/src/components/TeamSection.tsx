@@ -90,12 +90,12 @@ const TeamSection = () => {
     },
     {
       name: 'Trinath panigrahi',
-      role: 'Core Team Member – Business',
+      role: 'Core Team Member – Consulting PMO',
       image: {
         src: '/images/team/Trinath.png',
         width: 500,
         height: 500,
-        alt: 'Trinath panigrahi - Core Team Member – Business',
+        alt: 'Trinath panigrahi - Core Team Member – Consulting PMO',
         loading: 'lazy'
       },
       bio: 'Results-driven Business and Data Analyst with expertise in Data Analysis, Business Intelligence, process optimization, and automation. Skilled in bridging the gap between business objectives and technical execution, ensuring on-time and within-budget delivery. Proficient in Agile methodologies, stakeholder communication, and process optimization to enhance project efficiency and business value.',
