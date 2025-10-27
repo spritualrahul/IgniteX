@@ -31,12 +31,12 @@ const TeamSection = () => {
   const teamMembers: TeamMember[] = [
     {
       name: 'Rahul Mahato',
-      role: 'Founder & CTO',
+      role: 'Founder',
       image: {
         src: '/images/Rahul.jpeg',
         width: 500,
         height: 500,
-        alt: 'Rahul Mahato - Founder & CTO',
+        alt: 'Rahul Mahato - Founder',
         // priority: true // Preload above-the-fold images
         loading: 'lazy',
       },
@@ -72,12 +72,12 @@ const TeamSection = () => {
 
     {
       name: 'Tejaswini Gohil',
-      role: 'Senior Tech Lead',
+      role: 'Core Team Member – Technology',
       image: {
         src: '/images/team/Tejaswini.jpg',
         width: 500,
         height: 500,
-        alt: 'Tejaswini Gohil - Senior Tech Lead',
+        alt: 'Tejaswini Gohil - Core Team Member – Technology',
         loading: 'lazy'
       },
       bio: 'Seasoned technical lead with a proven track record of delivering complex projects on time and within budget. Expert in system architecture, code reviews, and mentoring development teams. Specializes in maintaining high code quality standards and implementing best practices. Strong background in UI/UX implementation and performance optimization.',
@@ -90,12 +90,12 @@ const TeamSection = () => {
     },
     {
       name: 'Trinath panigrahi',
-      role: 'Business and Data Analyst',
+      role: 'Core Team Member – Business',
       image: {
         src: '/images/team/Trinath.png',
         width: 500,
         height: 500,
-        alt: 'Trinath panigrahi - Business and Data Analyst',
+        alt: 'Trinath panigrahi - Core Team Member – Business',
         loading: 'lazy'
       },
       bio: 'Results-driven Business and Data Analyst with expertise in Data Analysis, Business Intelligence, process optimization, and automation. Skilled in bridging the gap between business objectives and technical execution, ensuring on-time and within-budget delivery. Proficient in Agile methodologies, stakeholder communication, and process optimization to enhance project efficiency and business value.',
