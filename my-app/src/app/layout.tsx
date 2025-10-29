@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import { Inter, Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
-// import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
-import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
+import { GTMProvider, GTMNoScript } from '@/components/GTMProvider';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from '@/components/JsonLd';
@@ -129,7 +128,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <GoogleTagManager />
+        <GTMProvider />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -137,9 +136,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
-        
-        {/* Google Tag Manager */}
-        {/* <GoogleTagManager /> */}
         
         {/* Google Analytics */}
         <GoogleAnalytics />
