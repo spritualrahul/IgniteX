@@ -4,6 +4,7 @@ import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
 // import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from '@/components/JsonLd';
@@ -126,8 +127,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable} ${montserrat.variable} scroll-smooth`}>
+    <html lang="en">
       <head>
+        <GoogleTagManager />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -154,7 +156,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen">
-        {/* <GTMNoScript /> */}
+        <GTMNoScript />
         <main className="flex-grow">
           {children}
         </main>
