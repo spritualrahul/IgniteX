@@ -2,19 +2,7 @@
 
 import { useEffect } from 'react';
 
-// Define GTM event type
-interface GtmEvent {
-  'gtm.start'?: number;
-  event?: string;
-  [key: string]: unknown;
-}
-
-// Extend Window interface
-declare global {
-  interface Window {
-    dataLayer: GtmEvent[];
-  }
-}
+// Type is now defined in src/types/gtm.d.ts
 
 const GTM_ID = 'GTM-KQ83S7ML';
 
