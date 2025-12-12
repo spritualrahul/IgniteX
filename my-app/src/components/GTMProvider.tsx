@@ -1,37 +1,21 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-interface GtmEvent {
-  'gtm.start'?: number;
-  'gtm.id'?: string;
-  'gtm.uniqueEventId'?: string | number;
-  'gtm.virtualPageViews'?: boolean;
-  'gtm.dom'?: boolean;
-  'gtm.loadEvent'?: boolean;
-  'gtm.whitelist'?: string[];
-  'gtm.allowlist'?: string[];
-  'gtm.blocklist'?: string[];
-  'gtm.consent'?: string;
-  'gtm.consent.default'?: {
-    [key: string]: string;
-  };
-  'send_to'?: string;
-  event: string;
-  page_path?: string;
-  page_title?: string;
-  page_location?: string;
-  [key: string]: unknown;
+// Using types from src/types/gtm.d.ts
+
+// This component wraps the GTMProvider to handle Suspense
+export function GTMProvider() {
+  return (
+    <Suspense fallback={null}>
+      <GTMProviderContent />
+    </Suspense>
+  );
 }
 
-declare global {
-  interface Window {
-    dataLayer: GtmEvent[];
-  }
-}
-
-export const GTMProvider = () => {
+// The actual GTM provider content that uses useSearchParams
+function GTMProviderContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const GTM_ID = 'GTM-KQ83S7ML';
@@ -120,7 +104,7 @@ export const GTMProvider = () => {
   }, [pathname, searchParams]);
 
   return null;
-};
+}
 
 export const GTMNoScript = () => (
   <noscript>
