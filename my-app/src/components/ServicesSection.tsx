@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { X, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { X, ArrowRight } from "lucide-react";
 
 interface Service {
   title: string;
@@ -16,185 +16,210 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: 'Web Development',
-    description: 'Custom websites and web applications built with modern technologies for optimal performance and user experience.',
-    longDescription: 'At IgniteX, we create beautiful, functional, and high-performing websites and web applications. Our expert developers use Next.js, React, and Tailwind CSS to build responsive, fast, and SEO-friendly websites that drive real business results.',
-    icon: '🌐',
-    slug: 'web-development',
+    title: "Web Development",
+    description:
+      "Tailored websites and web applications built using modern technologies to deliver strong performance and a smooth user experience.",
+    longDescription:
+      "At IgniteX, we design and develop websites and web applications that are visually appealing, reliable, and built to perform. Using technologies like Next.js, React, and Tailwind CSS, our team creates fast, responsive, and SEO-friendly solutions that support real business growth.",
+    icon: "🌐",
+    slug: "web-development",
     features: [
-      'Custom Website Development',
-      'E-commerce Solutions',
-      'Responsive Design',
-      'Performance Optimization',
-      'SEO Implementation',
-      'Ongoing Support'
-    ]
+      "Custom Website Development",
+      "E-commerce Solutions",
+      "Responsive Design",
+      "Performance Optimization",
+      "SEO Implementation",
+      "Ongoing Support",
+    ],
   },
   {
-    title: 'Digital Marketing',
-    description: 'Data-driven marketing strategies to grow your online presence and drive targeted traffic.',
-    longDescription: 'Our digital marketing services help businesses increase their online visibility, attract qualified leads, and convert them into loyal customers through strategic campaigns across multiple channels.',
-    icon: '📈',
-    slug: 'digital-marketing',
+    title: "Digital Marketing",
+    description:
+      "Insight-driven marketing strategies designed to strengthen your online presence and attract the right audience.",
+    longDescription:
+      "Our digital marketing services focus on helping businesses grow online by increasing visibility, generating quality leads, and turning them into long-term customers through well-planned, multi-channel campaigns.",
+    icon: "📈",
+    slug: "digital-marketing",
     features: [
-      'SEO & Content Strategy',
-      'PPC & Social Media Ads',
-      'Email Marketing',
-      'Conversion Optimization',
-      'Analytics & Reporting',
-      'Marketing Automation'
-    ]
+      "SEO & Content Strategy",
+      "PPC & Social Media Ads",
+      "Email Marketing",
+      "Conversion Optimization",
+      "Analytics & Reporting",
+      "Marketing Automation",
+    ],
   },
   {
-    title: 'AI & SaaS Solutions',
-    description: 'Custom AI applications and scalable SaaS platforms to transform your business operations.',
-    longDescription: 'We build intelligent, scalable SaaS solutions powered by AI and machine learning. Our expertise includes developing custom LLM applications, process automation, and data analytics platforms that drive business growth and efficiency.',
-    icon: '🤖',
-    slug: 'ai-saas',
+    title: "AI & SaaS Solutions",
+    description:
+      "Custom-built AI solutions and scalable SaaS platforms designed to streamline and enhance your operations.",
+    longDescription:
+      "We develop smart, scalable SaaS products powered by AI and machine learning. From custom LLM-based applications to automation and data analytics platforms, our solutions are built to improve efficiency and support long-term growth.",
+    icon: "🤖",
+    slug: "ai-saas",
     features: [
-      'Custom AI/ML Solutions',
-      'SaaS Product Development',
-      'LLM Integration',
-      'Process Automation',
-      'Data Analytics & BI',
-      'Cloud Infrastructure'
-    ]
+      "Custom AI/ML Solutions",
+      "SaaS Product Development",
+      "LLM Integration",
+      "Process Automation",
+      "Data Analytics & BI",
+      "Cloud Infrastructure",
+    ],
   },
   {
-    title: 'CMS Integration',
-    description: 'Seamless integration of content management systems for easy content updates and management.',
-    longDescription: 'We integrate powerful content management systems that put you in control of your website content. Whether you need WordPress, Strapi, or a custom solution, we make content updates simple and intuitive.',
-    icon: '🔄',
-    slug: 'cms-integration',
+    title: "CMS Integration",
+    description:
+      "Smooth CMS integrations that make managing and updating content simple and efficient.",
+    longDescription:
+      "We integrate flexible and user-friendly content management systems that give you full control over your content. Whether it’s WordPress, Strapi, or a custom-built CMS, we ensure managing your website is straightforward and intuitive.",
+    icon: "🔄",
+    slug: "cms-integration",
     features: [
-      'WordPress Integration',
-      'Headless CMS Solutions',
-      'Custom Admin Panels',
-      'Content Workflows',
-      'Media Management',
-      'User Permissions'
-    ]
+      "WordPress Integration",
+      "Headless CMS Solutions",
+      "Custom Admin Panels",
+      "Content Workflows",
+      "Media Management",
+      "User Permissions",
+    ],
   },
   {
-    title: 'Mobile Apps',
-    description: 'Native and cross-platform mobile applications for iOS and Android devices.',
-    longDescription: 'We build high-performance mobile applications using React Native and Flutter, delivering native-like experiences across both iOS and Android platforms with a single codebase.',
-    icon: '📱',
-    slug: 'mobile-apps',
+    title: "Mobile Apps",
+    description:
+      "High-quality mobile applications built for both iOS and Android platforms.",
+    longDescription:
+      "We create reliable, high-performance mobile apps using React Native and Flutter, delivering smooth, native-like experiences across iOS and Android with a single, efficient codebase.",
+    icon: "📱",
+    slug: "mobile-apps",
     features: [
-      'Cross-Platform Development',
-      'Native Performance',
-      'Offline Support',
-      'Push Notifications',
-      'App Store Submission',
-      'Ongoing Updates'
-    ]
+      "Cross-Platform Development",
+      "Native Performance",
+      "Offline Support",
+      "Push Notifications",
+      "App Store Submission",
+      "Ongoing Updates",
+    ],
   },
   {
-    title: 'SEO Services',
-    description: 'Search engine optimization to improve your website\'s visibility and ranking on search engines.',
-    longDescription: 'Our SEO services are designed to increase your organic search traffic and improve your search engine rankings through proven strategies and techniques.',
-    icon: '🔍',
-    slug: 'seo-services',
+    title: "SEO Services",
+    description:
+      "Search engine optimization services designed to improve visibility and search rankings.",
+    longDescription:
+      "Our SEO services focus on growing organic traffic and improving search performance through proven, sustainable strategies tailored to your business goals.",
+    icon: "🔍",
+    slug: "seo-services",
     features: [
-      'Keyword Research',
-      'On-Page Optimization',
-      'Technical SEO',
-      'Content Strategy',
-      'Link Building',
-      'Performance Reporting'
-    ]
+      "Keyword Research",
+      "On-Page Optimization",
+      "Technical SEO",
+      "Content Strategy",
+      "Link Building",
+      "Performance Reporting",
+    ],
   },
   {
-    title: 'Creative Design',
-    description: 'Stunning visual content that captures your brand identity and engages your audience.',
-    longDescription: 'Our creative design services deliver compelling visuals that tell your brand story. From logos to marketing materials, we create designs that make an impact and drive engagement.',
-    icon: '🎨',
-    slug: 'creative-design',
+    title: "Creative Design",
+    description:
+      "Engaging visual designs that reflect your brand and capture attention.",
+    longDescription:
+      "Our creative design services focus on creating visuals that clearly communicate your brand story. From logos to marketing assets, we design with purpose to leave a lasting impression.",
+    icon: "🎨",
+    slug: "creative-design",
     features: [
-      'Logo & Brand Identity',
-      'Print & Digital Design',
-      'Social Media Graphics',
-      'Marketing Collaterals',
-      'UI/UX Design',
-      'Brand Guidelines'
-    ]
+      "Logo & Brand Identity",
+      "Print & Digital Design",
+      "Social Media Graphics",
+      "Marketing Collaterals",
+      "UI/UX Design",
+      "Brand Guidelines",
+    ],
   },
   {
-    title: 'Video Production',
-    description: 'End-to-end video production services from concept to final cut.',
-    longDescription: 'We produce professional videos that tell your brand story, from concept development and scripting to filming, editing, and post-production.',
-    icon: '🎬',
-    slug: 'video-production',
+    title: "Video Production",
+    description:
+      "Complete video production services, from initial concept to final delivery.",
+    longDescription:
+      "We create professional videos that bring your brand message to life, handling everything from concept development and scripting to filming, editing, and post-production.",
+    icon: "🎬",
+    slug: "video-production",
     features: [
-      'Concept Development',
-      'Scriptwriting',
-      'Professional Filming',
-      'Editing & Post-Production',
-      'Motion Graphics',
-      'Animation'
-    ]
+      "Concept Development",
+      "Scriptwriting",
+      "Professional Filming",
+      "Editing & Post-Production",
+      "Motion Graphics",
+      "Animation",
+    ],
   },
   {
-    title: 'E-commerce Solutions',
-    description: 'Complete e-commerce platforms designed to drive sales and growth.',
-    longDescription: 'We build powerful e-commerce solutions with seamless user experiences, secure payment gateways, and conversion-optimized designs to maximize your online sales.',
-    icon: '🛒',
-    slug: 'ecommerce-solutions',
+    title: "E-commerce Solutions",
+    description:
+      "End-to-end e-commerce platforms built to support sales and long-term growth.",
+    longDescription:
+      "We develop robust e-commerce solutions that combine seamless user experiences, secure payment systems, and conversion-focused designs to help you sell more online.",
+    icon: "🛒",
+    slug: "ecommerce-solutions",
     features: [
-      'Online Store Development',
-      'Payment Gateway Integration',
-      'Inventory Management',
-      'Mobile Optimization',
-      'SEO for E-commerce',
-      'Performance Analytics'
-    ]
+      "Online Store Development",
+      "Payment Gateway Integration",
+      "Inventory Management",
+      "Mobile Optimization",
+      "SEO for E-commerce",
+      "Performance Analytics",
+    ],
   },
   {
-    title: 'Content Marketing',
-    description: 'Strategic content that engages audiences and drives results.',
-    longDescription: 'Our content marketing services combine compelling storytelling with data-driven strategies to attract, engage, and convert your target audience.',
-    icon: '✍️',
-    slug: 'content-marketing',
+    title: "Content Marketing",
+    description:
+      "Purpose-driven content designed to engage audiences and deliver measurable results.",
+    longDescription:
+      "Our content marketing approach blends storytelling with data-backed strategies to attract the right audience, build trust, and drive meaningful engagement.",
+    icon: "✍️",
+    slug: "content-marketing",
     features: [
-      'Content Strategy',
-      'Blog Writing',
-      'Copywriting',
-      'SEO Content',
-      'Content Calendar',
-      'Performance Analysis'
-    ]
+      "Content Strategy",
+      "Blog Writing",
+      "Copywriting",
+      "SEO Content",
+      "Content Calendar",
+      "Performance Analysis",
+    ],
   },
   {
-    title: 'Brand Strategy',
-    description: 'Building powerful brands that connect with your audience.',
-    longDescription: 'We help define and articulate your brand identity, voice, and positioning to create meaningful connections with your target market.',
-    icon: '🎯',
-    slug: 'brand-strategy',
+    title: "Brand Strategy",
+    description:
+      "Strategic brand development that creates strong connections with your audience.",
+    longDescription:
+      "We help shape your brand’s identity, voice, and positioning to ensure it resonates with your audience and stands out in a competitive market.",
+    icon: "🎯",
+    slug: "brand-strategy",
     features: [
-      'Brand Positioning',
-      'Messaging Strategy',
-      'Competitive Analysis',
-      'Target Audience Research',
-      'Brand Voice & Tone',
-      'Brand Guidelines'
-    ]
+      "Brand Positioning",
+      "Messaging Strategy",
+      "Competitive Analysis",
+      "Target Audience Research",
+      "Brand Voice & Tone",
+      "Brand Guidelines",
+    ],
   },
   {
-    title: 'Social Media Management',
-    description: 'Strategic social media presence that grows your brand.',
-    longDescription: 'We develop and execute social media strategies that increase brand awareness, engagement, and conversions across all major platforms.',
-    icon: '📱',
-    slug: 'social-media-management',
+    title: "Social Media Management",
+    description:
+      "Thoughtful social media strategies that strengthen and grow your brand presence.",
+    longDescription:
+      "We plan and manage social media campaigns that boost brand awareness, encourage engagement, and drive conversions across today’s most impactful platforms.",
+    icon: "📱",
+    slug: "social-media-management",
     features: [
-      'Social Media Strategy',
-      'Content Creation',
-      'Paid Advertising',
-      'Engagement & Community Building',
-      'Analytics & Reporting',
-      'Influencer Partnerships'
-    ]
-  }
+      "Social Media Strategy",
+      "Content Creation",
+      "Paid Advertising",
+      "Engagement & Community Building",
+      "Analytics & Reporting",
+      "Influencer Partnerships",
+    ],
+  },
+  
 ];
 
 export default function ServicesSection({ showAll = false }) {
@@ -204,11 +229,11 @@ export default function ServicesSection({ showAll = false }) {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); 
+      setIsMobile(window.innerWidth < 768);
     };
-    handleResize(); 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   let displayServices: Service[];
@@ -232,12 +257,12 @@ export default function ServicesSection({ showAll = false }) {
   const openModal = (service: Service) => {
     setSelectedService(service);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
 
   return (
@@ -250,20 +275,17 @@ export default function ServicesSection({ showAll = false }) {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-  <span className="text-red-600">Reliable</span> Services You Can Count On
-</h2>
+            <span className="text-red-600">Reliable</span> Services You Can
+            Count On
+          </h2>
 
           <div className="w-20 h-1 bg-red-600 mx-auto mb-10"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-  We design and develop powerful <span className="font-medium text-gray-800">websites</span> and <span className="font-medium text-gray-800">apps</span> that combine 
-  <span className="font-medium text-gray-800"> creativity</span>, <span className="font-medium text-gray-800">performance</span>, and 
-  <span className="font-medium text-gray-800"> security</span>.  
-  Our goal? To empower <span className="text-red-600">students</span>, <span className="text-blue-600">businesses</span>, and 
-  <span className="text-green-600"> creators</span> to grow in the digital era with solutions that are 
-  <span className="font-medium text-gray-800"> fast</span>, <span className="font-medium text-gray-800">scalable</span>, and 
-  <span className="font-medium text-gray-800"> user-friendly</span>.
-</p>
-
+            Our websites and applications are secure, performance-based, and
+            creative. Our objective? To provide fast, scalable and easy-to-use
+            solutions that enable students, companies, and people to flourish in
+            the digital era.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -278,7 +300,9 @@ export default function ServicesSection({ showAll = false }) {
               className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
             >
               <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-3 text-gray-800">{service.title}</h3>
+              <h3 className="text-xl font-semibold mb-3 text-gray-800">
+                {service.title}
+              </h3>
               <p className="text-gray-600 mb-4">{service.description}</p>
               <button
                 onClick={() => openModal(service)}
@@ -305,19 +329,19 @@ export default function ServicesSection({ showAll = false }) {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
 
-             <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20"
-        >
-          <p className="text-lg text-gray-700 font-medium">
-  From a <span className="text-red-500">blog</span> or <span className="text-blue-500">portfolio</span> to a 
-  <span className="text-green-500"> business or AI-powered app</span>. we make your ideas come alive online.
-</p>
-
-        </motion.div>
-          </motion.div> 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-20"
+            >
+              <p className="text-lg text-gray-700 font-medium">
+                We thoughtfully, creatively, and purposefully bring your ideas
+                to life online, from blogs and portfolios to full-scale
+                businesses and AI-powered applications.
+              </p>
+            </motion.div>
+          </motion.div>
         )}
       </div>
 
@@ -339,12 +363,15 @@ export default function ServicesSection({ showAll = false }) {
                 transition={{ duration: 0.2 }}
                 className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden z-[9999]"
               >
-
                 <div className="p-6 border-b border-gray-200">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <span className="text-3xl mr-4">{selectedService.icon}</span>
-                      <h3 className="text-2xl font-bold text-gray-900">{selectedService.title}</h3>
+                      <span className="text-3xl mr-4">
+                        {selectedService.icon}
+                      </span>
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {selectedService.title}
+                      </h3>
                     </div>
                     <button
                       onClick={closeModal}
@@ -355,10 +382,14 @@ export default function ServicesSection({ showAll = false }) {
                     </button>
                   </div>
                 </div>
-                
+
                 <div className="p-6 max-h-[70vh] overflow-y-auto">
-                  <p className="text-gray-700 mb-6">{selectedService.longDescription}</p>
-                  <h4 className="text-xl font-semibold mb-4 text-gray-900">Key Features</h4>
+                  <p className="text-gray-700 mb-6">
+                    {selectedService.longDescription}
+                  </p>
+                  <h4 className="text-xl font-semibold mb-4 text-gray-900">
+                    Key Features
+                  </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     {selectedService.features.map((feature, index) => (
                       <div key={index} className="flex items-start">
@@ -368,16 +399,25 @@ export default function ServicesSection({ showAll = false }) {
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
                         </svg>
                         <span className="text-gray-700">{feature}</span>
                       </div>
                     ))}
                   </div>
                   <div className="mt-8 pt-6 border-t border-gray-200">
-                    <h4 className="text-xl font-semibold text-gray-900 mb-4">Ready to get started?</h4>
+                    <h4 className="text-xl font-semibold text-gray-900 mb-4">
+                      Ready to get started?
+                    </h4>
                     <p className="text-gray-600 mb-6">
-                      Contact us today to discuss your {selectedService.title.toLowerCase()} needs and how we can help bring your vision to life.
+                      Contact us today to discuss your{" "}
+                      {selectedService.title.toLowerCase()} needs and how we can
+                      help bring your vision to life.
                     </p>
                     <Link
                       href="/contact"

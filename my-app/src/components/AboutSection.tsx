@@ -62,27 +62,28 @@ const AboutSection = () => {
             variants={fadeIn}
             className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
           >
-            Founded by Rahul Kumar Mahato in 2025, IgniteX is built on the foundation of delivering exceptional digital solutions. We are a team that believes in delivering services on time with the highest quality standards. Customer satisfaction is our first and foremost priority in everything we do.
+            IgniteX was founded in 2025 by Rahul Kumar Mahato with the goal of providing outstanding digital solutions.  Our team is committed to providing timely services that meet the highest standards of quality.  Our top goal in everything we do is to satisfy our customers.
           </motion.p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
           {[
             {
-              title: 'Our Mission',
-              icon: '🎯',
-              description: 'To deliver high-quality digital solutions on time, every time, ensuring complete customer satisfaction through our dedicated services.'
-            },
-            {
-              title: 'Our Vision',
-              icon: '✨',
-              description: 'To be recognized as a leader in digital innovation, known for our commitment to quality and timely delivery.'
-            },
-            {
-              title: 'Our Promise',
-              icon: '🤝',
-              description: 'We promise to put our customers first, delivering exceptional service and maintaining the highest standards of quality in every project.'
-            }
+  title: 'Our Mission',
+  icon: '🎯',
+  description: 'Our mission is to consistently deliver high-quality digital solutions on schedule, ensuring complete customer satisfaction through our dedicated and reliable services.'
+},
+{
+  title: 'Our Vision',
+  icon: '✨',
+  description: 'Our vision is to become a recognised leader in digital innovation, distinguished by our strong commitment to quality and timely delivery.'
+},
+{
+  title: 'Our Promise',
+  icon: '🤝',
+  description: 'We promise to always put our customers first by delivering exceptional service and maintaining the highest standards of quality in every project we undertake.'
+}
+
           ].map((item, index) => (
             <motion.div
               key={index}

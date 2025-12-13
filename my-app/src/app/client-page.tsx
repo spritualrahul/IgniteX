@@ -83,7 +83,7 @@ export default function ClientPage() {
                 fontFamily="'Oswald', Poppins, sans-serif"
               />
               <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0 font-poppins font-medium leading-relaxed tracking-tight">
-                Transform Your Digital Presence with Results That Speak Volumes. From Stunning Websites to AI-Powered Solutions – We Turn Your Vision into Reality, One Pixel at a Time.
+                Transform your digital presence with results that truly matter. From beautifully crafted websites to intelligent, AI-driven solutions, we bring your ideas to life with care, precision, and purpose one detail at a time.
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link href="/contact">
