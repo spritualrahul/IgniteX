@@ -1,5 +1,4 @@
 import { Navbar } from '@/components/Navbar';
-import SEO from '@/components/SEO';
 import { Check, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { BreadcrumbListSchema, ServiceSchema } from '@/components/JsonLd';
@@ -81,11 +80,6 @@ export default function WebsiteDevelopmentPage() {
         name="Website Development Services"
         description="Professional website development services to create fast, modern, and high-converting websites that drive business growth. Custom designs, lightning-fast performance, mobile-first UX, and technical SEO optimization."
         url="https://www.ignitexsolution.com/services/website-development"
-      />
-      <SEO 
-        title="Website Development Services | IgniteX"
-        description="Professional website development services for modern, high-converting websites."
-        type="website"
       />
       
       <main className="min-h-screen bg-gray-50">

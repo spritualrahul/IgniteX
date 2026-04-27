@@ -74,8 +74,7 @@ export default function ClientPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
-              <h1 className="sr-only">IgniteX - Web Development & Digital Marketing Agency</h1>
-              <h1 className="sr-only">IgniteX - Web Development & Digital Marketing Agency</h1>
+              <h1 className="sr-only">IgniteX - Top Website Development & Digital Marketing Agency in Jamshedpur</h1>
               <CyclingHeadline
                 constant="Igniting"
                 contexts={["Your Digital Presence.", "Your Brand Online.", "Your Business Growth."]}

@@ -1,11 +1,11 @@
 {
   "name": "IgniteX - Digital Innovation & Technology Solutions",
   "short_name": "IgniteX",
-  "description": "Transforming ideas into digital reality with cutting-edge technology and innovative solutions.",
+  "description": "IgniteX is a premium digital agency specializing in web development, SEO, digital marketing, and growth consulting. Beyond Deadline. Before Time.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#030712",
+  "theme_color": "#ef4444",
   "icons": [
     {
       "src": "/icons/icon-72x72.png",

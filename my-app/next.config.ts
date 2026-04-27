@@ -20,14 +20,14 @@ const nextConfig = {
     NEXT_PUBLIC_SITE_URL: 'https://www.ignitexsolution.com',
   },
   reactStrictMode: true,
-  productionBrowserSourceMaps: true,
+  productionBrowserSourceMaps: false,
   poweredByHeader: false,
   generateEtags: true,
   compress: true,
   // i18n configuration has been removed for App Router compatibility
   // Use Next.js built-in i18n routing instead
   experimental: {
-    optimizePackageImports: ['next-seo'],
+    optimizePackageImports: ['lucide-react'],
     optimizeCss: true,
     scrollRestoration: true,
   },
@@ -86,10 +86,6 @@ const nextConfig = {
   },
   async rewrites() {
     return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap',
-      },
       {
         source: '/google5396855dfc341632.html',
         destination: '/api/google-verification',

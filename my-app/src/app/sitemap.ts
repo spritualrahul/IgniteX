@@ -2,56 +2,42 @@ import { MetadataRoute } from 'next';
 
 const baseUrl = 'https://www.ignitexsolution.com';
 
-// Core pages with specific priorities (ONLY EXISTING PAGES)
+// Core pages with specific priorities
 const corePages = [
-  { path: '', priority: 1.0, changeFreq: 'daily' },
-  { path: '/about', priority: 0.9, changeFreq: 'weekly' },
-  { path: '/services', priority: 0.9, changeFreq: 'weekly' },
-  { path: '/contact', priority: 0.8, changeFreq: 'monthly' },
-  { path: '/team', priority: 0.7, changeFreq: 'monthly' },
+  { path: '', priority: 1.0, changeFreq: 'daily' as const },
+  { path: '/about', priority: 0.9, changeFreq: 'weekly' as const },
+  { path: '/services', priority: 0.9, changeFreq: 'weekly' as const },
+  { path: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
+  { path: '/team', priority: 0.7, changeFreq: 'monthly' as const },
 ];
 
-// Service pages (ONLY EXISTING PAGES)
+// Service pages
 const servicePages = [
-  { path: '/services/website-development', name: 'Website Development' },
-  // TODO: Add more service pages as they are created:
-  // { path: '/services/seo', name: 'SEO Services' },
-  // { path: '/services/digital-marketing', name: 'Digital Marketing' },
-  // { path: '/services/graphic-design', name: 'Graphic Design' },
-  // { path: '/services/video-editing', name: 'Video Editing' },
-  // { path: '/services/ecommerce', name: 'E-commerce Solutions' },
+  { path: '/services/website-development', priority: 0.8, changeFreq: 'weekly' as const },
+  { path: '/services/seo', priority: 0.8, changeFreq: 'weekly' as const },
+  { path: '/services/digital-marketing', priority: 0.8, changeFreq: 'weekly' as const },
+  { path: '/services/web-development', priority: 0.8, changeFreq: 'weekly' as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString();
-  
-  // Generate core pages
+
   const coreRoutes = corePages.map(({ path, priority, changeFreq }) => ({
     url: `${baseUrl}${path}`,
     lastModified: currentDate,
-    changeFrequency: changeFreq as 'daily' | 'weekly' | 'monthly',
+    changeFrequency: changeFreq,
     priority,
   }));
 
-  // Generate service pages
-  const serviceRoutes = servicePages.map(({ path }) => ({
+  const serviceRoutes = servicePages.map(({ path, priority, changeFreq }) => ({
     url: `${baseUrl}${path}`,
     lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
+    changeFrequency: changeFreq,
+    priority,
   }));
-
-  // TODO: Add blog posts when blog section is created
-  // const blogRoutes = blogPosts.map(({ slug }) => ({
-  //   url: `${baseUrl}/blog/${slug}`,
-  //   lastModified: currentDate,
-  //   changeFrequency: 'monthly' as const,
-  //   priority: 0.7,
-  // }));
 
   return [
     ...coreRoutes,
     ...serviceRoutes,
-    // ...blogRoutes, // Uncomment when blog is ready
   ];
 }

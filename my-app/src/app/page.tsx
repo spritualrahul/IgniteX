@@ -1,17 +1,28 @@
 import { Metadata } from 'next';
 import ClientPage from './client-page';
-import { ReviewSchema, AggregateRatingSchema } from '@/components/JsonLd';
+import { ReviewSchema, AggregateRatingSchema, BreadcrumbListSchema, FAQSchema, ServiceSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Home | IgniteX - Web Development & Digital Marketing Agency',
-  description: 'Transform your digital presence with our expert web development, SEO, and digital marketing services. Grow your business online with IgniteX.',
-  keywords: 'web development, SEO services, digital marketing, graphic design, video editing, website design, e-commerce development',
+  title: 'IgniteX - Top Website Development & Digital Marketing Agency in Jamshedpur',
+  description: 'IgniteX is a premium digital agency in Jamshedpur specializing in web development, SEO, digital marketing, UI/UX design, and e-commerce solutions. 50+ projects delivered with 80% average ROI.',
+  keywords: [
+    'website development agency Jamshedpur',
+    'digital marketing agency Jamshedpur',
+    'SEO services Jamshedpur',
+    'web development company India',
+    'e-commerce development',
+    'UI/UX design services',
+    'performance marketing',
+    'lead generation agency',
+    'branding agency India',
+    'social media marketing',
+  ],
   alternates: {
     canonical: 'https://www.ignitexsolution.com',
   },
   openGraph: {
-    title: 'IgniteX - Top Web Development & Digital Marketing Agency',
-    description: 'Transform your digital presence with our expert web development, SEO, and digital marketing services. Grow your business online with IgniteX.',
+    title: 'IgniteX - Premium Web Development & Digital Marketing Agency',
+    description: 'Transform your digital presence with premium web development, SEO, and digital marketing services. 50+ projects, 98% client satisfaction.',
     url: 'https://www.ignitexsolution.com',
     siteName: 'IgniteX',
     images: [
@@ -19,7 +30,7 @@ export const metadata: Metadata = {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'IgniteX - Beyond deadline before time',
+        alt: 'IgniteX - Premium Digital Agency | Beyond Deadline Before Time',
       },
     ],
     locale: 'en_US',
@@ -27,51 +38,53 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IgniteX - Web Development & Digital Marketing Agency',
-    description: 'Transform your digital presence with our expert web development, SEO, and digital marketing services.',
+    title: 'IgniteX - Premium Web Development & Digital Marketing Agency',
+    description: 'Transform your digital presence with premium web development, SEO, and growth marketing. 50+ projects, 98% satisfaction.',
     images: ['/images/twitter-image.jpg'],
     creator: '@ignitex',
-  },
-  other: {
-    'google-site-verification': 'google5396855dfc341632.html'
   },
 };
 
 export default function Home() {
   return (
     <>
-      <ReviewSchema 
+      {/* Structured Data - Breadcrumb */}
+      <BreadcrumbListSchema
+        items={[
+          { name: 'Home', url: 'https://www.ignitexsolution.com' },
+        ]}
+      />
+
+      {/* Structured Data - Reviews */}
+      <ReviewSchema
         reviews={[
-          {
-            author: 'Layak Singh',
-            datePublished: '2024-09-15',
-            reviewBody: 'IgniteX transformed our digital infrastructure with their cutting-edge AI solutions. Their team delivered exceptional results that exceeded our expectations.',
-            ratingValue: 5
-          },
-          {
-            author: 'Rahul Sharma',
-            datePublished: '2024-08-22',
-            reviewBody: 'The platform built by IgniteX has been instrumental in scaling our fitness business. Their attention to detail and technical expertise is unmatched.',
-            ratingValue: 5
-          },
-          {
-            author: 'Priya Patel',
-            datePublished: '2024-07-10',
-            reviewBody: 'Working with IgniteX was a game-changer for our digital marketing strategy. Their innovative approach delivered outstanding results.',
-            ratingValue: 5
-          },
-          {
-            author: 'Amit Verma',
-            datePublished: '2024-06-05',
-            reviewBody: 'The team at IgniteX built us a robust fintech solution that handles thousands of transactions daily with zero downtime.',
-            ratingValue: 5
-          }
-        ]} 
+          { author: 'Layak Singh', datePublished: '2024-09-15', reviewBody: 'IgniteX transformed our digital infrastructure with their cutting-edge AI solutions. Their team delivered exceptional results that exceeded our expectations.', ratingValue: 5 },
+          { author: 'Rahul Sharma', datePublished: '2024-08-22', reviewBody: 'The platform built by IgniteX has been instrumental in scaling our fitness business. Their attention to detail and technical expertise is unmatched.', ratingValue: 5 },
+          { author: 'Priya Patel', datePublished: '2024-07-10', reviewBody: 'Working with IgniteX was a game-changer for our digital marketing strategy. Their innovative approach delivered outstanding results.', ratingValue: 5 },
+          { author: 'Amit Verma', datePublished: '2024-06-05', reviewBody: 'The team at IgniteX built us a robust fintech solution that handles thousands of transactions daily with zero downtime.', ratingValue: 5 },
+        ]}
       />
-      <AggregateRatingSchema 
-        ratingValue={5}
-        reviewCount={4}
+      <AggregateRatingSchema ratingValue={5} reviewCount={4} />
+
+      {/* Structured Data - Service (all 10 services) */}
+      <ServiceSchema name="Web Development" description="Custom, high-performance websites and web applications built with cutting-edge technologies like React, Next.js, and Node.js." url="https://www.ignitexsolution.com/services/web-development" />
+      <ServiceSchema name="Digital Marketing" description="Data-driven digital marketing strategies including PPC, content marketing, and social media that maximize ROI." url="https://www.ignitexsolution.com/services/digital-marketing" />
+      <ServiceSchema name="SEO Services" description="Proven SEO strategies and technical optimization to dominate search rankings and drive organic traffic." url="https://www.ignitexsolution.com/services/seo" />
+      <ServiceSchema name="UI/UX Design" description="Beautiful, intuitive interfaces designed with user psychology and conversion optimization in mind." url="https://www.ignitexsolution.com/services" />
+      <ServiceSchema name="E-commerce Solutions" description="End-to-end e-commerce solutions that drive sales, streamline operations, and scale effortlessly." url="https://www.ignitexsolution.com/services" />
+
+      {/* Structured Data - FAQ */}
+      <FAQSchema
+        faqs={[
+          { question: 'What services does IgniteX offer?', answer: 'IgniteX offers comprehensive digital services including web development, SEO, digital marketing, performance marketing, social media management, branding, UI/UX design, lead generation, e-commerce solutions, and business growth consulting.' },
+          { question: 'How long does a typical project take?', answer: 'Timelines vary based on scope. A standard website takes 4-6 weeks, while complex web applications can take 8-12 weeks. We pride ourselves on delivering ahead of schedule.' },
+          { question: 'Do you offer ongoing support and maintenance?', answer: 'Yes, we offer flexible maintenance plans including performance monitoring, security updates, content updates, and 24/7 priority support.' },
+          { question: 'What is your pricing structure?', answer: 'We offer transparent, project-based pricing with no hidden fees. Our packages range from startup-friendly tiers to enterprise solutions. Contact us for a custom quote.' },
+          { question: 'Can you work with our existing tech stack?', answer: 'Absolutely! Our team is proficient across all major technologies including React, Next.js, WordPress, Shopify, and custom stacks. We integrate seamlessly with existing infrastructure.' },
+          { question: 'Do you guarantee results for SEO and marketing?', answer: 'While no ethical agency guarantees specific rankings, we guarantee measurable improvement. Our clients typically see 80-300% improvement in key metrics within the first 6 months.' },
+        ]}
       />
+
       <main className="min-h-screen bg-white relative overflow-hidden">
         <ClientPage />
       </main>

@@ -1,11 +1,11 @@
+import { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
+import { BreadcrumbListSchema, FAQSchema, ServiceSchema } from '@/components/JsonLd';
 import ServicesSection from '@/components/ServicesSection';
-import SEO from '@/components/SEO';
-import { BreadcrumbListSchema, FAQSchema } from '@/components/JsonLd';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Our Services | IgniteX - Web Development, Digital Marketing & Creative Solutions',
-  description: 'Explore our comprehensive range of digital services including web development, mobile apps, digital marketing, SEO, UI/UX design, and digital transformation solutions. 50+ websites launched, 80% average ROI.',
+  description: 'Explore our comprehensive range of digital services including web development, mobile apps, digital marketing, SEO, UI/UX design, and e-commerce solutions. 50+ projects delivered, 80% average ROI.',
   keywords: [
     'web development services',
     'mobile app development',
@@ -14,7 +14,6 @@ export const metadata = {
     'UI/UX design',
     'e-commerce solutions',
     'digital transformation',
-    'cloud solutions',
     'graphic design services',
     'branding services',
     'IgniteX services',
@@ -24,7 +23,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'Our Services | IgniteX - Complete Digital Solutions',
-    description: 'Professional web development, mobile apps, digital marketing, and creative solutions. 50+ websites launched with 80% average ROI for clients.',
+    description: 'Professional web development, mobile apps, digital marketing, and creative solutions. 50+ projects launched with 80% average ROI for clients.',
     url: 'https://www.ignitexsolution.com/services',
     siteName: 'IgniteX',
     images: [
@@ -44,57 +43,31 @@ export const metadata = {
     description: 'Professional web development, mobile apps, and digital transformation services.',
     images: ['/images/twitter-image.jpg'],
     creator: '@ignitex',
-    site: '@ignitex',
   },
 };
 
 export default function ServicesPage() {
-  const services = [
-    'Web Development',
-    'Mobile App Development',
-    'UI/UX Design',
-    'Digital Transformation',
-    'Cloud Solutions',
-    'E-commerce Solutions'
-  ];
-
   return (
     <>
-      <BreadcrumbListSchema 
+      <BreadcrumbListSchema
         items={[
           { name: 'Home', url: 'https://www.ignitexsolution.com' },
-          { name: 'Services', url: 'https://www.ignitexsolution.com/services' }
-        ]} 
+          { name: 'Services', url: 'https://www.ignitexsolution.com/services' },
+        ]}
       />
-      <FAQSchema 
+      <ServiceSchema name="Web Development" description="Custom, high-performance websites and web applications built with cutting-edge technologies." url="https://www.ignitexsolution.com/services/web-development" />
+      <ServiceSchema name="Digital Marketing" description="Data-driven digital marketing strategies including PPC, content marketing, and social media." url="https://www.ignitexsolution.com/services/digital-marketing" />
+      <ServiceSchema name="SEO Services" description="Proven SEO strategies and technical optimization to dominate search rankings." url="https://www.ignitexsolution.com/services/seo" />
+      <ServiceSchema name="E-commerce Solutions" description="End-to-end e-commerce solutions that drive sales and scale effortlessly." url="https://www.ignitexsolution.com/services" />
+      <ServiceSchema name="UI/UX Design" description="Beautiful, intuitive interfaces designed with conversion optimization in mind." url="https://www.ignitexsolution.com/services" />
+      <FAQSchema
         faqs={[
-          {
-            question: 'What services does IgniteX offer?',
-            answer: 'IgniteX offers comprehensive digital services including web development, mobile app development, UI/UX design, digital transformation, cloud solutions, and e-commerce solutions. We specialize in creating custom solutions tailored to your business needs.'
-          },
-          {
-            question: 'How long does it take to develop a website?',
-            answer: 'The timeline varies based on project complexity. A standard business website typically takes 4-6 weeks, while more complex e-commerce or custom web applications can take 8-12 weeks or more. We provide detailed timelines during our initial consultation.'
-          },
-          {
-            question: 'Do you provide ongoing support after project completion?',
-            answer: 'Yes, we offer comprehensive post-launch support and maintenance packages. This includes regular updates, security patches, performance optimization, and technical support to ensure your digital solution continues to perform optimally.'
-          },
-          {
-            question: 'What is your pricing model?',
-            answer: 'Our pricing is project-based and depends on the scope, complexity, and specific requirements. We offer competitive rates and provide detailed quotes after understanding your needs. We also offer flexible payment plans for larger projects.'
-          },
-          {
-            question: 'Can you help with digital marketing and SEO?',
-            answer: 'Absolutely! We provide comprehensive digital marketing services including SEO optimization, content marketing, social media management, and performance marketing. Our technical SEO setup is included in all web development projects.'
-          }
-        ]} 
-      />
-      <SEO 
-        title="Our Services | IgniteX"
-        description="Professional web development, mobile apps, and digital transformation services. Let's build something amazing together."
-        type="website"
-        tags={services}
+          { question: 'What services does IgniteX offer?', answer: 'IgniteX offers comprehensive digital services including web development, mobile app development, UI/UX design, digital transformation, cloud solutions, and e-commerce solutions.' },
+          { question: 'How long does it take to develop a website?', answer: 'A standard business website typically takes 4-6 weeks, while complex e-commerce or custom web applications can take 8-12 weeks.' },
+          { question: 'Do you provide ongoing support after project completion?', answer: 'Yes, we offer comprehensive post-launch support and maintenance packages including regular updates, security patches, and performance optimization.' },
+          { question: 'What is your pricing model?', answer: 'Our pricing is project-based and depends on scope and complexity. We offer competitive rates and provide detailed quotes after understanding your needs.' },
+          { question: 'Can you help with digital marketing and SEO?', answer: 'Absolutely! We provide comprehensive digital marketing services including SEO, content marketing, social media management, and performance marketing.' },
+        ]}
       />
       <main className="min-h-screen bg-white">
         <Navbar />
