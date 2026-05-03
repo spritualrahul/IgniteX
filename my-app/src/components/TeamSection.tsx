@@ -45,7 +45,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
-        email: 'mailto:rahul@ignitex.com'
+        email: 'mailto:ignitexsolution@gmail.com'
       },
       hasImage: true
     },
@@ -65,7 +65,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
-        email: 'mailto:abhuday@ignitex.com'
+        email: 'mailto:ignitexsolution@gmail.com'
       },
       hasImage: true
     },
@@ -74,22 +74,22 @@ const TeamSection = () => {
       name: 'Tejaswini Gohil',
       role: 'Core Team Member – Technology',
       image: {
-        src: '/images/team/Tejaswini.jpg',
+        src: '/images/team/Tejaswini.jpeg',
         width: 500,
         height: 500,
         alt: 'Tejaswini Gohil - Core Team Member – Technology',
         loading: 'lazy'
       },
-      bio: 'Seasoned technical lead with a proven track record of delivering complex projects on time and within budget. Expert in system architecture, code reviews, and mentoring development teams. Specializes in maintaining high code quality standards and implementing best practices. Strong background in UI/UX implementation and performance optimization.',
+      bio: 'Seasoned Technical Lead and Full Stack Developer. Expert in system architecture, code reviews, and mentoring development teams while actively contributing to end-to-end development. Specializes in building scalable applications, integrating AI-driven solutions. Strong background in UI/UX implementation, and performance optimization, ensuring robust and intelligent products.',
       alignment: 'left',
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
-        email: 'mailto:tejaswini@ignitex.com'
+        email: 'mailto:ignitexsolution@gmail.com'
       },
     },
     {
-      name: 'Trinath panigrahi',
+      name: 'Trinath Panigrahi',
       role: 'Core Team Member – Consulting PMO',
       image: {
         src: '/images/team/Trinath.png',
@@ -103,7 +103,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         github: 'https://github.com',
-        email: 'mailto:trinath@ignitex.com'
+        email: 'mailto:ignitexsolution@gmail.com'
       }
     },
     
@@ -122,7 +122,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
-        email: 'mailto:nitesh@ignitex.com'
+        email: 'mailto:ignitexsolution@gmail.com'
       }
     },
     
