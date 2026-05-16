@@ -170,10 +170,10 @@ const ContactForm: React.FC = () => {
               <div className="flex items-center gap-3 text-sm sm:text-base text-gray-900 mt-3">
   <MdEmail className="text-red-600 text-xl sm:text-2xl shrink-0" />
   <a 
-    href="mailto:ignitexsolution@gmail.com" 
+    href="mailto:contact@ignitexsolution.com" 
     className="break-words hover:underline"
   >
-    ignitexsolution@gmail.com
+    contact@ignitexsolution.com
   </a>
 </div>
             </div>

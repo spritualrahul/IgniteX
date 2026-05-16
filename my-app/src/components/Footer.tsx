@@ -48,11 +48,11 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link href="/#services" className="text-gray-400 hover:text-white transition-colors">Servicesss</Link></li>
+              <li><Link href="/#services" className="text-gray-400 hover:text-white transition-colors">Services</Link></li>
               <li><Link href="/#work" className="text-gray-400 hover:text-white transition-colors">Our Work</Link></li>
               <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/careers" className="text-gray-400 hover:text-white transition-colors">Careers</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
-              <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</Link></li>
             </ul>
           </div>
 
@@ -62,8 +62,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <FaEnvelope className="mt-1 mr-3 text-red-500" />
-                <a href="mailto:ignitexsolution@gmail.com" className="text-gray-400 hover:text-white transition-colors">
-                 ignitexsolution@gmail.com
+                <a href="mailto:contact@ignitexsolution.com" className="text-gray-400 hover:text-white transition-colors">
+                 contact@ignitexsolution.com
                 </a>
               </li>
               <li className="flex items-start">

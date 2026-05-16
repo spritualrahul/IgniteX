@@ -44,7 +44,7 @@ export const organizationSchema = {
     '@type': 'ContactPoint',
     telephone: '+1-555-123-4567',
     contactType: 'customer service',
-    email: 'contact@ignitex.tech',
+    email: 'contact@ignitexsolution.com',
     areaServed: 'US',
     availableLanguage: ['English'],
   },

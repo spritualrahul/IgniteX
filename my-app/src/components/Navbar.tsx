@@ -89,7 +89,7 @@ export function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "#work" },
     { name: "Teams", href: "/team" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Careers", href: "/careers" },
     { name: "Contact", href: "#contact" },
   ];
 

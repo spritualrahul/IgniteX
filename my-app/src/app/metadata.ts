@@ -34,7 +34,7 @@ export const socialLinks = {
 };
 
 export const contactInfo = {
-  email: 'ignitexsolution@gmail.com',
+  email: 'contact@ignitexsolution.com',
   phone: '+91-8935860306',
   address: {
     street: 'Jamshedpur',

@@ -45,7 +45,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
-        email: 'mailto:ignitexsolution@gmail.com'
+        email: 'mailto:contact@ignitexsolution.com'
       },
       hasImage: true
     },
@@ -65,7 +65,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
-        email: 'mailto:ignitexsolution@gmail.com'
+        email: 'mailto:contact@ignitexsolution.com'
       },
       hasImage: true
     },
@@ -85,7 +85,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
-        email: 'mailto:ignitexsolution@gmail.com'
+        email: 'mailto:contact@ignitexsolution.com'
       },
     },
     {
@@ -103,7 +103,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         github: 'https://github.com',
-        email: 'mailto:ignitexsolution@gmail.com'
+        email: 'mailto:contact@ignitexsolution.com'
       }
     },
     
@@ -122,7 +122,7 @@ const TeamSection = () => {
       social: {
         linkedin: 'https://linkedin.com',
         twitter: 'https://twitter.com',
-        email: 'mailto:ignitexsolution@gmail.com'
+        email: 'mailto:contact@ignitexsolution.com'
       }
     },
     

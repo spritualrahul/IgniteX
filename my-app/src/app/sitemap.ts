@@ -7,6 +7,7 @@ const corePages = [
   { path: '', priority: 1.0, changeFreq: 'daily' as const },
   { path: '/about', priority: 0.9, changeFreq: 'weekly' as const },
   { path: '/services', priority: 0.9, changeFreq: 'weekly' as const },
+  { path: '/careers', priority: 0.8, changeFreq: 'weekly' as const },
   { path: '/contact', priority: 0.8, changeFreq: 'monthly' as const },
   { path: '/team', priority: 0.7, changeFreq: 'monthly' as const },
 ];
