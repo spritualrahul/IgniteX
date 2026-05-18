@@ -3,7 +3,7 @@ import { BreadcrumbListSchema } from '@/components/JsonLd';
 import CareersClient from './CareersClient';
 
 export const metadata: Metadata = {
-  title: 'Careers at IgniteX | Join Our Team',
+  title: 'Careers — Join Our Growing Team',
   description: 'Explore exciting career opportunities at IgniteX. We are hiring Full Stack Interns, Frontend Next.js Interns, Backend FastAPI Python Interns, and Sales professionals. Apply now!',
   keywords: [
     'IgniteX careers',
