@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Star } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
   {
@@ -47,29 +47,66 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-  const SPEED = 60; 
-  const CARD_WIDTH = 360; 
-  const GAP = 28; 
-
+  const SPEED = 50;
+  const CARD_WIDTH = 400;
+  const GAP = 32;
   const totalWidth = (CARD_WIDTH + GAP) * testimonials.length;
 
   return (
     <section
       id="testimonials"
-      className="py-20 px-4 md:px-8 bg-gray-50 overflow-hidden" 
+      className="relative py-24 px-4 md:px-8 overflow-hidden bg-white"
     >
-      <div className="max-w-7xl mx-auto text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-          What Our <span className="text-red-600">Client Says</span>
-        </h2>
-        <div className="w-20 h-1 bg-red-600 mx-auto mb-10"></div>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Don&apos;t just take our word for it. Here&apos;s what our clients have
-          to say about working with us.
-        </p>
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute -top-40 -left-40 w-96 h-96 rounded-full opacity-5"
+          style={{ background: 'radial-gradient(circle, #dc2626 0%, transparent 70%)' }}
+        />
+        <div
+          className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full opacity-5"
+          style={{ background: 'radial-gradient(circle, #dc2626 0%, transparent 70%)' }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-3"
+          style={{ background: 'radial-gradient(circle, #dc2626 0%, transparent 60%)' }}
+        />
       </div>
 
-      <div className="relative w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-12 bg-red-500/50" />
+            <span className="text-red-500 text-sm font-semibold tracking-[0.2em] uppercase">Testimonials</span>
+            <div className="h-px w-12 bg-red-500/50" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900" style={{ fontFamily: "'Oswald', sans-serif" }}>
+            What Our <span className="text-red-500">Clients Say</span>
+          </h2>
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Carousel with fade edges */}
+      <div className="relative">
+        <div
+          className="absolute left-0 top-0 bottom-0 w-20 md:w-32 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to right, #ffffff 0%, transparent 100%)' }}
+        />
+        <div
+          className="absolute right-0 top-0 bottom-0 w-20 md:w-32 z-10 pointer-events-none"
+          style={{ background: 'linear-gradient(to left, #ffffff 0%, transparent 100%)' }}
+        />
+
         <motion.div
           className="flex"
           animate={{ x: [0, -totalWidth] }}
@@ -85,37 +122,50 @@ export default function TestimonialsSection() {
           {[...testimonials, ...testimonials].map((testimonial, i) => (
             <div
               key={i}
-              className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex-shrink-0"
+              className="flex-shrink-0 group"
               style={{ width: CARD_WIDTH, marginRight: GAP }}
             >
-              <div className="flex items-center mb-4">
-                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-red-100 to-blue-100 flex items-center justify-center text-lg font-bold text-gray-700 mr-3">
-                  {testimonial.name
-                    .split(' ')
-                    .map((n) => n[0])
-                    .join('')}
+              <div
+                className="relative h-full p-8 rounded-2xl border border-gray-100 backdrop-blur-sm transition-all duration-500 group-hover:border-red-500/20 group-hover:shadow-xl bg-gray-50 group-hover:bg-white"
+              >
+                {/* Quote icon */}
+                <Quote className="w-8 h-8 text-red-500/30 mb-4 group-hover:text-red-500/50 transition-colors duration-300" />
+
+                {/* Review text */}
+                <p className="text-gray-600 mb-6 leading-relaxed text-sm group-hover:text-gray-700 transition-colors duration-300">
+                  &quot;{testimonial.content}&quot;
+                </p>
+
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {[...Array(5)].map((_, idx) => (
+                    <Star
+                      key={idx}
+                      className={`h-4 w-4 ${
+                        idx < testimonial.rating
+                          ? 'fill-amber-400 text-amber-400'
+                          : 'text-gray-600'
+                      }`}
+                    />
+                  ))}
                 </div>
-                <div className="text-left">
-                  <h4 className="text-md font-semibold text-gray-900">
-                    {testimonial.name}
-                  </h4>
-                  <p className="text-gray-600 text-sm">{testimonial.role}</p>
+
+                {/* Divider */}
+                <div className="h-px w-full bg-gray-200 mb-5" />
+
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <div
+                    className="h-11 w-11 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
+                    style={{ background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)' }}
+                  >
+                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <h4 className="text-gray-900 font-semibold text-sm">{testimonial.name}</h4>
+                    <p className="text-gray-500 text-xs">{testimonial.role}</p>
+                  </div>
                 </div>
-              </div>
-              <p className="text-gray-700 mb-4 italic">
-                &quot;{testimonial.content}&quot;
-              </p>
-              <div className="flex">
-                {[...Array(5)].map((_, idx) => (
-                  <Star
-                    key={idx}
-                    className={`h-4 w-4 ${
-                      idx < testimonial.rating
-                        ? 'fill-yellow-400 text-yellow-400'
-                        : 'text-gray-300'
-                    }`}
-                  />
-                ))}
               </div>
             </div>
           ))}

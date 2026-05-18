@@ -1,10 +1,9 @@
 'use client';
 
-import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { easeOut } from 'framer-motion';
 
 const projects = [
   {
@@ -27,161 +26,208 @@ const projects = [
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Responsive Design'],
     testimonial: {
       text: "IgniteX delivered a professional, fast, and visually stunning website that perfectly represents our educational mission. The responsive design works flawlessly across all devices.",
-      author: "Kalam Study Hall",
-      role: "Client — Education"
+      author: "Dhivya Mohan",
+      role: "Founder, Kalam Study Hall"
     }
   },
 ];
 
-const fadeIn = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.5,
-      ease: easeOut
-    },
-  },
-} as const;
-
-const imageHover = {
-  scale: 1.03,
-  transition: {
-    duration: 0.3,
-    ease: easeOut
-  }
-} as const;
-
 export default function WorkSection() {
-  const controls = useAnimation();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startAutoPlay = () => {
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+    }, 8000);
+  };
 
   useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
+    startAutoPlay();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleNav = (direction: 'prev' | 'next') => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (direction === 'prev') {
+      setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+    } else {
+      setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
     }
-    console.log('Current project:', projects[currentIndex].title);
-  }, [controls, isInView, currentIndex]);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+    startAutoPlay();
   };
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
-  };
+  const project = projects[currentIndex];
 
   return (
-    <section id="work" ref={ref} className="py-12 md:py-20 px-4 md:px-8 bg-gray-50">
-      <div className="max-w-7xl mx-auto relative">
+    <section
+      id="work"
+      className="relative py-24 px-4 md:px-8 overflow-hidden bg-white"
+    >
+      {/* Subtle diagonal accent */}
+      <div
+        className="absolute top-0 right-0 w-1/2 h-full opacity-3 pointer-events-none"
+        style={{ background: 'linear-gradient(135deg, transparent 0%, #dc262610 100%)' }}
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={controls}
-          variants={fadeIn}
-          className="text-center mb-10 md:mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">
-            Our <span className="text-red-600">Work</span>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-12 bg-red-500/50" />
+            <span className="text-red-500 text-sm font-semibold tracking-[0.2em] uppercase">Portfolio</span>
+            <div className="h-px w-12 bg-red-500/50" />
+          </div>
+          <h2
+            className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
+            style={{ fontFamily: "'Oswald', sans-serif" }}
+          >
+            Our <span className="text-red-500">Work</span>
           </h2>
-          <div className="w-16 md:w-20 h-1 bg-red-600 mx-auto mb-6 md:mb-10"></div>
-          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
             Explore our portfolio of successful projects and see how we&apos;ve helped businesses transform their digital presence.
           </p>
         </motion.div>
 
-        <div className="relative">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5, ease: easeOut }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center"
-            >
-              <motion.div 
-                className="relative rounded-2xl overflow-hidden shadow-xl group"
-                whileHover={imageHover}
-              >
-                <div className="aspect-video bg-gray-200 relative">
-                  <Image 
-                    src={projects[currentIndex].image} 
-                    alt={`${projects[currentIndex].title} Preview`}
+        {/* Project Showcase */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+          >
+            {/* Project Image */}
+            <div className="relative group">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <div className="aspect-video bg-gray-100 relative">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} Preview`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                    onError={() => console.error(`Failed to load image for ${projects[currentIndex].title}`)}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                     placeholder="blur"
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR42mN8//8/AwAB/wNqPAAAAABJRU5ErkJggg=="
                   />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 md:p-6">
-                  <a 
-                    href={projects[currentIndex].url} 
-                    target="_blank" 
+
+                {/* Visit button overlay */}
+                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                  <a
+                    href={project.url}
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-white hover:text-red-300 transition-colors text-sm md:text-base"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium hover:bg-red-600 hover:border-red-600 transition-all duration-300"
                   >
-                    Visit Website <ArrowUpRight className="ml-1 h-4 w-4" />
+                    Visit Website <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </div>
-              </motion.div>
-
-              <div className="lg:pr-8 lg:pl-8">
-                <h3 className="text-xl md:text-3xl font-bold mb-4 text-gray-900">{projects[currentIndex].title}</h3>
-                <p className="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">{projects[currentIndex].description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4 md:mb-6">
-                  {projects[currentIndex].technologies.map((tech) => (
-                    <span key={tech} className="px-2 md:px-3 py-1 bg-white rounded-full text-xs md:text-sm font-medium text-gray-700 border border-gray-200">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {projects[currentIndex].testimonial && (
-                  <motion.div 
-                    className="bg-white p-4 md:p-6 rounded-lg shadow-md border-l-4 border-red-500"
-                   initial={{ opacity: 0, x: -20 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.5, ease: easeOut }}
-                  >
-                    <p className="text-gray-700 italic mb-4 text-sm md:text-base">&quot;{projects[currentIndex].testimonial.text}&quot;</p>
-                    <div className="font-medium">
-                      <div className="text-gray-900 text-sm md:text-base">{projects[currentIndex].testimonial.author}</div>
-                      <div className="text-red-600 text-xs md:text-sm">{projects[currentIndex].testimonial.role}</div>
-                    </div>
-                  </motion.div>
-                )}
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
 
-         {/* Left arrow */}
-<div className="absolute left-0 top-1/2 -translate-y-1/2">
-  <button
-    onClick={handlePrev}
-    className="p-2 md:p-3 rounded-full bg-white/30 hover:bg-white/50 transition-colors backdrop-blur-md"
-    aria-label="Previous project"
-  >
-    <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-gray-900" />
-  </button>
-</div>
+            {/* Project Details */}
+            <div className="space-y-6">
+              <h3
+                className="text-3xl md:text-4xl font-bold text-gray-900"
+                style={{ fontFamily: "'Oswald', sans-serif" }}
+              >
+                {project.title}
+              </h3>
 
-{/* Right arrow */}
-<div className="absolute right-0 top-1/2 -translate-y-1/2">
-  <button
-    onClick={handleNext}
-    className="p-2 md:p-3 rounded-full bg-white/30 hover:bg-white/50 transition-colors backdrop-blur-md"
-    aria-label="Next project"
-  >
-    <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-gray-900" />
-  </button>
-</div>
+              <p className="text-gray-500 leading-relaxed text-base">
+                {project.description}
+              </p>
 
+              {/* Tech stack chips */}
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 text-gray-600 bg-gray-50"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* Client Testimonial */}
+              {project.testimonial && (
+                <div
+                  className="relative p-6 rounded-xl border border-gray-100 bg-gray-50"
+                >
+                  <div className="absolute -top-3 left-6 px-2 text-red-500 text-2xl font-serif bg-gray-50">
+                    &ldquo;
+                  </div>
+                  <p className="text-gray-600 italic text-sm leading-relaxed mb-4">
+                    {project.testimonial.text}
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
+                      style={{ background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)' }}
+                    >
+                      {project.testimonial.author.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div>
+                      <span className="text-gray-900 font-semibold text-sm">{project.testimonial.author}</span>
+                      <span className="text-gray-500 text-xs block">{project.testimonial.role}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation Controls */}
+        <div className="flex items-center justify-center gap-6 mt-12">
+          <button
+            onClick={() => handleNav('prev')}
+            className="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-red-600 hover:border-red-500/50 hover:bg-red-50 transition-all duration-300"
+            aria-label="Previous project"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          {/* Dot indicators */}
+          <div className="flex items-center gap-3">
+            {projects.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  if (intervalRef.current) clearInterval(intervalRef.current);
+                  setCurrentIndex(idx);
+                  startAutoPlay();
+                }}
+                className={`transition-all duration-500 rounded-full ${
+                  idx === currentIndex
+                    ? 'w-8 h-2 bg-red-500'
+                    : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                }`}
+                aria-label={`Go to project ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={() => handleNav('next')}
+            className="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-red-600 hover:border-red-500/50 hover:bg-red-50 transition-all duration-300"
+            aria-label="Next project"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </section>
