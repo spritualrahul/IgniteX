@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -14,35 +14,28 @@ export default function Footer() {
             <p className="text-gray-400 mb-4">
               Transforming ideas into digital reality with cutting-edge technology and innovative solutions.
             </p>
-  <div className="flex space-x-4">
-  <a 
-    href="https://www.linkedin.com/in/your-username" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    className="text-gray-400 hover:text-white transition-colors"
-  >
-    <FaLinkedin size={20} />
-  </a>
+            <div className="flex space-x-4">
+              <a
+                href="https://www.instagram.com/ignitex_solutions?igsh=MjZ2YnBxdWdoZXZv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Follow IgniteX on Instagram"
+              >
+                <FaInstagram size={20} />
+              </a>
 
-  <a 
-    href="https://twitter.com/your-username" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    className="text-gray-400 hover:text-white transition-colors"
-  >
-    <FaTwitter size={20} />
-  </a>
-
-  <a 
-    href="https://github.com/your-username" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    className="text-gray-400 hover:text-white transition-colors"
-  >
-    <FaGithub size={20} />
-  </a>
-</div>
-</div>
+              <a
+                href="https://www.linkedin.com/company/ignitex"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Follow IgniteX on LinkedIn"
+              >
+                <FaLinkedin size={20} />
+              </a>
+            </div>
+          </div>
 
           {/* Quick Links */}
           <div>
@@ -68,7 +61,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start">
                 <FaPhone className="mt-1 mr-3 text-red-500" />
-                <a href="tel:+1234567890" className="text-gray-400 hover:text-white transition-colors">
+                <a href="tel:+918935860306" className="text-gray-400 hover:text-white transition-colors">
                   +91 8935860306
                 </a>
               </li>

@@ -14,16 +14,18 @@ export function StructuredData({ data }: StructuredDataProps) {
   );
 }
 
+const siteUrl = 'https://www.ignitexsolution.com';
+
 export const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'IgniteX',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech',
+  url: siteUrl,
   potentialAction: {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech'}/search?q={search_term_string}`,
+      urlTemplate: `${siteUrl}/search?q={search_term_string}`,
     },
     'query-input': 'required name=search_term_string',
   },
@@ -33,22 +35,22 @@ export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'IgniteX',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech',
-  logo: '/images/logo.png',
+  alternateName: 'IgniteX Solutions',
+  url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
   sameAs: [
-    'https://twitter.com/ignitex',
-    'https://linkedin.com/company/ignitex',
-    'https://github.com/ignitex',
+    'https://www.instagram.com/ignitex_solutions',
+    'https://www.linkedin.com/company/ignitex',
   ],
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-555-123-4567',
+    telephone: '+91-8935860306',
     contactType: 'customer service',
     email: 'contact@ignitexsolution.com',
-    areaServed: 'US',
-    availableLanguage: ['English'],
+    areaServed: 'IN',
+    availableLanguage: ['English', 'Hindi'],
   },
-  description: 'Digital Innovation & Technology Solutions',
+  description: 'Leading website development and digital marketing agency in Jamshedpur. Custom web development, SEO, and digital marketing solutions.',
 };
 
 export const breadcrumbSchema = (items: Array<{ name: string; item: string }>) => ({
@@ -58,7 +60,7 @@ export const breadcrumbSchema = (items: Array<{ name: string; item: string }>) =
     '@type': 'ListItem',
     position: index + 1,
     name: item.name,
-    item: new URL(item.item, process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech').toString(),
+    item: new URL(item.item, siteUrl).toString(),
   })),
 });
 

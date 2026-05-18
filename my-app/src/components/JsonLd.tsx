@@ -28,9 +28,8 @@ export function OrganizationSchema() {
         description: 'Leading website development and digital marketing agency in Jamshedpur offering custom web design, e-commerce solutions, and full-stack development.',
         foundingDate: '2020',
         sameAs: [
-          'https://www.facebook.com/ignitex',
+          'https://www.instagram.com/ignitex_solutions',
           'https://www.linkedin.com/company/ignitex',
-          'https://twitter.com/ignitex',
         ],
         contactPoint: {
           '@type': 'ContactPoint',
@@ -109,9 +108,8 @@ export function LocalBusinessSchema() {
         ],
         priceRange: '$$',
         sameAs: [
-          'https://www.facebook.com/ignitex',
+          'https://www.instagram.com/ignitex_solutions',
           'https://www.linkedin.com/company/ignitex',
-          'https://twitter.com/ignitex',
         ],
       }}
     />

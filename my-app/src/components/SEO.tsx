@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { NextSeo } from 'next-seo';
 import Script from 'next/script';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ignitex.tech';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.ignitexsolution.com';
 const defaultImage = '/images/og-image.jpg';
 
 type SEOMetadata = {
@@ -58,9 +58,8 @@ export default function SEO({
         height: 60
       },
       sameAs: [
-        'https://twitter.com/ignitex',
+        'https://www.instagram.com/ignitex_solutions',
         'https://www.linkedin.com/company/ignitex',
-        'https://github.com/ignitex'
       ]
     },
     author: {

@@ -123,46 +123,46 @@ const AboutSection = () => {
             {[
               {
                 title: 'Expert Team',
-                description: 'Our team consists of highly skilled professionals with years of experience in the industry.',
+                description: 'Our team of certified full-stack developers, UI/UX designers, and digital marketing specialists brings years of hands-on industry experience. Every project is led by a dedicated project manager who ensures seamless communication and quality delivery.',
                 icon: '👨‍💻',
                 features: [
-                  'Certified professionals',
-                  'Years of industry experience',
-                  'Diverse skill sets',
-                  'Continuous learning'
+                  'Certified full-stack developers and designers',
+                  'Dedicated project managers for every engagement',
+                  'Cross-functional teams with diverse skill sets',
+                  'Continuous upskilling through workshops and certifications'
                 ]
               },
               {
                 title: 'Cutting-Edge Technology',
-                description: 'We leverage the latest technologies and frameworks to build scalable and efficient solutions.',
+                description: 'We build with the most modern and battle-tested technologies in the industry — React, Next.js, Node.js, TypeScript, and Tailwind CSS for web development, paired with cloud infrastructure on AWS and Vercel for reliability at scale. Our solutions are architected for performance, security, and long-term maintainability.',
                 icon: '⚡',
                 features: [
-                  'Modern tech stack',
-                  'Regular updates',
-                  'Future-proof solutions',
-                  'Scalable architecture'
+                  'React, Next.js, Node.js, and TypeScript stack',
+                  'Cloud-native deployment on AWS and Vercel',
+                  'Progressive Web App (PWA) capabilities',
+                  'SEO-optimized, server-rendered architecture'
                 ]
               },
               {
                 title: 'Timely Delivery',
-                description: 'We understand the importance of deadlines and have a proven track record of delivering projects on time, every time.',
+                description: 'We follow Agile development methodology with 2-week sprint cycles, ensuring you see measurable progress at every stage. Our track record speaks for itself — over 90% of our projects have been delivered on or ahead of schedule. Real-time dashboards and weekly standup reports keep you in the loop at all times.',
                 icon: '⏱️',
                 features: [
-                  'Strict project timelines',
-                  'Agile methodology',
-                  'Milestone-based delivery',
-                  'Transparent progress tracking'
+                  '2-week Agile sprint cycles with regular demos',
+                  '90%+ on-time or ahead-of-schedule delivery rate',
+                  'Milestone-based billing tied to deliverables',
+                  'Real-time progress tracking via shared dashboards'
                 ]
               },
               {
                 title: 'Affordable Pricing',
-                description: 'We offer competitive and transparent pricing models that provide excellent value without compromising on quality.',
+                description: 'We offer transparent, tier-based pricing designed for businesses of every size — from startup landing pages starting at ₹15,000 to enterprise-grade web applications. Every quote includes a detailed scope breakdown with no hidden fees, and we offer flexible payment milestones so you only pay for completed work.',
                 icon: '💰',
                 features: [
-                  'Flexible pricing options',
-                  'No hidden costs',
-                  'Cost-effective solutions',
-                  'Value for money'
+                  'Transparent quotes with detailed scope breakdown',
+                  'Startup-friendly to enterprise-grade pricing tiers',
+                  'Milestone-based payments — pay for completed work',
+                  'Free post-launch support included in every package'
                 ]
               }
             ].map((item, index) => (

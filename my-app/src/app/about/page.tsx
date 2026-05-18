@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { BreadcrumbListSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'About Us | IgniteX - Leading Digital Agency in Jamshedpur',
+  title: 'About Us — Leading Digital Agency in Jamshedpur',
   description: 'Learn about IgniteX, a premier digital agency in Jamshedpur. We specialize in web development, digital marketing, and creative solutions. 50+ projects delivered, 80% average ROI for clients.',
   keywords: [
     'about IgniteX',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 const AboutSection = dynamic(() => import('@/components/AboutSection'), {
-  loading: () => <Skeleton className="w-full h-[800px]" />
+  loading: () => <Skeleton className="w-full h-[800px]" />,
 });
 
 export default function AboutPage() {
@@ -58,6 +58,26 @@ export default function AboutPage() {
       <main className="min-h-screen bg-white">
         <Navbar />
         <div className="pt-24">
+          {/* SSR-rendered H1 and intro text for Googlebot */}
+          <section className="py-12 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-white">
+            <div className="max-w-6xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                About <span className="text-red-600">IgniteX</span>
+              </h1>
+              <div className="w-20 h-1 bg-red-600 mx-auto mb-8" />
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-4">
+                IgniteX was founded in 2025 by Rahul Kumar Mahato with the goal of providing outstanding digital solutions.
+                Based in Jamshedpur, Jharkhand, our team is committed to delivering timely services that meet the highest
+                standards of quality. Customer satisfaction is our top priority in everything we do.
+              </p>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                We specialize in building custom web applications using modern technologies like React, Next.js, Node.js,
+                and TypeScript. Our expertise spans full-stack development, search engine optimization, performance marketing,
+                UI/UX design, and e-commerce solutions — all designed to help businesses grow their digital presence and revenue.
+              </p>
+            </div>
+          </section>
+
           <AboutSection />
         </div>
       </main>

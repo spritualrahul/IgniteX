@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
-import ClientPage from './client-page';
+import Link from 'next/link';
 import { ReviewSchema, AggregateRatingSchema, BreadcrumbListSchema, FAQSchema, ServiceSchema } from '@/components/JsonLd';
+import ClientHomeSections from './client-page';
 
 export const metadata: Metadata = {
   title: 'IgniteX - Top Website Development & Digital Marketing Agency in Jamshedpur',
@@ -86,7 +87,74 @@ export default function Home() {
       />
 
       <main className="min-h-screen bg-white relative overflow-hidden">
-        <ClientPage />
+        {/* ========================================
+            SSR-RENDERED ABOVE-THE-FOLD CONTENT
+            This HTML is visible to Googlebot before JS runs.
+            ======================================== */}
+        <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="text-center lg:text-left">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" style={{ fontFamily: "'Oswald', Poppins, sans-serif" }}>
+                  <span className="text-gray-900">Igniting </span>
+                  <span className="text-red-600">Your Digital Presence.</span>
+                </h1>
+                <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed tracking-tight">
+                  Transform your digital presence with results that truly matter. From beautifully crafted websites to intelligent, AI-driven solutions, we bring your ideas to life with care, precision, and purpose — one detail at a time.
+                </p>
+                <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded shadow-lg text-lg transition-colors duration-300"
+                  >
+                    Connect with us
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SSR-rendered services overview for Googlebot */}
+        <section id="services-overview" className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
+              Our <span className="text-red-600">Services</span>
+            </h2>
+            <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12">
+              We deliver comprehensive digital solutions to help your business grow — from custom web development and SEO to performance marketing and brand strategy.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">🌐 Web Development</h3>
+                <p className="text-gray-600">Custom, high-performance websites and web applications built with React, Next.js, and Node.js. Responsive, fast, and scalable solutions tailored to your business needs.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">📈 Digital Marketing</h3>
+                <p className="text-gray-600">Data-driven digital marketing strategies including PPC, content marketing, and social media campaigns that maximize ROI and drive measurable business growth.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">🔍 SEO Services</h3>
+                <p className="text-gray-600">Proven SEO strategies and technical optimization to dominate search rankings, drive organic traffic, and establish your brand as an authority in your industry.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">🎨 UI/UX Design</h3>
+                <p className="text-gray-600">Beautiful, intuitive interfaces designed with user psychology and conversion optimization in mind. We create experiences that delight users and drive business results.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">🛒 E-commerce Solutions</h3>
+                <p className="text-gray-600">End-to-end e-commerce solutions that drive sales, streamline operations, and scale effortlessly. From Shopify to custom platforms, we build stores that convert.</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl shadow-sm">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">📊 Performance Marketing</h3>
+                <p className="text-gray-600">Strategic paid advertising and lead generation campaigns across Google Ads, Meta, and LinkedIn. We optimize for conversions, not just clicks.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Client-side interactive sections (hydrate after SSR) */}
+        <ClientHomeSections />
       </main>
     </>
   );

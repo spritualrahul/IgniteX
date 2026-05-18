@@ -1,15 +1,11 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import Link from 'next/link';
 import { Navbar } from '@/components/Navbar';
 import { CyclingHeadline } from '@/components/CyclingHeadline';
-import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useEffect, useState } from 'react';
-import Loading from '@/components/Loading';
 
-// Lazy load heavy components with client-side only rendering
+// Lazy load heavy components — these hydrate below the SSR content
 const DeviceShowcase = dynamic(
   () => import('@/components/DeviceShowcase'),
   { ssr: false, loading: () => <Skeleton className="w-full h-[500px]" /> }
@@ -20,12 +16,10 @@ const InteractiveDemo = dynamic(
   { ssr: false, loading: () => <Skeleton className="w-full h-[500px]" /> }
 );
 
-// Other components with regular dynamic imports
 const PartnersSection = dynamic(
   () => import('@/components/PartnersSection'),
   { loading: () => <Skeleton className="w-full h-[300px]" /> }
 );
-
 
 const ServicesSection = dynamic(
   () => import('@/components/ServicesSection'),
@@ -52,54 +46,42 @@ const ContactForm = dynamic(
   { loading: () => <Skeleton className="w-full h-[600px]" /> }
 );
 
-export default function ClientPage() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
+/**
+ * ClientHomeSections — Interactive, JS-powered sections that load
+ * BELOW the server-rendered hero + services overview.
+ *
+ * The critical above-the-fold content (H1, hero text, CTA, services overview)
+ * is rendered server-side in page.tsx for Googlebot visibility.
+ *
+ * This component adds:
+ * - Navbar (client-side for scroll/menu interactivity)
+ * - CyclingHeadline overlay (animated text that replaces static SSR text)
+ * - Interactive demos, portfolio, testimonials, statistics, contact form
+ */
+export default function ClientHomeSections() {
   return (
     <div className="relative z-10 bg-transparent">
+      {/* Client-side Navbar mounts on top for interactivity */}
       <Navbar />
-      <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+
+      {/* Animated headline overlay — this replaces the static SSR h1 visually via JS */}
+      <section className="relative -mt-[calc(100vh-8rem)] pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <h1 className="sr-only">IgniteX - Top Website Development & Digital Marketing Agency in Jamshedpur</h1>
+            <div className="text-center lg:text-left pointer-events-auto">
               <CyclingHeadline
                 constant="Igniting"
                 contexts={["Your Digital Presence.", "Your Brand Online.", "Your Business Growth."]}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight"
                 fontFamily="'Oswald', Poppins, sans-serif"
               />
-              <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0 font-poppins font-medium leading-relaxed tracking-tight">
-                Transform your digital presence with results that truly matter. From beautifully crafted websites to intelligent, AI-driven solutions, we bring your ideas to life with care, precision, and purpose one detail at a time.
-              </p>
-              <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link href="/contact">
-                  <Button
-                    size="lg"
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded shadow-lg text-lg"
-                  >
-                    Connect with us
-                  </Button>
-                </Link>
-              </div>
             </div>
             <DeviceShowcase />
           </div>
         </div>
       </section>
 
+      {/* Rich interactive sections */}
       <ServicesSection />
       <WorkSection />
       <TestimonialsSection />
