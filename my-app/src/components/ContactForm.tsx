@@ -161,10 +161,10 @@ const ContactForm: React.FC = () => {
               <div className="flex items-center gap-3 text-base sm:text-lg font-semibold text-gray-950">
   <MdCall className="text-green-600 text-xl sm:text-2xl shrink-0" />
   <a 
-    href="tel:+918969156933" 
+    href="tel:+918935860306" 
     className="break-words hover:underline"
   >
-    +91 8969156933
+    +91 8935860306
   </a>
 </div>
               <div className="flex items-center gap-3 text-sm sm:text-base text-gray-900 mt-3">

@@ -19,30 +19,18 @@ const projects = [
       role: "Developer & Designer"
     }
   },
-  // {
-  //   title: 'Artivatic.ai',
-  //   description: 'AI-powered insurance platform providing intelligent underwriting and risk assessment solutions.',
-  //   image: '/images/projects/artivatic-preview.png',
-  //   url: 'https://artivatic.ai',
-  //   technologies: ['AI/ML', 'Insurance Tech', 'Cloud Architecture'],
-  //   testimonial: {
-  //     text: "Working with IgniteX transformed our digital presence. Their team delivered beyond our expectations.",
-  //     author: "Layak Singh",
-  //     role: "CEO, Artivatic.ai"
-  //   }
-  // },
-  // {
-  //   title: 'Fitsib',
-  //   description: 'Comprehensive fitness platform connecting trainers with clients for personalized workout experiences.',
-  //   image: '/images/projects/fitsib-preview.png',
-  //   url: 'https://fitsib.com',
-  //   technologies: ['React', 'Node.js', 'MongoDB'],
-  //   testimonial: {
-  //     text: "The team at IgniteX built us a robust platform that scales with our growing user base. Highly recommended!",
-  //     author: "Rahul Sharma",
-  //     role: "Founder, Fitsib"
-  //   }
-  // }
+  {
+    title: 'Kalam Study Hall',
+    description: 'A modern educational platform for Kalam Study Hall in Jamshedpur, featuring course listings, workshop schedules, interactive category filters, and a responsive hero section with an engaging visual design.',
+    image: '/kalam.png',
+    url: 'https://www.kalamstudyhall.com',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Responsive Design'],
+    testimonial: {
+      text: "IgniteX delivered a professional, fast, and visually stunning website that perfectly represents our educational mission. The responsive design works flawlessly across all devices.",
+      author: "Kalam Study Hall",
+      role: "Client — Education"
+    }
+  },
 ];
 
 const fadeIn = {

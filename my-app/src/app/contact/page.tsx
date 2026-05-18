@@ -5,7 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { BreadcrumbListSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | IgniteX - Get in Touch for Digital Solutions',
+  title: 'Contact Us — Get in Touch for Digital Solutions',
   description: 'Contact IgniteX for web development, digital marketing, and creative solutions. Reach out to our team in Jamshedpur for a free consultation and transform your digital presence.',
   keywords: [
     'contact IgniteX',

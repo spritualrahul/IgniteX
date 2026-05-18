@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { BreadcrumbListSchema, ServiceSchema } from '@/components/JsonLd';
 
 export const metadata = {
-  title: 'Website Development Services | IgniteX - Custom Web Design & Development',
+  title: 'Website Development Services — Custom Web Design & Development',
   description: 'Professional website development services to create fast, modern, and high-converting websites that drive business growth. Custom designs, lightning-fast performance, mobile-first UX, and technical SEO optimization.',
   keywords: [
     'website development services',

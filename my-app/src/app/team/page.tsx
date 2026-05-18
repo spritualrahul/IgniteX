@@ -4,7 +4,7 @@ import TeamSection from '@/components/TeamSection';
 import { BreadcrumbListSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Our Team | IgniteX - Meet Our Expert Team',
+  title: 'Meet Our Expert Team',
   description: 'Meet the talented team behind IgniteX. Our experts in web development, digital marketing, and creative design are dedicated to delivering exceptional results for your business.',
   keywords: [
     'IgniteX team',

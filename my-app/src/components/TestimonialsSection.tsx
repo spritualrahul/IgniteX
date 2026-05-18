@@ -36,6 +36,14 @@ const testimonials = [
       'The team at IgniteX built us a robust fintech solution that handles thousands of transactions daily with zero downtime.',
     rating: 5,
   },
+  {
+    id: 5,
+    name: 'Dhivya Mohan',
+    role: 'Founder, Kalam Study Hall',
+    content:
+      'IgniteX built a stunning, modern website for Kalam Study Hall that perfectly captures our educational vision. The responsive design and smooth user experience have significantly boosted our online enrollments.',
+    rating: 5,
+  },
 ];
 
 export default function TestimonialsSection() {
