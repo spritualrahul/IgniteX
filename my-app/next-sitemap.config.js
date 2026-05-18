@@ -17,7 +17,7 @@ module.exports = {
     ],
   },
   exclude: ['/server-sitemap.xml', '/admin/*'],
-  outDir: 'out',
+  outDir: 'public',
   changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 5000,
