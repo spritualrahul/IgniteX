@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import { title } from 'process';
 
 const projects = [
   {
@@ -30,6 +31,18 @@ const projects = [
       role: "Founder, Kalam Study Hall"
     }
   },
+  {
+    title : "Edutrack",
+    description : "EduTrack is a comprehensive school management system designed to streamline administrative tasks and enhance the educational experience for schools, teachers, and parents.",
+    image : "/e dutrack.png",
+    url : "https://edutrack-frontend-seven.vercel.app/",
+    technologies : ["FastAPI", "PostgreSQL", "Socket.io", "Next js, neon db"],
+    testimonial : {
+      text : "EduTrack is a game-changer for our school. It has simplified our administrative tasks and improved communication between teachers and parents. The interface is clean and easy to use, and the features are exactly what we needed.",
+      author : "IgniteX",
+      role : "A product of IgniteX"
+    }
+  }
 ];
 
 export default function WorkSection() {
