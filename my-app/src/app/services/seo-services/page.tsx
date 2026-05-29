@@ -83,7 +83,7 @@ const faqs = [
   {
     question: 'Do you guarantee first-page Google rankings?',
     answer:
-      'No ethical SEO agency can guarantee specific rankings — Google's algorithm is unpredictable. What we guarantee is a proven, white-hat strategy, transparent reporting, and measurable improvement in organic traffic and keyword positions. Most of our clients achieve first-page rankings for primary keywords within 6 months.',
+      "No ethical SEO agency can guarantee specific rankings — Google's algorithm is unpredictable. What we guarantee is a proven, white-hat strategy, transparent reporting, and measurable improvement in organic traffic and keyword positions. Most of our clients achieve first-page rankings for primary keywords within 6 months.",
   },
   {
     question: 'What does your SEO service include?',

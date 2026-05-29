@@ -57,7 +57,7 @@ const channels = [
   },
   {
     name: 'Google Display & YouTube',
-    desc: 'Build brand awareness and retarget warm audiences across Google's network.',
+    desc: "Build brand awareness and retarget warm audiences across Google's network.",
   },
   {
     name: 'Meta Ads (Facebook & Instagram)',
