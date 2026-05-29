@@ -21,6 +21,7 @@ export function OrganizationSchema() {
     <JsonLd
       data={{
         '@type': 'Organization',
+        '@id': 'https://www.ignitexsolution.com/#organization',
         name: 'IgniteX',
         alternateName: 'IgniteX Solutions',
         url: 'https://www.ignitexsolution.com',
@@ -106,8 +107,16 @@ export function LocalBusinessSchema() {
             closes: '16:00',
           },
         ],
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: 5,
+          reviewCount: 5,
+          bestRating: 5,
+          worstRating: 1,
+        },
         priceRange: '$$',
         sameAs: [
+          'https://www.ignitexsolution.com/#organization',
           'https://www.instagram.com/ignitex_solutions',
           'https://www.linkedin.com/company/ignitex',
         ],

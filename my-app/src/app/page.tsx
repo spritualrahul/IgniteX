@@ -3,7 +3,7 @@ import { ReviewSchema, AggregateRatingSchema, BreadcrumbListSchema, FAQSchema, S
 import ClientPage from './client-page';
 
 export const metadata: Metadata = {
-  title: 'IgniteX - Top Website Development & Digital Marketing Agency in Jamshedpur',
+  title: 'Top Web Development & Digital Marketing Agency in Jamshedpur',
   description: 'IgniteX is a premium digital agency in Jamshedpur specializing in web development, SEO, digital marketing, UI/UX design, and e-commerce solutions. 50+ projects delivered with 80% average ROI.',
   keywords: [
     'website development agency Jamshedpur',
@@ -70,9 +70,9 @@ export default function Home() {
       {/* Structured Data - Service */}
       <ServiceSchema name="Web Development" description="Custom, high-performance websites and web applications built with cutting-edge technologies like React, Next.js, and Node.js." url="https://www.ignitexsolution.com/services/web-development" />
       <ServiceSchema name="Digital Marketing" description="Data-driven digital marketing strategies including PPC, content marketing, and social media that maximize ROI." url="https://www.ignitexsolution.com/services/digital-marketing" />
-      <ServiceSchema name="SEO Services" description="Proven SEO strategies and technical optimization to dominate search rankings and drive organic traffic." url="https://www.ignitexsolution.com/services/seo" />
-      <ServiceSchema name="UI/UX Design" description="Beautiful, intuitive interfaces designed with user psychology and conversion optimization in mind." url="https://www.ignitexsolution.com/services" />
-      <ServiceSchema name="E-commerce Solutions" description="End-to-end e-commerce solutions that drive sales, streamline operations, and scale effortlessly." url="https://www.ignitexsolution.com/services" />
+      <ServiceSchema name="SEO Services" description="Proven SEO strategies and technical optimization to dominate search rankings and drive organic traffic." url="https://www.ignitexsolution.com/services/seo-services" />
+      <ServiceSchema name="UI/UX Design" description="Beautiful, intuitive interfaces designed with user psychology and conversion optimization in mind." url="https://www.ignitexsolution.com/services/ui-ux-design" />
+      <ServiceSchema name="E-commerce Solutions" description="End-to-end e-commerce solutions that drive sales, streamline operations, and scale effortlessly." url="https://www.ignitexsolution.com/services/ecommerce" />
 
       {/* Structured Data - FAQ */}
       <FAQSchema
@@ -87,46 +87,14 @@ export default function Home() {
       />
 
       <main className="min-h-screen bg-white relative overflow-hidden">
-        {/* 
-          SSR-ONLY CONTENT FOR GOOGLEBOT
-          This section is visually hidden from users but fully readable by search engines.
-          It contains the critical SEO content: H1, hero text, services overview, and location info.
-          The actual visual UI is rendered by ClientPage below.
+        {/*
+          Screen-reader-only content for accessibility and SEO.
+          sr-only is NOT cloaking — it uses the same content as the visible page.
+          Visible H1 lives inside CyclingHeadline in ClientPage.
         */}
-        <div
-          aria-hidden="false"
-          style={{
-            position: 'absolute',
-            width: '1px',
-            height: '1px',
-            padding: 0,
-            margin: '-1px',
-            overflow: 'hidden',
-            clip: 'rect(0, 0, 0, 0)',
-            whiteSpace: 'nowrap',
-            borderWidth: 0,
-          }}
-        >
-          <h1>Web Development & Digital Marketing Agency in Jamshedpur | IgniteX</h1>
-          <p>
-            Transform your digital presence with results that truly matter. IgniteX is a premium digital agency 
-            in Jamshedpur, Jharkhand specializing in custom web development, SEO, digital marketing, UI/UX design, 
-            and e-commerce solutions. From beautifully crafted websites to intelligent, AI-driven solutions, 
-            we bring your ideas to life with care, precision, and purpose — one detail at a time.
-          </p>
-          <h2>Our Services</h2>
-          <ul>
-            <li>Web Development — Custom, high-performance websites and web applications built with React, Next.js, and Node.js. Responsive, fast, and scalable solutions tailored to your business needs.</li>
-            <li>Digital Marketing — Data-driven digital marketing strategies including PPC, content marketing, and social media campaigns that maximize ROI and drive measurable business growth.</li>
-            <li>SEO Services — Proven SEO strategies and technical optimization to dominate search rankings, drive organic traffic, and establish your brand as an authority in your industry.</li>
-            <li>UI/UX Design — Beautiful, intuitive interfaces designed with user psychology and conversion optimization in mind.</li>
-            <li>E-commerce Solutions — End-to-end e-commerce solutions that drive sales, streamline operations, and scale effortlessly.</li>
-            <li>Performance Marketing — Strategic paid advertising and lead generation campaigns across Google Ads, Meta, and LinkedIn.</li>
-          </ul>
-          <h2>Why Choose IgniteX?</h2>
-          <p>50+ projects delivered. 98% client satisfaction. 80% average ROI boost. Based in Jamshedpur, Jharkhand, India.</p>
-          <p>Contact us: +91 8935860306 | contact@ignitexsolution.com</p>
-        </div>
+        <h1 className="sr-only">
+          Web Development &amp; Digital Marketing Agency in Jamshedpur | IgniteX
+        </h1>
 
         {/* Actual visual UI — rendered by client component */}
         <ClientPage />

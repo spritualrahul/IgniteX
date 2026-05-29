@@ -20,12 +20,12 @@ export const metadata = {
     'professional web development',
   ],
   alternates: {
-    canonical: 'https://www.ignitexsolution.com/services/website-development',
+    canonical: 'https://www.ignitexsolution.com/services/web-development',
   },
   openGraph: {
     title: 'Website Development Services | IgniteX',
     description: 'Professional website development services for modern, high-converting websites. Custom designs, lightning-fast performance, and technical SEO optimization.',
-    url: 'https://www.ignitexsolution.com/services/website-development',
+    url: 'https://www.ignitexsolution.com/services/web-development',
     siteName: 'IgniteX',
     images: [
       {
@@ -73,13 +73,13 @@ export default function WebsiteDevelopmentPage() {
         items={[
           { name: 'Home', url: 'https://www.ignitexsolution.com' },
           { name: 'Services', url: 'https://www.ignitexsolution.com/services' },
-          { name: 'Website Development', url: 'https://www.ignitexsolution.com/services/website-development' }
+          { name: 'Website Development', url: 'https://www.ignitexsolution.com/services/web-development' }
         ]} 
       />
       <ServiceSchema 
         name="Website Development Services"
         description="Professional website development services to create fast, modern, and high-converting websites that drive business growth. Custom designs, lightning-fast performance, mobile-first UX, and technical SEO optimization."
-        url="https://www.ignitexsolution.com/services/website-development"
+        url="https://www.ignitexsolution.com/services/web-development"
       />
       
       <main className="min-h-screen bg-gray-50">

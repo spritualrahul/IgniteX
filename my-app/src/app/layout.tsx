@@ -31,8 +31,8 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: 'IgniteX - Top Website Development & Digital Marketing Agency in Jamshedpur',
-    template: '%s | IgniteX',
+    default: 'IgniteX — Top Web Development & Digital Marketing Agency in Jamshedpur',
+    template: '%s | IgniteX — Web Development & Digital Marketing Agency, Jamshedpur',
   },
   description: 'IgniteX is a premium digital agency in Jamshedpur offering custom web development, e-commerce solutions, SEO, and digital marketing services. 50+ projects delivered. 98% client satisfaction. 80% average ROI boost.',
   keywords: [

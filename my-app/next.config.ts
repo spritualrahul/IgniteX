@@ -82,6 +82,17 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      // Canonical service slug consolidation
+      {
+        source: '/services/website-development',
+        destination: '/services/web-development',
+        permanent: true,
+      },
+      {
+        source: '/services/seo',
+        destination: '/services/seo-services',
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
