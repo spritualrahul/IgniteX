@@ -34,7 +34,7 @@ const projects = [
   {
     title : "Edutrack",
     description : "EduTrack is a comprehensive school management system designed to streamline administrative tasks and enhance the educational experience for schools, teachers, and parents.",
-    image : "/e dutrack.png",
+    image : "/edutrack.png",
     url : "https://edutrack-frontend-seven.vercel.app/",
     technologies : ["FastAPI", "PostgreSQL", "Socket.io", "Next js, neon db"],
     testimonial : {
