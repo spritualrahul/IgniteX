@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
-import { title } from 'process';
 
 const projects = [
   {
@@ -58,7 +57,6 @@ export default function WorkSection() {
   useEffect(() => {
     startAutoPlay();
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleNav = (direction: 'prev' | 'next') => {
