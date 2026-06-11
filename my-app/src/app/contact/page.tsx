@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -6,7 +7,7 @@ import { BreadcrumbListSchema } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Contact Us — Get in Touch for Digital Solutions',
-  description: 'Contact IgniteX for web development, digital marketing, and creative solutions. Reach out to our team in Jamshedpur for a free consultation and transform your digital presence.',
+  description: 'Contact IgniteX for web development, digital marketing, and creative solutions. Schedule a free Google Meet consultation or reach out to our team in Jamshedpur.',
   keywords: [
     'contact IgniteX',
     'web development inquiry',
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
     'get a quote',
     'Jamshedpur digital agency',
     'free consultation',
+    'schedule meeting',
+    'book consultation',
   ],
   alternates: {
     canonical: 'https://www.ignitexsolution.com/contact',
@@ -61,7 +64,9 @@ export default function ContactPage() {
         <div className="flex flex-col min-h-screen">
           <div className="flex items-center justify-center py-12 px-2 flex-1">
             <div className="w-full max-w-7xl mt-10">
-              <ContactForm />
+              <Suspense fallback={<Skeleton className="w-full h-[600px]" />}>
+                <ContactForm />
+              </Suspense>
             </div>
           </div>
         </div>

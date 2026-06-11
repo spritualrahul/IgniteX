@@ -1,11 +1,13 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { Navbar } from '@/components/Navbar';
 import { CyclingHeadline } from '@/components/CyclingHeadline';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Calendar } from 'lucide-react';
 
 // Lazy load heavy components with client-side only rendering
 const DeviceShowcase = dynamic(
@@ -75,6 +77,16 @@ export default function ClientPage() {
                     Connect with us
                   </Button>
                 </Link>
+                <Link href="/contact?tab=meeting">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-red-600 text-red-600 hover:bg-red-50 font-bold px-8 py-3 rounded shadow-sm text-lg"
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book a Free Consultation
+                  </Button>
+                </Link>
               </div>
             </div>
             <DeviceShowcase />
@@ -88,7 +100,9 @@ export default function ClientPage() {
       <InteractiveDemo />
       <StatisticsSection />
       <section id="contact" className="scroll-mt-20">
-        <ContactForm />
+        <Suspense fallback={<Skeleton className="w-full h-[600px]" />}>
+          <ContactForm />
+        </Suspense>
       </section>
       <PartnersSection />
     </div>

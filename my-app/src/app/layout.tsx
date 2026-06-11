@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
+import WhatsAppWidget from '@/components/WhatsAppWidget';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { GTMProvider, GTMNoScript } from '@/components/GTMProvider';
 import Footer from '@/components/Footer';
@@ -146,6 +147,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <ChatBot />
+        <WhatsAppWidget />
         <SpeedInsights />
       </body>
     </html>

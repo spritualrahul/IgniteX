@@ -66,10 +66,17 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-start">
-                <FaMapMarkerAlt className="mt-1 mr-3 text-red-500" />
+                <FaMapMarkerAlt className="mt-1 mr-3 text-red-500 shrink-0" />
                 <span className="text-gray-400">
-                  Jamshedpur<br />
-                  Jharkhand
+                  <strong>Jamshedpur (HQ)</strong><br />
+                  Bistupur, Jamshedpur - 831005
+                </span>
+              </li>
+              <li className="flex items-start">
+                <FaMapMarkerAlt className="mt-1 mr-3 text-red-500 shrink-0" />
+                <span className="text-gray-400">
+                  <strong>Noida Office</strong><br />
+                  Aims green avenue, C-1705 - 201318
                 </span>
               </li>
             </ul>
