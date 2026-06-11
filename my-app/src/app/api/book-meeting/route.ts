@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createMeetingEvent, getBusySlots } from '@/lib/google-calendar';
+import { sendWhatsAppConfirmation } from '@/lib/whatsapp';
 import {
   sendClientConfirmation,
   sendAdminNotification,
@@ -169,16 +170,24 @@ export async function POST(req: NextRequest) {
       time: formatTime(data.time),
     };
 
-    const emailPromises = [
+    const notificationPromises = [
       sendClientConfirmation(emailDetails).catch((err) => {
         console.error('Failed to send client confirmation email:', err);
       }),
       sendAdminNotification(emailDetails).catch((err) => {
         console.error('Failed to send admin notification email:', err);
       }),
+      sendWhatsAppConfirmation({
+        recipientPhone: data.phone,
+        clientName: data.name,
+        meetingDateTime: `${formatDate(data.date)} at ${formatTime(data.time)} IST`,
+        meetLink: meeting.meetLink,
+      }).catch((err) => {
+        console.error('Failed to send WhatsApp confirmation:', err);
+      }),
     ];
 
-    await Promise.allSettled(emailPromises);
+    await Promise.allSettled(notificationPromises);
 
     return NextResponse.json(
       {
