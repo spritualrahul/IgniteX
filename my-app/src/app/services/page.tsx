@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Navbar } from '@/components/Navbar';
 import { BreadcrumbListSchema, FAQSchema, ServiceSchema } from '@/components/JsonLd';
 import ServicesSection from '@/components/ServicesSection';
+import ServicesHero from './ServicesHero';
 
 export const metadata: Metadata = {
   title: 'Web Development, Digital Marketing & Creative Solutions',
@@ -70,9 +71,8 @@ export default function ServicesPage() {
       />
       <main className="min-h-screen bg-white">
         <Navbar />
-        <div className="pt-24">
-          <ServicesSection showAll={true} />
-        </div>
+        <ServicesHero />
+        <ServicesSection showAll={true} />
       </main>
     </>
   );

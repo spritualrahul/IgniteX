@@ -163,33 +163,8 @@ export default function ServicesSection({ showAll = false }) {
   };
 
   return (
-    <section id="services" className="py-24 px-4 md:px-8 bg-gray-50">
+    <section id="services" className="py-16 px-4 md:px-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-12 bg-red-500/40" />
-            <span className="text-red-500 text-sm font-semibold tracking-[0.2em] uppercase">What We Do</span>
-            <div className="h-px w-12 bg-red-500/40" />
-          </div>
-          <h2
-            className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
-            style={{ fontFamily: "'Oswald', sans-serif" }}
-          >
-            <span className="text-red-600">Reliable</span> Services You Can Count On
-          </h2>
-          <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            Our websites and applications are secure, performance-based, and
-            creative. We provide fast, scalable and easy-to-use
-            solutions that enable businesses to flourish in the digital era.
-          </p>
-        </motion.div>
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

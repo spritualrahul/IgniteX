@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 interface TabItem {
   title: string;
@@ -37,34 +38,52 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-white">
+    <section id="about" className="py-20 px-4 md:px-8 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-          className="text-center mb-16"
-        >
-          <motion.h2 
-            variants={fadeIn}
-            className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerContainer}
+            className="lg:col-span-6 text-left"
           >
-            About <span className="text-red-600">IgniteX</span>
-          </motion.h2>
-          
-          <motion.div 
-            variants={fadeIn}
-            className="w-20 h-1 bg-red-600 mx-auto mb-10"
-          />
-          
-          <motion.p 
-            variants={fadeIn}
-            className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            <motion.h2 
+              variants={fadeIn}
+              className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
+            >
+              About <span className="text-red-600">IgniteX</span>
+            </motion.h2>
+            
+            <motion.div 
+              variants={fadeIn}
+              className="w-20 h-1 bg-red-600 mb-10"
+            />
+            
+            <motion.p 
+              variants={fadeIn}
+              className="text-lg text-gray-600 leading-relaxed"
+            >
+              IgniteX was founded in 2025 by Rahul Kumar Mahato with the goal of providing outstanding digital solutions.  Our team is committed to providing timely services that meet the highest standards of quality.  Our top goal in everything we do is to satisfy our customers.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-6 flex justify-center lg:justify-end items-center"
           >
-            IgniteX was founded in 2025 by Rahul Kumar Mahato with the goal of providing outstanding digital solutions.  Our team is committed to providing timely services that meet the highest standards of quality.  Our top goal in everything we do is to satisfy our customers.
-          </motion.p>
-        </motion.div>
+            <div className="w-full max-w-[550px]">
+              <DotLottieReact
+                src="https://lottie.host/3ca268ef-3a48-4e19-9797-e272d265fd57/gvleetvKoK.lottie"
+                loop
+                autoplay
+              />
+            </div>
+          </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-8 mt-12">
           {[
