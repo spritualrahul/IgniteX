@@ -82,8 +82,7 @@ export default function ClientPage() {
                   <Link href="/contact?tab=meeting" className="w-full sm:w-1/2">
                     <Button
                       size="lg"
-                      variant="outline"
-                      className="border-2 border-red-600 text-red-600 hover:bg-red-50 font-bold px-4 py-3 rounded shadow-sm text-sm lg:text-base flex items-center justify-center w-full h-full"
+                      className="bg-gradient-to-r from-gray-900 to-gray-700 hover:from-gray-800 hover:to-gray-600 text-white font-bold px-4 py-3 rounded-xl shadow-lg text-sm lg:text-base flex items-center justify-center w-full h-full border-0 transition-all duration-300 hover:shadow-gray-900/40 hover:shadow-xl hover:-translate-y-0.5"
                     >
                       <Calendar className="w-4 h-4 mr-2 shrink-0" />
                       Book a Free Consultation
@@ -97,7 +96,7 @@ export default function ClientPage() {
                   >
                     <Button
                       size="lg"
-                      className="bg-[#25D366] hover:bg-[#20ba56] text-white font-bold px-4 py-3 rounded shadow-lg text-sm lg:text-base flex items-center justify-center border-none w-full h-full"
+                      className="bg-[#25D366] hover:bg-[#1da851] text-white font-bold px-4 py-3 rounded-xl shadow-lg text-sm lg:text-base flex items-center justify-center border-0 w-full h-full transition-all duration-300 hover:shadow-green-500/30 hover:shadow-xl hover:-translate-y-0.5"
                     >
                       <FaWhatsapp className="w-4 h-4 mr-2 shrink-0" />
                       Connect on WhatsApp

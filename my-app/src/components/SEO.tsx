@@ -53,7 +53,7 @@ export default function SEO({
       url: siteUrl,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteUrl}/images/logo.png`,
+        url: `${siteUrl}/images/logo.webp`,
         width: 600,
         height: 60
       },

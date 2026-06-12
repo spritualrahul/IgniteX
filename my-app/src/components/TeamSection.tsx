@@ -33,7 +33,7 @@ const TeamSection = () => {
       name: 'Rahul Mahato',
       role: 'Founder',
       image: {
-        src: '/images/Rahul.jpeg',
+        src: '/images/Rahul.webp',
         width: 500,
         height: 500,
         alt: 'Rahul Mahato - Founder',
@@ -54,7 +54,7 @@ const TeamSection = () => {
       name: 'Abhuday Pratap Singh',
       role: 'Co-Founder - Marketing & Performance',
       image: {
-        src: '/images/team/Abhuday.jpeg',
+        src: '/images/team/Abhuday.webp',
         width: 500,
         height: 400,
         alt: 'Abhuday Pratap Singh - Co-Founder - Marketing & Performance',
@@ -74,7 +74,7 @@ const TeamSection = () => {
       name: 'Tejaswini Gohil',
       role: 'Core Team Member – Technology',
       image: {
-        src: '/images/team/Tejaswini.jpeg',
+        src: '/images/team/Tejaswini.webp',
         width: 500,
         height: 500,
         alt: 'Tejaswini Gohil - Core Team Member – Technology',
@@ -92,7 +92,7 @@ const TeamSection = () => {
       name: 'Trinath Panigrahi',
       role: 'Core Team Member – Consulting PMO',
       image: {
-        src: '/images/team/Trinath.png',
+        src: '/images/team/Trinath.webp',
         width: 500,
         height: 500,
         alt: 'Trinath panigrahi - Core Team Member – Consulting PMO',
@@ -111,7 +111,7 @@ const TeamSection = () => {
       name: 'Nitesh Sahani',
       role: 'Content Creator Expert',
       image: {
-        src: '/images/team/Nitesh.jpg',
+        src: '/images/team/Nitesh.webp',
         width: 500,
         height: 500,
         alt: 'Nitesh Tiwari - Content Creator Expert',

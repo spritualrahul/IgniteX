@@ -27,11 +27,11 @@ const nextConfig = {
   // i18n configuration has been removed for App Router compatibility
   // Use Next.js built-in i18n routing instead
   experimental: {
-    optimizePackageImports: ['lucide-react'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
     optimizeCss: true,
     scrollRestoration: true,
   },
-  output: 'standalone',
+
   async headers() {
     return [
       {

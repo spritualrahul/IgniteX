@@ -25,7 +25,7 @@ export function OrganizationSchema() {
         name: 'IgniteX',
         alternateName: 'IgniteX Solutions',
         url: 'https://www.ignitexsolution.com',
-        logo: 'https://www.ignitexsolution.com/logo.png',
+        logo: 'https://www.ignitexsolution.com/logo.webp',
         description: 'Leading website development and digital marketing agency in Jamshedpur offering custom web design, e-commerce solutions, and full-stack development.',
         foundingDate: '2020',
         sameAs: [
@@ -75,7 +75,7 @@ export function LocalBusinessSchema() {
         '@type': 'LocalBusiness',
         '@id': 'https://www.ignitexsolution.com/#localbusiness',
         name: 'IgniteX',
-        image: 'https://www.ignitexsolution.com/logo.png',
+        image: 'https://www.ignitexsolution.com/logo.webp',
         description: 'Leading website development and digital marketing agency in Jamshedpur. 50+ websites launched with 80% average ROI for clients.',
         url: 'https://www.ignitexsolution.com',
         telephone: '+91-8935860306',

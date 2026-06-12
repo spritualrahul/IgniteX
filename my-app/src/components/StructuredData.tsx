@@ -37,7 +37,7 @@ export const organizationSchema = {
   name: 'IgniteX',
   alternateName: 'IgniteX Solutions',
   url: siteUrl,
-  logo: `${siteUrl}/logo.png`,
+  logo: `${siteUrl}/logo.webp`,
   sameAs: [
     'https://www.instagram.com/ignitex_solutions',
     'https://www.linkedin.com/company/ignitex',

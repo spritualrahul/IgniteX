@@ -9,7 +9,7 @@ const projects = [
   {
     title: 'Reflect - Journal App',
     description: 'A personal journaling application built with Next.js, TypeScript, and Neon DB. Features include rich text editing, mood tracking, and secure user authentication.',
-    image: '/images/projects/Journal.png',
+    image: '/images/projects/Journal.webp',
     url: 'https://journal-app-blue-omega.vercel.app/',
     technologies: ['Next.js', 'TypeScript', 'Neon DB', 'Tailwind CSS'],
     testimonial: {
@@ -21,7 +21,7 @@ const projects = [
   {
     title: 'Kalam Study Hall',
     description: 'A modern educational platform for Kalam Study Hall in Jamshedpur, featuring course listings, workshop schedules, interactive category filters, and a responsive hero section with an engaging visual design.',
-    image: '/kalam.png',
+    image: '/kalam.webp',
     url: 'https://www.kalamstudyhall.com',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Responsive Design'],
     testimonial: {
@@ -33,7 +33,7 @@ const projects = [
   {
     title : "Edutrack",
     description : "EduTrack is a comprehensive school management system designed to streamline administrative tasks and enhance the educational experience for schools, teachers, and parents.",
-    image : "/edutrack.png",
+    image : "/edutrack.webp",
     url : "https://edutrack-frontend-seven.vercel.app/",
     technologies : ["FastAPI", "PostgreSQL", "Socket.io", "Next js, neon db"],
     testimonial : {

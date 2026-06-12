@@ -2,8 +2,9 @@
 
 import { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import Script from 'next/script';
 
-// Using types from src/types/gtm.d.ts
+const GTM_ID = 'GTM-KQ83S7ML';
 
 // This component wraps the GTMProvider to handle Suspense
 export function GTMProvider() {
@@ -18,8 +19,6 @@ export function GTMProvider() {
 function GTMProviderContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const GTM_ID = 'GTM-KQ83S7ML';
-  const GA_MEASUREMENT_ID = 'G-2FMN403SPP';
 
   useEffect(() => {
     // Initialize dataLayer
@@ -30,86 +29,40 @@ function GTMProviderContent() {
       'gtm.id': GTM_ID
     });
 
-    // Load GTM script
-    const gtmScript = document.createElement('script');
-    gtmScript.async = true;
-    gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-    document.head.appendChild(gtmScript);
-
-    // Add GA4 config
+    // Initial page view
     window.dataLayer.push({
-      event: 'config',
-      'gtm.uniqueEventId': 0,
-      'gtm.virtualPageViews': true,
-      'gtm.dom': true,
-      'gtm.loadEvent': true,
-      'gtm.whitelist': ['j', 'l', 'v', 'ct', 'dl', 'gtm', 'ua', 'sp', 'flc', 'frs', 'fsp'],
-      'gtm.start': new Date().getTime(),
-      'gtm.allowlist': ['*'],
-      'gtm.blocklist': ['customScripts'],
-      'gtm.consent': 'default',
-      'gtm.consent.default': {
-        'ad_storage': 'denied',
-        'analytics_storage': 'denied',
-        'personalization_storage': 'denied',
-        'functionality_storage': 'denied',
-        'security_storage': 'granted'
-      }
+      event: 'page_view',
+      page_path: window.location.pathname + window.location.search,
+      page_title: document.title,
+      page_location: window.location.href,
     });
-
-    // Initialize GA4
-    window.dataLayer.push({
-      event: 'config',
-      'gtm.uniqueEventId': 1,
-      'gtm.virtualPageViews': true,
-      'send_to': `${GA_MEASUREMENT_ID}`,
-      'gtm.start': new Date().getTime(),
-      'gtm.allowlist': ['*'],
-      'gtm.blocklist': ['customScripts']
-    });
-
-    // Handle route changes
-    const handleRouteChange = () => {
-      window.dataLayer.push({
-        event: 'page_view',
-        page_path: window.location.pathname + window.location.search,
-        page_title: document.title,
-        page_location: window.location.href,
-        'gtm.uniqueEventId': Math.floor(Math.random() * 0x10000000000).toString()
-      });
-    };
-
-    // Initial page load
-    handleRouteChange();
-    
-    // Listen for route changes
-    window.addEventListener('popstate', handleRouteChange);
-    
-    return () => {
-      window.removeEventListener('popstate', handleRouteChange);
-    };
   }, []);
 
   // Handle route changes
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && window.dataLayer) {
       window.dataLayer.push({
         event: 'page_view',
         page_path: window.location.pathname + window.location.search,
         page_title: document.title,
         page_location: window.location.href,
-        'gtm.uniqueEventId': Math.floor(Math.random() * 0x10000000000).toString()
       });
     }
   }, [pathname, searchParams]);
 
-  return null;
+  return (
+    <Script
+      id="gtm-script"
+      strategy="afterInteractive"
+      src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
+    />
+  );
 }
 
 export const GTMNoScript = () => (
   <noscript>
     <iframe
-      src={`https://www.googletagmanager.com/ns.html?id=GTM-KQ83S7ML`}
+      src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
       height="0"
       width="0"
       style={{ display: 'none', visibility: 'hidden' }}

@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter, Poppins, Montserrat } from 'next/font/google';
+import { Inter, Poppins, Oswald } from 'next/font/google';
 import './globals.css';
 import ChatBot from '@/components/ChatBotWrapper';
 import WhatsAppWidget from '@/components/WhatsAppWidget';
-import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { GTMProvider, GTMNoScript } from '@/components/GTMProvider';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -17,16 +16,16 @@ const inter = Inter({
 });
 
 const poppins = Poppins({
-  weight: ['400', '600', '700'],
+  weight: ['600', '700'],
   subsets: ['latin'],
   variable: '--font-poppins',
   display: 'swap',
 });
 
-const montserrat = Montserrat({
-  weight: ['400', '600', '700', '800'],
+const oswald = Oswald({
+  weight: ['400', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-montserrat',
+  variable: '--font-oswald',
   display: 'swap',
 });
 
@@ -126,21 +125,15 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
         
-        {/* Google Analytics */}
-        <GoogleAnalytics />
-        
         {/* Structured Data - JSON-LD */}
         <OrganizationSchema />
         <WebSiteSchema />
         <LocalBusinessSchema />
         
         {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.variable} ${poppins.variable} ${montserrat.variable} font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen`}>
+      <body className={`${inter.variable} ${poppins.variable} ${oswald.variable} font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen`}>
         <GTMNoScript />
         <main className="flex-grow">
           {children}

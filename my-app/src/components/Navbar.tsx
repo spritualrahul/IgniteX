@@ -13,33 +13,40 @@ export function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-      
-      // Update active section based on scroll position for home page
-      if (pathname === '/') {
-        const sections = ['work', 'testimonials', 'contact'];
-        const scrollPosition = window.scrollY + 100;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 10);
+        
+        // Update active section based on scroll position for home page
+        if (pathname === '/') {
+          const sections = ['work', 'testimonials', 'contact'];
+          const scrollPosition = window.scrollY + 100;
 
-        for (const section of sections) {
-          const element = document.getElementById(section);
-          if (element) {
-            const { offsetTop, offsetHeight } = element;
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-              setActiveSection(`#${section}`);
-              return;
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const { offsetTop, offsetHeight } = element;
+              if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                setActiveSection(`#${section}`);
+                ticking = false;
+                return;
+              }
             }
           }
+          
+          // If not in any section, we're at the top (home)
+          if (window.scrollY < 100) {
+            setActiveSection('/');
+          }
         }
-        
-        // If not in any section, we're at the top (home)
-        if (window.scrollY < 100) {
-          setActiveSection('/');
-        }
-      }
+        ticking = false;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
