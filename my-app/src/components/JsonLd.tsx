@@ -30,7 +30,7 @@ export function OrganizationSchema() {
         foundingDate: '2020',
         sameAs: [
           'https://www.instagram.com/ignitex_solutions',
-          'https://www.linkedin.com/company/ignitex',
+          'https://www.linkedin.com/in/ignitex-solution-89324b389',
         ],
         contactPoint: {
           '@type': 'ContactPoint',
@@ -118,7 +118,7 @@ export function LocalBusinessSchema() {
         sameAs: [
           'https://www.ignitexsolution.com/#organization',
           'https://www.instagram.com/ignitex_solutions',
-          'https://www.linkedin.com/company/ignitex',
+          'https://www.linkedin.com/in/ignitex-solution-89324b389',
         ],
       }}
     />

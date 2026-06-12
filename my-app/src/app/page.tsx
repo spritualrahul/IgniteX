@@ -71,8 +71,7 @@ export default function Home() {
       <ServiceSchema name="Web Development" description="Custom, high-performance websites and web applications built with cutting-edge technologies like React, Next.js, and Node.js." url="https://www.ignitexsolution.com/services/web-development" />
       <ServiceSchema name="Digital Marketing" description="Data-driven digital marketing strategies including PPC, content marketing, and social media that maximize ROI." url="https://www.ignitexsolution.com/services/digital-marketing" />
       <ServiceSchema name="SEO Services" description="Proven SEO strategies and technical optimization to dominate search rankings and drive organic traffic." url="https://www.ignitexsolution.com/services/seo-services" />
-      <ServiceSchema name="UI/UX Design" description="Beautiful, intuitive interfaces designed with user psychology and conversion optimization in mind." url="https://www.ignitexsolution.com/services/ui-ux-design" />
-      <ServiceSchema name="E-commerce Solutions" description="End-to-end e-commerce solutions that drive sales, streamline operations, and scale effortlessly." url="https://www.ignitexsolution.com/services/ecommerce" />
+      <ServiceSchema name="Social Media Management" description="Instagram-first social media management, reel creation, carousel design, community management and growth campaigns." url="https://www.ignitexsolution.com/services/social-media-management" />
 
       {/* Structured Data - FAQ */}
       <FAQSchema

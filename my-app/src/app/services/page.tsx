@@ -57,13 +57,12 @@ export default function ServicesPage() {
       />
       <ServiceSchema name="Web Development" description="Custom, high-performance websites and web applications built with cutting-edge technologies." url="https://www.ignitexsolution.com/services/web-development" />
       <ServiceSchema name="Digital Marketing" description="Data-driven digital marketing strategies including PPC, content marketing, and social media." url="https://www.ignitexsolution.com/services/digital-marketing" />
-      <ServiceSchema name="SEO Services" description="Proven SEO strategies and technical optimization to dominate search rankings." url="https://www.ignitexsolution.com/services/seo" />
-      <ServiceSchema name="E-commerce Solutions" description="End-to-end e-commerce solutions that drive sales and scale effortlessly." url="https://www.ignitexsolution.com/services" />
-      <ServiceSchema name="UI/UX Design" description="Beautiful, intuitive interfaces designed with conversion optimization in mind." url="https://www.ignitexsolution.com/services" />
+      <ServiceSchema name="Social Media Management" description="Instagram-first social media management, reel creation, carousel design, community management, analytics, and growth campaigns." url="https://www.ignitexsolution.com/services/social-media-management" />
+      <ServiceSchema name="SEO Services" description="Proven SEO strategies and technical optimization to dominate search rankings." url="https://www.ignitexsolution.com/services/seo-services" />
       <FAQSchema
         faqs={[
-          { question: 'What services does IgniteX offer?', answer: 'IgniteX offers comprehensive digital services including web development, mobile app development, UI/UX design, digital transformation, cloud solutions, and e-commerce solutions.' },
-          { question: 'How long does it take to develop a website?', answer: 'A standard business website typically takes 4-6 weeks, while complex e-commerce or custom web applications can take 8-12 weeks.' },
+          { question: 'What services does IgniteX offer?', answer: 'IgniteX offers web development, digital marketing, SEO, social media management, AI & SaaS solutions, and mobile app development.' },
+          { question: 'How long does it take to develop a website?', answer: 'A standard business website typically takes 4-6 weeks, while complex web applications can take 8-12 weeks.' },
           { question: 'Do you provide ongoing support after project completion?', answer: 'Yes, we offer comprehensive post-launch support and maintenance packages including regular updates, security patches, and performance optimization.' },
           { question: 'What is your pricing model?', answer: 'Our pricing is project-based and depends on scope and complexity. We offer competitive rates and provide detailed quotes after understanding your needs.' },
           { question: 'Can you help with digital marketing and SEO?', answer: 'Absolutely! We provide comprehensive digital marketing services including SEO, content marketing, social media management, and performance marketing.' },

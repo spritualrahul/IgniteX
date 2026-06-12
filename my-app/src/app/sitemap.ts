@@ -14,14 +14,12 @@ const corePages = [
   { path: '/team', priority: 0.7, changeFreq: 'monthly' as const },
 ];
 
-// Service pages — canonical slugs only (redirects excluded)
+// Service pages — only active, linked pages
 const servicePages = [
   { path: '/services/web-development', priority: 0.85, changeFreq: 'weekly' as const },
   { path: '/services/seo-services', priority: 0.85, changeFreq: 'weekly' as const },
   { path: '/services/digital-marketing', priority: 0.85, changeFreq: 'weekly' as const },
-  { path: '/services/ui-ux-design', priority: 0.8, changeFreq: 'weekly' as const },
-  { path: '/services/ecommerce', priority: 0.8, changeFreq: 'weekly' as const },
-  { path: '/services/performance-marketing', priority: 0.8, changeFreq: 'weekly' as const },
+  { path: '/services/social-media-management', priority: 0.85, changeFreq: 'weekly' as const },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

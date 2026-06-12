@@ -84,6 +84,9 @@ export function Navbar() {
   };
 
   const isActive = (href: string) => {
+    if (href === '/services') {
+      return pathname.startsWith('/services');
+    }
     if (pathname === '/' && href.startsWith('#')) {
       return activeSection === href;
     }

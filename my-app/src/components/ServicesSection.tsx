@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X, ArrowRight, Globe, BarChart3, Bot, RefreshCw, Smartphone, Search, Palette, Video, ShoppingCart, PenTool, Target, Share2 } from "lucide-react";
+import { X, ArrowRight, Globe, BarChart3, Bot, Smartphone, Search, Share2 } from "lucide-react";
 
 interface Service {
   title: string;
@@ -11,6 +11,7 @@ interface Service {
   longDescription: string;
   icon: React.ReactNode;
   slug: string;
+  href?: string;
   features: string[];
   color: string;
 }
@@ -24,6 +25,7 @@ const services: Service[] = [
       "At IgniteX, we design and develop websites and web applications that are visually appealing, reliable, and built to perform. Using technologies like Next.js, React, and Tailwind CSS, our team creates fast, responsive, and SEO-friendly solutions that support real business growth.",
     icon: <Globe className="w-6 h-6" />,
     slug: "web-development",
+    href: "/services/web-development",
     color: "#dc2626",
     features: [
       "Custom Website Development",
@@ -42,6 +44,7 @@ const services: Service[] = [
       "Our digital marketing services focus on helping businesses grow online by increasing visibility, generating quality leads, and turning them into long-term customers through well-planned, multi-channel campaigns.",
     icon: <BarChart3 className="w-6 h-6" />,
     slug: "digital-marketing",
+    href: "/services/digital-marketing",
     color: "#ea580c",
     features: [
       "SEO & Content Strategy",
@@ -71,24 +74,6 @@ const services: Service[] = [
     ],
   },
   {
-    title: "CMS Integration",
-    description:
-      "Smooth CMS integrations that make managing and updating content simple and efficient.",
-    longDescription:
-      "We integrate flexible and user-friendly content management systems that give you full control over your content. Whether it's WordPress, Strapi, or a custom-built CMS, we ensure managing your website is straightforward and intuitive.",
-    icon: <RefreshCw className="w-6 h-6" />,
-    slug: "cms-integration",
-    color: "#0891b2",
-    features: [
-      "WordPress Integration",
-      "Headless CMS Solutions",
-      "Custom Admin Panels",
-      "Content Workflows",
-      "Media Management",
-      "User Permissions",
-    ],
-  },
-  {
     title: "Mobile Apps",
     description:
       "High-quality mobile applications built for both iOS and Android platforms.",
@@ -114,6 +99,7 @@ const services: Service[] = [
       "Our SEO services focus on growing organic traffic and improving search performance through proven, sustainable strategies tailored to your business goals.",
     icon: <Search className="w-6 h-6" />,
     slug: "seo-services",
+    href: "/services/seo-services",
     color: "#d97706",
     features: [
       "Keyword Research",
@@ -125,96 +111,6 @@ const services: Service[] = [
     ],
   },
   {
-    title: "Creative Design",
-    description:
-      "Engaging visual designs that reflect your brand and capture attention.",
-    longDescription:
-      "Our creative design services focus on creating visuals that clearly communicate your brand story. From logos to marketing assets, we design with purpose to leave a lasting impression.",
-    icon: <Palette className="w-6 h-6" />,
-    slug: "creative-design",
-    color: "#e11d48",
-    features: [
-      "Logo & Brand Identity",
-      "Print & Digital Design",
-      "Social Media Graphics",
-      "Marketing Collaterals",
-      "UI/UX Design",
-      "Brand Guidelines",
-    ],
-  },
-  {
-    title: "Video Production",
-    description:
-      "Complete video production services, from initial concept to final delivery.",
-    longDescription:
-      "We create professional videos that bring your brand message to life, handling everything from concept development and scripting to filming, editing, and post-production.",
-    icon: <Video className="w-6 h-6" />,
-    slug: "video-production",
-    color: "#9333ea",
-    features: [
-      "Concept Development",
-      "Scriptwriting",
-      "Professional Filming",
-      "Editing & Post-Production",
-      "Motion Graphics",
-      "Animation",
-    ],
-  },
-  {
-    title: "E-commerce Solutions",
-    description:
-      "End-to-end e-commerce platforms built to support sales and long-term growth.",
-    longDescription:
-      "We develop robust e-commerce solutions that combine seamless user experiences, secure payment systems, and conversion-focused designs to help you sell more online.",
-    icon: <ShoppingCart className="w-6 h-6" />,
-    slug: "ecommerce-solutions",
-    color: "#0284c7",
-    features: [
-      "Online Store Development",
-      "Payment Gateway Integration",
-      "Inventory Management",
-      "Mobile Optimization",
-      "SEO for E-commerce",
-      "Performance Analytics",
-    ],
-  },
-  {
-    title: "Content Marketing",
-    description:
-      "Purpose-driven content designed to engage audiences and deliver measurable results.",
-    longDescription:
-      "Our content marketing approach blends storytelling with data-backed strategies to attract the right audience, build trust, and drive meaningful engagement.",
-    icon: <PenTool className="w-6 h-6" />,
-    slug: "content-marketing",
-    color: "#16a34a",
-    features: [
-      "Content Strategy",
-      "Blog Writing",
-      "Copywriting",
-      "SEO Content",
-      "Content Calendar",
-      "Performance Analysis",
-    ],
-  },
-  {
-    title: "Brand Strategy",
-    description:
-      "Strategic brand development that creates strong connections with your audience.",
-    longDescription:
-      "We help shape your brand's identity, voice, and positioning to ensure it resonates with your audience and stands out in a competitive market.",
-    icon: <Target className="w-6 h-6" />,
-    slug: "brand-strategy",
-    color: "#dc2626",
-    features: [
-      "Brand Positioning",
-      "Messaging Strategy",
-      "Competitive Analysis",
-      "Target Audience Research",
-      "Brand Voice & Tone",
-      "Brand Guidelines",
-    ],
-  },
-  {
     title: "Social Media Management",
     description:
       "Thoughtful social media strategies that strengthen and grow your brand presence.",
@@ -222,6 +118,7 @@ const services: Service[] = [
       "We plan and manage social media campaigns that boost brand awareness, encourage engagement, and drive conversions across today's most impactful platforms.",
     icon: <Share2 className="w-6 h-6" />,
     slug: "social-media-management",
+    href: "/services/social-media-management",
     color: "#7c3aed",
     features: [
       "Social Media Strategy",
@@ -296,49 +193,69 @@ export default function ServicesSection({ showAll = false }) {
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayServices.map((service, index) => (
-            <motion.div
-              key={service.slug}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              onClick={() => openModal(service)}
-              className="group relative bg-white rounded-2xl p-7 cursor-pointer border border-gray-100 hover:border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-            >
-              {/* Colored top accent */}
-              <div
-                className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ backgroundColor: service.color }}
-              />
+          {displayServices.map((service, index) => {
+            const cardClasses =
+              "group relative block h-full w-full bg-white rounded-2xl p-7 cursor-pointer border border-gray-100 hover:border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-left";
+            const cardContent = (
+              <>
+                {/* Colored top accent */}
+                <div
+                  className="absolute top-0 left-6 right-6 h-0.5 rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ backgroundColor: service.color }}
+                />
 
-              {/* Icon */}
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110"
-                style={{
-                  backgroundColor: `${service.color}10`,
-                  color: service.color,
-                }}
+                {/* Icon */}
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110"
+                  style={{
+                    backgroundColor: `${service.color}10`,
+                    color: service.color,
+                  }}
+                >
+                  {service.icon}
+                </div>
+
+                <h3 className="text-lg font-bold mb-3 text-gray-900 group-hover:text-gray-800 transition-colors">
+                  {service.title}
+                </h3>
+
+                <p className="text-gray-500 text-sm leading-relaxed mb-5">
+                  {service.description}
+                </p>
+
+                <div
+                  className="inline-flex items-center text-sm font-semibold transition-all duration-300 group-hover:gap-2"
+                  style={{ color: service.color }}
+                >
+                  Learn more <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </div>
+              </>
+            );
+
+            return (
+              <motion.div
+                key={service.slug}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
               >
-                {service.icon}
-              </div>
-
-              <h3 className="text-lg font-bold mb-3 text-gray-900 group-hover:text-gray-800 transition-colors">
-                {service.title}
-              </h3>
-
-              <p className="text-gray-500 text-sm leading-relaxed mb-5">
-                {service.description}
-              </p>
-
-              <div
-                className="inline-flex items-center text-sm font-semibold transition-all duration-300 group-hover:gap-2"
-                style={{ color: service.color }}
-              >
-                Learn more <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </div>
-            </motion.div>
-          ))}
+                {service.href ? (
+                  <Link href={service.href} className={cardClasses}>
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => openModal(service)}
+                    className={cardClasses}
+                  >
+                    {cardContent}
+                  </button>
+                )}
+              </motion.div>
+            );
+          })}
         </div>
 
         {!showAll && (
