@@ -1,10 +1,15 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { Navbar } from '@/components/Navbar';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
   Smartphone,
   Search,
   User,
@@ -138,11 +143,79 @@ const designApproach = [
   { num: '05', title: 'Support', desc: 'We provide ongoing support and optimization to help you grow.', icon: <BarChart3 className="w-6 h-6 text-rose-500" />, bg: 'bg-rose-50' },
 ];
 
-const portfolio = [
-  { title: 'Luxora Interiors', category: 'Business Website', image: '/images/projects/luxora_portfolio.png' },
-  { title: 'Glow & Co.', category: 'E-Commerce Website', image: '/images/projects/glow_co_portfolio.png' },
-  { title: 'Taskly', category: 'SaaS Website', image: '/images/projects/taskly_portfolio.png' },
-  { title: 'StartupHub', category: 'Landing Page', image: '/images/projects/startuphub_portfolio.png' },
+const projects = [
+  {
+    title: 'Stillwater Advisory',
+    description: 'An elegant, immersive digital showcase for Stillwater Advisory, a specialized hospitality consulting firm. Built to present their portfolio of iconic, sanctuary hospitality spaces with full-bleed premium visuals, custom grid systems, and clean layout structures.',
+    image: '/images/projects/stillwater.jpg',
+    url: 'https://stillwater-advisory.eu/',
+    technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'Premium UX'],
+    testimonial: {
+      text: "IgniteX delivered an absolutely stunning website that perfectly conveys our focus on high-end sanctuary hospitality. The response from our clients has been incredibly positive.",
+      author: "Stillwater Advisory Team",
+      role: "Managing Partners"
+    }
+  },
+  {
+    title: 'Bacchus Restaurant',
+    description: 'A premium, visually-rich website for Bacchus Restaurant, showcasing their fine Mediterranean dining menus, elegant wine lists, gallery, and online reservation capabilities with a responsive, high-end design.',
+    image: '/images/projects/bacchus.png',
+    url: 'https://www.bacchusrestaurant.ie/',
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
+    testimonial: {
+      text: "The website designed by IgniteX captures the upscale, inviting atmosphere of our restaurant perfectly. Our customers love the seamless menu browsing and online booking experience.",
+      author: "Bacchus Management",
+      role: "Owner, Bacchus Restaurant"
+    }
+  },
+  {
+    title: 'ONS Clothing',
+    description: 'A sleek, modern e-commerce storefront for ONS Clothing, featuring high-quality product grids, curated brand collections, interactive product filters, and a seamless checkout process.',
+    image: '/images/projects/onsclothing.png',
+    url: 'https://onsclothing.com/',
+    technologies: ['Next.js', 'Shopify API', 'Tailwind CSS', 'Headless E-Commerce'],
+    testimonial: {
+      text: "IgniteX transformed our online store into a modern, fast, and highly engaging shopping experience. Our conversion rates have improved significantly since the redesign.",
+      author: "ONS Clothing Team",
+      role: "E-Commerce Director"
+    }
+  },
+  {
+    title: 'Reflect - Journal App',
+    description: 'A personal journaling application built with Next.js, TypeScript, and Neon DB. Features include rich text editing, mood tracking, and secure user authentication.',
+    image: '/images/projects/Journal.webp',
+    url: 'https://journal-app-blue-omega.vercel.app/',
+    technologies: ['Next.js', 'TypeScript', 'Neon DB', 'Tailwind CSS'],
+    testimonial: {
+      text: "A beautifully crafted journaling experience that makes daily reflection a joy. The clean interface and smooth performance make it a pleasure to use.",
+      author: "Personal Project",
+      role: "Developer & Designer"
+    }
+  },
+  {
+    title: 'Kalam Study Hall',
+    description: 'A modern educational platform for Kalam Study Hall in Jamshedpur, featuring course listings, workshop schedules, interactive category filters, and a responsive hero section with an engaging visual design.',
+    image: '/kalam.webp',
+    url: 'https://www.kalamstudyhall.com',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Responsive Design'],
+    testimonial: {
+      text: "IgniteX delivered a professional, fast, and visually stunning website that perfectly represents our educational mission. The responsive design works flawlessly across all devices.",
+      author: "Dhivya Mohan",
+      role: "Founder, Kalam Study Hall"
+    }
+  },
+  {
+    title : "Edutrack",
+    description : "EduTrack is a comprehensive school management system designed to streamline administrative tasks and enhance the educational experience for schools, teachers, and parents.",
+    image : "/edutrack.webp",
+    url : "https://edutrack-frontend-seven.vercel.app/",
+    technologies : ["FastAPI", "PostgreSQL", "Socket.io", "Next js, neon db"],
+    testimonial : {
+      text : "EduTrack is a game-changer for our school. It has simplified our administrative tasks and improved communication between teachers and parents. The interface is clean and easy to use, and the features are exactly what we needed.",
+      author : "IgniteX",
+      role : "A product of IgniteX"
+    }
+  }
 ];
 
 const stats = [
@@ -153,6 +226,31 @@ const stats = [
 ];
 
 export default function WebDevContent() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startAutoPlay = () => {
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+    }, 8000);
+  };
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, []);
+
+  const handleNav = (direction: 'prev' | 'next') => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (direction === 'prev') {
+      setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+    } else {
+      setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
+    }
+    startAutoPlay();
+  };
+
+  const project = projects[currentIndex];
   return (
     <>
       <BreadcrumbListSchema
@@ -295,41 +393,143 @@ export default function WebDevContent() {
         {/* Portfolio Section */}
         <section id="portfolio" className="py-24 border-t border-gray-100 bg-white">
           <div className="max-w-7xl mx-auto px-4 md:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-              <div>
-                <span className="text-red-600 text-xs font-semibold uppercase tracking-[0.2em] mb-2 block">Our Portfolio</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                  Websites That <span className="text-red-600">Drive Results</span>
-                </h2>
-              </div>
-              <Link href="/contact" className="inline-flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-red-600 transition-colors">
-                View All Projects <ArrowRight className="w-4 h-4 text-red-600" />
-              </Link>
+            <div className="text-center mb-16">
+              <span className="text-red-600 text-xs font-semibold uppercase tracking-[0.2em] mb-2 block">Our Portfolio</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Websites That <span className="text-red-600">Drive Results</span>
+              </h2>
+              <p className="text-gray-500 text-sm max-w-2xl mx-auto leading-relaxed">
+                Explore our portfolio of successful projects and see how we&apos;ve helped businesses transform their digital presence.
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {portfolio.map((item, index) => (
-                <div key={index} className="group relative block bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl hover:border-gray-200 transition-all duration-300">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-50">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="(max-width: 768px) 90vw, 45vw"
-                      className="object-cover object-center group-hover:scale-[1.03] transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="p-5 flex justify-between items-center border-t border-gray-100">
-                    <div>
-                      <h3 className="font-bold text-gray-900 group-hover:text-red-600 transition-colors">{item.title}</h3>
-                      <p className="text-xs text-gray-400">{item.category}</p>
+            {/* Project Showcase */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+              >
+                {/* Project Image */}
+                <div className="relative group">
+                  <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                    <div className="aspect-video bg-gray-100 relative">
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} Preview`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR42mN8//8/AwAB/wNqPAAAAABJRU5ErkJggg=="
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-red-50 flex items-center justify-center transition-colors">
-                      <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-red-600 transition-colors" />
+
+                    {/* Visit button overlay */}
+                    <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium hover:bg-red-600 hover:border-red-600 transition-all duration-300"
+                      >
+                        Visit Website <ArrowUpRight className="h-4 w-4" />
+                      </a>
                     </div>
                   </div>
                 </div>
-              ))}
+
+                {/* Project Details */}
+                <div className="space-y-6">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-gray-500 leading-relaxed text-base">
+                    {project.description}
+                  </p>
+
+                  {/* Tech stack chips */}
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1.5 rounded-full text-xs font-medium border border-gray-200 text-gray-600 bg-gray-50"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Client Testimonial */}
+                  {project.testimonial && (
+                    <div className="relative p-6 rounded-xl border border-gray-100 bg-gray-50">
+                      <div className="absolute -top-3 left-6 px-2 text-red-500 text-2xl font-serif bg-gray-50">
+                        &ldquo;
+                      </div>
+                      <p className="text-gray-600 italic text-sm leading-relaxed mb-4">
+                        {project.testimonial.text}
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="h-8 w-8 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
+                          style={{ background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)' }}
+                        >
+                          {project.testimonial.author.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div>
+                          <span className="text-gray-900 font-semibold text-sm">{project.testimonial.author}</span>
+                          <span className="text-gray-500 text-xs block">{project.testimonial.role}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-center gap-6 mt-12">
+              <button
+                onClick={() => handleNav('prev')}
+                className="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-red-600 hover:border-red-500/50 hover:bg-red-50 transition-all duration-300"
+                aria-label="Previous project"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              {/* Dot indicators */}
+              <div className="flex items-center gap-3">
+                {projects.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      if (intervalRef.current) clearInterval(intervalRef.current);
+                      setCurrentIndex(idx);
+                      startAutoPlay();
+                    }}
+                    className={`transition-all duration-500 rounded-full ${
+                      idx === currentIndex
+                        ? 'w-8 h-2 bg-red-500'
+                        : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to project ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={() => handleNav('next')}
+                className="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-red-600 hover:border-red-500/50 hover:bg-red-50 transition-all duration-300"
+                aria-label="Next project"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </section>

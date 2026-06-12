@@ -7,6 +7,42 @@ import Image from 'next/image';
 
 const projects = [
   {
+    title: 'Stillwater Advisory',
+    description: 'An elegant, immersive digital showcase for Stillwater Advisory, a specialized hospitality consulting firm. Built to present their portfolio of iconic, sanctuary hospitality spaces with full-bleed premium visuals, custom grid systems, and clean layout structures.',
+    image: '/images/projects/stillwater.jpg',
+    url: 'https://stillwater-advisory.eu/',
+    technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'Premium UX'],
+    testimonial: {
+      text: "IgniteX delivered an absolutely stunning website that perfectly conveys our focus on high-end sanctuary hospitality. The response from our clients has been incredibly positive.",
+      author: "Stillwater Advisory Team",
+      role: "Managing Partners"
+    }
+  },
+  {
+    title: 'Bacchus Restaurant',
+    description: 'A premium, visually-rich website for Bacchus Restaurant, showcasing their fine Mediterranean dining menus, elegant wine lists, gallery, and online reservation capabilities with a responsive, high-end design.',
+    image: '/images/projects/bacchus.png',
+    url: 'https://www.bacchusrestaurant.ie/',
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
+    testimonial: {
+      text: "The website designed by IgniteX captures the upscale, inviting atmosphere of our restaurant perfectly. Our customers love the seamless menu browsing and online booking experience.",
+      author: "Bacchus Management",
+      role: "Owner, Bacchus Restaurant"
+    }
+  },
+  {
+    title: 'ONS Clothing',
+    description: 'A sleek, modern e-commerce storefront for ONS Clothing, featuring high-quality product grids, curated brand collections, interactive product filters, and a seamless checkout process.',
+    image: '/images/projects/onsclothing.png',
+    url: 'https://onsclothing.com/',
+    technologies: ['Next.js', 'Shopify API', 'Tailwind CSS', 'Headless E-Commerce'],
+    testimonial: {
+      text: "IgniteX transformed our online store into a modern, fast, and highly engaging shopping experience. Our conversion rates have improved significantly since the redesign.",
+      author: "ONS Clothing Team",
+      role: "E-Commerce Director"
+    }
+  },
+  {
     title: 'Reflect - Journal App',
     description: 'A personal journaling application built with Next.js, TypeScript, and Neon DB. Features include rich text editing, mood tracking, and secure user authentication.',
     image: '/images/projects/Journal.webp',
