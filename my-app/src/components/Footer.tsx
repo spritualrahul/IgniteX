@@ -16,7 +16,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://www.instagram.com/ignitex_solutions?igsh=MjZ2YnBxdWdoZXZv"
+                href="https://www.instagram.com/ignitex_solutions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"

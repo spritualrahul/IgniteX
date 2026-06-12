@@ -27,7 +27,7 @@ export const defaultKeywords = [
 ];
 
 export const socialLinks = {
-  instagram: 'https://www.instagram.com/ignitex_solutions?igsh=MjZ2YnBxdWdoZXZv',
+  instagram: 'https://www.instagram.com/ignitex_solutions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
   linkedin: 'https://www.linkedin.com/company/ignitex',
 };
 
