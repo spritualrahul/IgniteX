@@ -4,7 +4,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import dynamic from 'next/dynamic';
+
+const DotLottieReact = dynamic(
+  () => import('@lottiefiles/dotlottie-react').then((mod) => mod.DotLottieReact),
+  { ssr: false, loading: () => <div className="w-full h-full min-h-[300px] bg-slate-100 animate-pulse rounded-lg" /> }
+);
 
 interface TabItem {
   title: string;

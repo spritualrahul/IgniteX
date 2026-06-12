@@ -9,7 +9,7 @@ const projects = [
   {
     title: 'Stillwater Advisory',
     description: 'An elegant, immersive digital showcase for Stillwater Advisory, a specialized hospitality consulting firm. Built to present their portfolio of iconic, sanctuary hospitality spaces with full-bleed premium visuals, custom grid systems, and clean layout structures.',
-    image: '/images/projects/stillwater.jpg',
+    image: '/images/projects/stillwater.webp',
     url: 'https://stillwater-advisory.eu/',
     technologies: ['Next.js', 'Tailwind CSS', 'Framer Motion', 'Premium UX'],
     testimonial: {
@@ -21,7 +21,7 @@ const projects = [
   {
     title: 'Bacchus Restaurant',
     description: 'A premium, visually-rich website for Bacchus Restaurant, showcasing their fine Mediterranean dining menus, elegant wine lists, gallery, and online reservation capabilities with a responsive, high-end design.',
-    image: '/images/projects/bacchus.png',
+    image: '/images/projects/bacchus.webp',
     url: 'https://www.bacchusrestaurant.ie/',
     technologies: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
     testimonial: {
@@ -33,7 +33,7 @@ const projects = [
   {
     title: 'ONS Clothing',
     description: 'A sleek, modern e-commerce storefront for ONS Clothing, featuring high-quality product grids, curated brand collections, interactive product filters, and a seamless checkout process.',
-    image: '/images/projects/onsclothing.png',
+    image: '/images/projects/onsclothing.webp',
     url: 'https://onsclothing.com/',
     technologies: ['Next.js', 'Shopify API', 'Tailwind CSS', 'Headless E-Commerce'],
     testimonial: {
