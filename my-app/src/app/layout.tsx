@@ -7,6 +7,7 @@ import { GTMProvider, GTMNoScript } from '@/components/GTMProvider';
 import Footer from '@/components/Footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from '@/components/JsonLd';
+import Loader from '@/components/Loader';
 
 // Configure fonts
 const inter = Inter({ 
@@ -134,6 +135,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} ${oswald.variable} font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen`}>
+        <Loader />
         <GTMNoScript />
         <main className="flex-grow">
           {children}
