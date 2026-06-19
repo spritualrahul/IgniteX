@@ -14,8 +14,14 @@ export default function WhatsAppWidget() {
       className="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20ba56] text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 group"
       aria-label="Chat with us on WhatsApp"
     >
-      {/* Pulse/ripple effect */}
-      <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-40 animate-ping group-hover:animate-none"></span>
+      {/* Pulse/ripple effect — composited for performance */}
+      <span
+        className="absolute inset-0 rounded-full bg-[#25D366] opacity-40 group-hover:animate-none"
+        style={{
+          animation: 'whatsapp-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite',
+          willChange: 'transform, opacity',
+        }}
+      />
       
       <FaWhatsapp className="relative z-10 text-3xl" />
       

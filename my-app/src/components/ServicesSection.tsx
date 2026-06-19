@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { X, ArrowRight, Globe, BarChart3, Bot, Smartphone, Search, Share2 } from "lucide-react";
 
@@ -134,22 +134,9 @@ const services: Service[] = [
 export default function ServicesSection({ showAll = false }) {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const mql = window.matchMedia('(max-width: 767px)');
-    setIsMobile(mql.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mql.addEventListener('change', handler);
-    return () => mql.removeEventListener('change', handler);
-  }, []);
-
-  let displayServices: Service[];
-  if (showAll) {
-    displayServices = services;
-  } else {
-    displayServices = isMobile ? services.slice(0, 3) : services.slice(0, 6);
-  }
+  // Always render all services; use CSS to hide extras on mobile to avoid CLS
+  const displayServices = showAll ? services : services.slice(0, 6);
 
   const openModal = (service: Service) => {
     setSelectedService(service);
@@ -214,6 +201,7 @@ export default function ServicesSection({ showAll = false }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
+                className={!showAll && index >= 3 ? 'hidden md:block' : ''}
               >
                 {service.href ? (
                   <Link href={service.href} className={cardClasses}>

@@ -10,16 +10,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4">IgniteX</h3>
+            <p className="text-xl font-bold mb-4">IgniteX</p>
             <p className="text-gray-400 mb-4">
               Transforming ideas into digital reality with cutting-edge technology and innovative solutions.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-2">
               <a
                 href="https://www.instagram.com/ignitex_solutions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors inline-flex items-center justify-center w-11 h-11 rounded-lg hover:bg-white/10"
                 aria-label="Follow IgniteX on Instagram"
               >
                 <FaInstagram size={20} />
@@ -29,7 +29,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/ignitex-solution-89324b389"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors inline-flex items-center justify-center w-11 h-11 rounded-lg hover:bg-white/10"
                 aria-label="Follow IgniteX on LinkedIn"
               >
                 <FaLinkedin size={20} />
@@ -39,7 +39,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <p className="text-lg font-semibold mb-4">Quick Links</p>
             <ul className="space-y-2">
               <li><Link href="/#services" className="text-gray-400 hover:text-white transition-colors">Services</Link></li>
               <li><Link href="/#work" className="text-gray-400 hover:text-white transition-colors">Our Work</Link></li>
@@ -51,16 +51,16 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
+            <p className="text-lg font-semibold mb-4">Contact Us</p>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <FaEnvelope className="mt-1 mr-3 text-red-500" />
+                <FaEnvelope className="mt-1 mr-3 text-red-500 shrink-0" />
                 <a href="mailto:contact@ignitexsolution.com" className="text-gray-400 hover:text-white transition-colors">
                  contact@ignitexsolution.com
                 </a>
               </li>
               <li className="flex items-start">
-                <FaPhone className="mt-1 mr-3 text-red-500" />
+                <FaPhone className="mt-1 mr-3 text-red-500 shrink-0" />
                 <a href="tel:+918935860306" className="text-gray-400 hover:text-white transition-colors">
                   +91 8935860306
                 </a>
@@ -84,14 +84,17 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
+            <p className="text-lg font-semibold mb-4">Newsletter</p>
             <p className="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates.</p>
             <form className="flex">
+              <label htmlFor="footer-email" className="sr-only">Email address</label>
               <input
+                id="footer-email"
                 type="email"
                 placeholder="Your email"
                 className="px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-500 text-white w-full"
                 required
+                aria-label="Email address for newsletter"
               />
               <button
                 type="submit"

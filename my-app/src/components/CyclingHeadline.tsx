@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 interface CyclingHeadlineProps {
   constant: string;
@@ -45,22 +45,10 @@ export const CyclingHeadline: React.FC<CyclingHeadlineProps> = ({ constant, cont
   // Get the current visible text
   const visibleText = [...contexts[current]].slice(0, visibleCount).join('');
 
-  // Add keyframe animation for gradient
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-    `;
-    document.head.appendChild(style);
-    
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
+  // Pre-calculate the longest context string to reserve space and avoid CLS
+  const longestContext = useMemo(() => {
+    return contexts.reduce((a, b) => a.length > b.length ? a : b, '');
+  }, [contexts]);
 
   return (
     <div className="flex flex-col">
@@ -81,9 +69,23 @@ export const CyclingHeadline: React.FC<CyclingHeadlineProps> = ({ constant, cont
       >
         {constant}
       </span>
-      <div className="h-20 md:h-24 flex items-center mt-2">
+      {/* Fixed-height container prevents CLS from typing animation */}
+      <div className="h-20 md:h-24 flex items-center mt-2 relative">
+        {/* Invisible spacer to reserve width for the longest text */}
         <span 
-          className={`text-red-600 text-4xl md:text-5xl font-poppins font-semibold ${visibleCount > 0 ? 'visible' : 'invisible'}`}
+          aria-hidden="true"
+          className="text-red-600 text-4xl md:text-5xl font-poppins font-semibold invisible whitespace-nowrap"
+          style={{
+            ...(fontFamily ? { fontFamily } : {}),
+            lineHeight: '1.2',
+            letterSpacing: '-0.01em'
+          }}
+        >
+          {longestContext}
+        </span>
+        {/* Actual visible typing text, positioned absolutely to avoid layout shifts */}
+        <span 
+          className={`absolute left-0 top-0 h-full flex items-center text-red-600 text-4xl md:text-5xl font-poppins font-semibold whitespace-nowrap ${visibleCount > 0 ? 'visible' : 'invisible'}`}
           style={{
             ...(fontFamily ? { fontFamily } : {}),
             lineHeight: '1.2',

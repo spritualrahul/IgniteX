@@ -109,6 +109,7 @@ export default function TestimonialsSection() {
 
         <motion.div
           className="flex"
+          style={{ willChange: 'transform' }}
           animate={{ x: [0, -totalWidth] }}
           transition={{
             x: {
