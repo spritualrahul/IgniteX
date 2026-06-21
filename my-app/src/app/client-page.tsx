@@ -7,7 +7,7 @@ import { Navbar } from '@/components/Navbar';
 import { CyclingHeadline } from '@/components/CyclingHeadline';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Calendar } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 // Lazy load heavy components with client-side only rendering
@@ -56,7 +56,7 @@ export default function ClientPage() {
   return (
     <div className="relative z-10 bg-transparent">
       <Navbar />
-      <section id="home" className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+      <section id="home" className="relative pt-20 sm:pt-28 pb-20 md:pt-40 md:pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
@@ -69,40 +69,51 @@ export default function ClientPage() {
               <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto lg:mx-0 font-poppins font-medium leading-relaxed tracking-tight">
                 Transform your digital presence with results that truly matter. From beautifully crafted websites to intelligent, AI-driven solutions, we bring your ideas to life with care, precision, and purpose one detail at a time.
               </p>
-              <div className="mt-6 flex flex-col gap-4 items-center lg:items-start max-w-xl mx-auto lg:mx-0">
-                <Link href="/contact" className="w-full">
-                  <Button
-                    size="lg"
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3 rounded shadow-lg text-lg w-full"
-                  >
-                    Connect with us
-                  </Button>
-                </Link>
-                <div className="flex flex-col sm:flex-row gap-3 w-full">
-                  <Link href="/contact?tab=meeting" className="w-full sm:w-1/2">
-                    <Button
-                      size="lg"
-                      className="bg-gradient-to-r from-gray-900 to-gray-700 hover:from-gray-800 hover:to-gray-600 text-white font-bold px-4 py-3 rounded-xl shadow-lg text-sm lg:text-base flex items-center justify-center w-full h-full border-0 transition-all duration-300 hover:shadow-gray-900/40 hover:shadow-xl hover:-translate-y-0.5"
-                    >
-                      <Calendar className="w-4 h-4 mr-2 shrink-0" />
-                      Book a Free Consultation
-                    </Button>
+              <div className="mt-6 flex w-full max-w-3xl flex-col gap-4 sm:flex-row sm:flex-wrap xl:flex-nowrap xl:w-max xl:max-w-none items-stretch justify-center lg:justify-start mx-auto lg:mx-0">
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-14 w-full sm:w-[228px] justify-between gap-4 rounded-xl bg-red-600 px-5 text-sm font-bold text-white whitespace-nowrap shadow-[0_16px_32px_rgba(220,38,38,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-[0_20px_38px_rgba(220,38,38,0.34)]"
+                >
+                  <Link href="/contact">
+                    <span className="flex items-center gap-2.5">
+                      <Calendar className="h-5 w-5 shrink-0" />
+                      Connect with us
+                    </span>
+                    <ArrowRight className="h-5 w-5 shrink-0" />
                   </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="h-14 w-full sm:w-[270px] justify-between gap-4 rounded-xl border border-gray-300 bg-white px-5 text-sm font-bold text-gray-900 whitespace-nowrap shadow-[0_14px_30px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:border-gray-400 hover:bg-white hover:shadow-[0_18px_36px_rgba(15,23,42,0.12)]"
+                >
+                  <Link href="/contact?tab=meeting">
+                    <span className="flex items-center gap-2.5">
+                      <Calendar className="h-5 w-5 shrink-0 text-gray-700" />
+                      Book a Free Consultation
+                    </span>
+                    <ArrowRight className="h-5 w-5 shrink-0 text-gray-700" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-14 w-full sm:w-[258px] justify-between gap-4 rounded-xl bg-[#25D366] px-5 text-sm font-bold text-white whitespace-nowrap shadow-[0_16px_32px_rgba(37,211,102,0.26)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1da851] hover:shadow-[0_20px_38px_rgba(37,211,102,0.32)]"
+                >
                   <a
                     href="https://wa.me/918935860306?text=Hi%20IgniteX%20Solutions!%20I'd%20love%20to%20connect%20and%20know%20more%20about%20your%20services."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-1/2"
                   >
-                    <Button
-                      size="lg"
-                      className="bg-[#25D366] hover:bg-[#1da851] text-white font-bold px-4 py-3 rounded-xl shadow-lg text-sm lg:text-base flex items-center justify-center border-0 w-full h-full transition-all duration-300 hover:shadow-green-500/30 hover:shadow-xl hover:-translate-y-0.5"
-                    >
-                      <FaWhatsapp className="w-4 h-4 mr-2 shrink-0" />
+                    <span className="flex items-center gap-2.5">
+                      <FaWhatsapp className="h-5 w-5 shrink-0" />
                       Connect on WhatsApp
-                    </Button>
+                    </span>
+                    <ArrowRight className="h-5 w-5 shrink-0" />
                   </a>
-                </div>
+                </Button>
               </div>
             </div>
             <DeviceShowcase />

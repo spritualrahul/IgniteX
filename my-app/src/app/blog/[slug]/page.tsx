@@ -6,6 +6,7 @@ import { ArrowLeft, Clock, CalendarDays, User } from 'lucide-react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { Navbar } from '@/components/Navbar';
 import { getPostBySlug, getAllSlugs } from '@/lib/blog';
+import { BlogShareAndProgress } from '@/components/BlogShareAndProgress';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -108,6 +109,8 @@ export default async function BlogPostPage({ params }: Props) {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             {post.title}
           </h1>
+
+          <BlogShareAndProgress title={post.title} slug={post.slug} description={post.description} />
 
           <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-10 pb-10 border-b border-gray-100">
             <span className="flex items-center gap-2">

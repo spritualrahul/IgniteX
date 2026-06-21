@@ -57,3 +57,36 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
 }
+
+/* Custom premium typography styles for blog posts */
+.prose {
+  color: #374151 !important; /* gray-700 */
+}
+.prose h2, .prose h3, .prose h4 {
+  color: #111827 !important; /* gray-900 */
+  font-weight: 700;
+  scroll-margin-top: 100px;
+}
+.prose blockquote {
+  font-style: normal !important;
+  border-left-width: 4px !important;
+  border-left-color: #2563eb !important; /* blue-600 */
+  background-color: #f8fafc !important; /* slate-50 */
+  padding: 1.25rem 1.5rem !important;
+  border-radius: 0.75rem !important;
+  color: #1e293b !important; /* slate-800 */
+}
+.prose blockquote p::before, .prose blockquote p::after {
+  content: "" !important;
+}
+.prose hr {
+  border-color: #f1f5f9 !important;
+  margin: 3rem 0 !important;
+}
+.prose a {
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+.prose li::marker {
+  color: #2563eb !important; /* blue-600 */
+}
