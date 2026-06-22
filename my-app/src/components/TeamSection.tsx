@@ -63,7 +63,7 @@ const TeamSection = () => {
       bio: 'Results-driven marketing strategist with expertise in digital marketing, brand management, and customer acquisition. Specializes in data-driven marketing campaigns, SEO, and conversion rate optimization. Proven track record of developing successful marketing strategies that drive business growth and increase market share.',
       alignment: 'right',
       social: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/abhuday-p-singh/',
         twitter: 'https://twitter.com',
         email: 'mailto:contact@ignitexsolution.com'
       },
@@ -83,7 +83,7 @@ const TeamSection = () => {
       bio: 'Seasoned Technical Lead and Full Stack Developer. Expert in system architecture, code reviews, and mentoring development teams while actively contributing to end-to-end development. Specializes in building scalable applications, integrating AI-driven solutions. Strong background in UI/UX implementation, and performance optimization, ensuring robust and intelligent products.',
       alignment: 'left',
       social: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/tejaswini-g-43751429b/',
         twitter: 'https://twitter.com',
         email: 'mailto:contact@ignitexsolution.com'
       },
@@ -101,7 +101,7 @@ const TeamSection = () => {
       bio: 'Results-driven Business and Data Analyst with expertise in Data Analysis, Business Intelligence, process optimization, and automation. Skilled in bridging the gap between business objectives and technical execution, ensuring on-time and within-budget delivery. Proficient in Agile methodologies, stakeholder communication, and process optimization to enhance project efficiency and business value.',
       alignment: 'right',
       social: {
-        linkedin: 'https://linkedin.com',
+        linkedin: 'https://www.linkedin.com/in/trinath-panigrahi-07602b118/',
         github: 'https://github.com',
         email: 'mailto:contact@ignitexsolution.com'
       }
