@@ -41,6 +41,7 @@ type TeamMember = {
   skills: string[];
   theme?: CardTheme;
   imagePosition?: string;
+  imageStyle?: React.CSSProperties;
   social: {
     linkedin: string;
     github?: string;
@@ -123,18 +124,18 @@ const teamStats: { value: string; label: string; icon: LucideIcon }[] = [
 export const teamMembers: TeamMember[] = [
   {
     name: 'Rahul Kumar Mahato',
-    role: 'Founder',
+    role: 'Founder & CEO',
     image: {
-      src: '/images/Rahul.webp',
+      src: '/images/Rahul.jpg',
       width: 500,
       height: 500,
-      alt: 'Rahul Kumar Mahato - Founder',
+      alt: 'Rahul Kumar Mahato - Founder & CEO',
       priority: true,
       loading: 'eager',
     },
-    bio: 'Full-stack developer passionate about building scalable web apps, DevOps, and AI-driven solutions.',
+    bio: 'Leading IgniteX\'s vision, technology strategy, and product innovation. Passionate about building scalable digital solutions, AI-powered products, and exceptional user experiences.',
     skills: ['Next.js', 'Node.js', 'AWS', 'AI'],
-    imagePosition: 'center',
+    imagePosition: '30% center',
     social: {
       linkedin: 'https://linkedin.com',
       github: 'https://github.com',
@@ -143,15 +144,15 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Abhuday Pratap Singh',
-    role: 'Co-Founder - Marketing & Performance',
+    role: 'Co-Founder & Growth Director',
     image: {
       src: '/images/team/Abhuday.webp',
       width: 500,
       height: 500,
-      alt: 'Abhuday Pratap Singh - Co-Founder - Marketing & Performance',
+      alt: 'Abhuday Pratap Singh - Co-Founder & Growth Director',
       loading: 'lazy',
     },
-    bio: 'Results-driven marketing strategist with expertise in digital marketing, brand management, and customer acquisition. Specializes in data-driven campaigns, SEO, and conversion rate optimization.',
+    bio: 'Driving business growth through performance marketing, brand strategy, SEO, and customer acquisition initiatives.',
     skills: ['Digital Marketing', 'SEO', 'Brand Strategy', 'Growth'],
     imagePosition: 'center',
     social: {
@@ -161,15 +162,15 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Tejaswini Gohil',
-    role: 'Core Team - Technology',
+    role: 'Head of Engineering',
     image: {
-      src: '/images/team/Tejaswini.webp',
+      src: '/images/team/Tejaswini.png',
       width: 500,
       height: 500,
-      alt: 'Tejaswini Gohil - Core Team Technology',
+      alt: 'Tejaswini Gohil - Head of Engineering',
       loading: 'lazy',
     },
-    bio: 'Seasoned technical lead and full stack developer skilled in architecture, system design and scalable applications.',
+    bio: 'Leading technology execution, system architecture, and scalable product development across web and digital platforms.',
     skills: ['React', 'TypeScript', 'System Design', 'AI'],
     imagePosition: 'center',
     social: {
@@ -180,16 +181,16 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Trinath Panigrahi',
-    role: 'Consulting PMO',
+    role: 'Director of Strategy & PMO',
     image: {
       src: '/images/team/Trinath.webp',
       width: 500,
       height: 500,
-      alt: 'Trinath Panigrahi - Consulting PMO',
+      alt: 'Trinath Panigrahi - Director of Strategy & PMO',
       loading: 'lazy',
     },
-    bio: 'Results-driven analyst with expertise in data, business intelligence, process optimization and automation.',
-    skills: ['Data Analysis', 'Power BI', 'SQL', 'Excel'],
+    bio: 'Overseeing business processes, project management, data analytics, and operational excellence to ensure successful project delivery.',
+    skills: ['Data Analysis', 'Power BI', 'SQL', 'Project Management'],
     imagePosition: 'center',
     social: {
       linkedin: 'https://www.linkedin.com/in/trinath-panigrahi-07602b118/',
@@ -198,16 +199,16 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Nitesh Sahani',
-    role: 'Content & Growth',
+    role: 'Content & Growth Lead',
     image: {
       src: '/images/team/Nitesh.webp',
       width: 500,
       height: 500,
-      alt: 'Nitesh Sahani - Content and Growth',
+      alt: 'Nitesh Sahani - Content & Growth Lead',
       loading: 'lazy',
     },
-    bio: 'Creative storyteller and content strategist specializing in engaging multimedia content and brand storytelling.',
-    skills: ['Video Editing', 'Content Strategy', 'Social Media', 'Branding'],
+    bio: 'Crafting compelling brand stories, content strategies, and digital campaigns that engage audiences and drive growth.',
+    skills: ['Content Strategy', 'Social Media', 'Branding', 'Digital Campaigns'],
     imagePosition: 'center',
     social: {
       linkedin: 'https://linkedin.com',
@@ -217,16 +218,16 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Saurabh Pandey',
-    role: 'Business & Finance Strategy',
+    role: 'Finance & Business Strategy Lead',
     image: {
       src: '/Saurav.webp',
       width: 500,
       height: 500,
-      alt: 'Saurabh Pandey - Business & Finance Strategy',
+      alt: 'Saurabh Pandey - Finance & Business Strategy Lead',
       loading: 'lazy',
     },
-    bio: 'MBA in Finance with a strong grasp of business strategy, financial planning, and investment analysis. Drives sustainable growth through data-backed decisions and cross-functional collaboration.',
-    skills: ['Financial Planning', 'Business Strategy', 'Investment Analysis', 'MBA Finance'],
+    bio: 'Supporting strategic decision-making through financial planning, market analysis, and sustainable growth initiatives.',
+    skills: ['Financial Planning', 'Business Strategy', 'Market Analysis', 'MBA Finance'],
     imagePosition: 'center',
     social: {
       linkedin: 'https://linkedin.com',
@@ -235,15 +236,15 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Tannu Vats',
-    role: 'Graphic Designer',
+    role: 'Creative Design Lead',
     image: {
       src: '/Tannu.webp',
       width: 500,
       height: 500,
-      alt: 'Tannu Vats - Graphic Designer',
+      alt: 'Tannu Vats - Creative Design Lead',
       loading: 'lazy',
     },
-    bio: 'Creative Graphic Designer passionate about visual storytelling, branding, and digital illustration. Crafts eye-catching visual concepts that resonate with audiences.',
+    bio: 'Creating impactful visual identities, brand experiences, and creative assets that strengthen client brands.',
     skills: ['Graphic Design', 'Branding', 'Illustrator', 'Photoshop'],
     imagePosition: 'center',
     social: {
@@ -253,15 +254,15 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Rakhi Kumari',
-    role: 'Chief People Officer — HR & Operations',
+    role: 'Chief People & Operations Officer',
     image: {
       src: '/images/team/Rakhi.webp',
       width: 500,
       height: 500,
-      alt: 'Rakhi Kumari - Chief People Officer, HR & Operations',
+      alt: 'Rakhi Kumari - Chief People & Operations Officer',
       loading: 'lazy',
     },
-    bio: 'People-first leader driving HR strategy, talent acquisition, and operational excellence. Builds cultures where teams thrive and organisations grow sustainably.',
+    bio: 'Building strong teams, managing talent, and ensuring operational excellence across the organization.',
     skills: ['HR Strategy', 'Operations', 'Talent Acquisition', 'Leadership'],
     imagePosition: 'center top',
     social: {
@@ -317,7 +318,7 @@ const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => {
           priority={member.image.priority}
           loading={member.image.priority ? undefined : member.image.loading}
           className="object-cover transition duration-500 group-hover:scale-[1.03]"
-          style={{ objectPosition: member.imagePosition ?? 'center' }}
+          style={{ objectPosition: member.imagePosition ?? 'center', ...member.imageStyle }}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 210px"
         />
       </div>
