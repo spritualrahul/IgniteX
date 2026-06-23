@@ -216,13 +216,13 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
-    name: 'Saurav',
+    name: 'Saurabh Pandey',
     role: 'Business & Finance Strategy',
     image: {
       src: '/Saurav.webp',
       width: 500,
       height: 500,
-      alt: 'Saurav - Full Stack Developer',
+      alt: 'Saurabh Pandey - Business & Finance Strategy',
       loading: 'lazy',
     },
     bio: 'MBA in Finance with a strong grasp of business strategy, financial planning, and investment analysis. Drives sustainable growth through data-backed decisions and cross-functional collaboration.',
@@ -234,13 +234,13 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
-    name: 'Tannu',
+    name: 'Tannu Vats',
     role: 'Graphic Designer',
     image: {
       src: '/Tannu.webp',
       width: 500,
       height: 500,
-      alt: 'Tannu - Graphic Designer',
+      alt: 'Tannu Vats - Graphic Designer',
       loading: 'lazy',
     },
     bio: 'Creative Graphic Designer passionate about visual storytelling, branding, and digital illustration. Crafts eye-catching visual concepts that resonate with audiences.',
@@ -252,13 +252,13 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
-    name: 'Rakhi',
+    name: 'Rakhi Kumari',
     role: 'Chief People Officer — HR & Operations',
     image: {
       src: '/images/team/Rakhi.webp',
       width: 500,
       height: 500,
-      alt: 'Rakhi - Chief People Officer, HR & Operations',
+      alt: 'Rakhi Kumari - Chief People Officer, HR & Operations',
       loading: 'lazy',
     },
     bio: 'People-first leader driving HR strategy, talent acquisition, and operational excellence. Builds cultures where teams thrive and organisations grow sustainably.',
