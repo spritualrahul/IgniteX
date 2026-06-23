@@ -251,6 +251,24 @@ export const teamMembers: TeamMember[] = [
       email: 'contact@ignitexsolution.com',
     },
   },
+  {
+    name: 'Rakhi',
+    role: 'Chief People Officer — HR & Operations',
+    image: {
+      src: '/images/team/Rakhi.webp',
+      width: 500,
+      height: 500,
+      alt: 'Rakhi - Chief People Officer, HR & Operations',
+      loading: 'lazy',
+    },
+    bio: 'People-first leader driving HR strategy, talent acquisition, and operational excellence. Builds cultures where teams thrive and organisations grow sustainably.',
+    skills: ['HR Strategy', 'Operations', 'Talent Acquisition', 'Leadership'],
+    imagePosition: 'center top',
+    social: {
+      linkedin: 'https://linkedin.com',
+      email: 'contact@ignitexsolution.com',
+    },
+  },
 ];
 
 const getTheme = (index: number, member: TeamMember) => member.theme ?? cardThemes[index % cardThemes.length];
