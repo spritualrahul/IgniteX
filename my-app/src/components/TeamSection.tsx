@@ -233,6 +233,24 @@ export const teamMembers: TeamMember[] = [
       email: 'contact@ignitexsolution.com',
     },
   },
+  {
+    name: 'Tannu',
+    role: 'Graphic Designer',
+    image: {
+      src: '/Tannu.jpg',
+      width: 500,
+      height: 500,
+      alt: 'Tannu - Graphic Designer',
+      loading: 'lazy',
+    },
+    bio: 'Creative Graphic Designer passionate about visual storytelling, branding, and digital illustration. Crafts eye-catching visual concepts that resonate with audiences.',
+    skills: ['Graphic Design', 'Branding', 'Illustrator', 'Photoshop'],
+    imagePosition: 'center',
+    social: {
+      linkedin: 'https://linkedin.com',
+      email: 'contact@ignitexsolution.com',
+    },
+  },
 ];
 
 const getTheme = (index: number, member: TeamMember) => member.theme ?? cardThemes[index % cardThemes.length];

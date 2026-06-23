@@ -54,14 +54,14 @@ type FooterLink = {
 function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) {
   return (
     <div>
-      <p className="text-[18px] font-bold uppercase leading-none text-white sm:text-[20px]">{title}</p>
+      <p className="font-[family-name:var(--font-nunito)] text-[18px] font-bold uppercase leading-none tracking-wide text-white sm:text-[20px]">{title}</p>
       <div className="mt-6 h-[3px] w-11 bg-white" />
       <ul className="mt-9 space-y-3.5">
         {links.map((link) => (
           <li key={link.label}>
             <Link
               href={link.href}
-              className="text-[18px] leading-7 text-white/88 transition-colors duration-200 hover:text-white sm:text-[20px]"
+              className="font-[family-name:var(--font-nunito)] text-[18px] leading-7 text-white/88 transition-colors duration-200 hover:text-white sm:text-[20px]"
             >
               {link.label}
             </Link>
@@ -92,10 +92,10 @@ export default function Footer() {
         <div className="mx-auto max-w-[1536px] px-6 pb-32 pt-16 sm:px-10 sm:pb-24 sm:pt-20 lg:px-[76px] lg:pb-[98px] lg:pt-[128px]">
           <div className="grid grid-cols-1 gap-x-10 gap-y-14 md:grid-cols-2 xl:grid-cols-[1.65fr_0.82fr_1.05fr_1.35fr_1.75fr] xl:gap-x-11">
             <section className="max-w-[340px]">
-              <h2 id="footer-brand" className="text-[46px] font-extrabold leading-none text-white sm:text-[56px]">
+              <h2 id="footer-brand" className="font-[family-name:var(--font-nunito)] text-[46px] font-extrabold leading-none text-white sm:text-[56px]">
                 IgniteX
               </h2>
-              <p className="mt-9 text-[18px] leading-[1.72] text-white/88 sm:text-[20px]">
+              <p className="font-[family-name:var(--font-nunito)] mt-9 text-[18px] leading-[1.72] text-white/88 sm:text-[20px]">
                 Transforming ideas into digital reality with cutting-edge technology and innovative solutions.
               </p>
               <div className="mt-8 flex items-center gap-5">
@@ -119,11 +119,11 @@ export default function Footer() {
             <FooterColumn title="Solutions" links={solutionLinks} />
 
             <section>
-              <p className="text-[18px] font-bold uppercase leading-none text-white sm:text-[20px]">
+              <p className="font-[family-name:var(--font-nunito)] text-[18px] font-bold uppercase leading-none tracking-wide text-white sm:text-[20px]">
                 Stay Connected
               </p>
               <div className="mt-6 h-[3px] w-11 bg-white" />
-              <p className="mt-9 max-w-[330px] text-[18px] leading-[1.8] text-white/88 sm:text-[20px]">
+              <p className="font-[family-name:var(--font-nunito)] mt-9 max-w-[330px] text-[18px] leading-[1.8] text-white/88 sm:text-[20px]">
                 Subscribe to our newsletter and stay updated with the latest insights.
               </p>
               <form className="mt-8 flex h-[68px] w-full max-w-[305px] overflow-hidden rounded-md border border-white/35 bg-transparent">
@@ -136,7 +136,7 @@ export default function Footer() {
                   type="email"
                   placeholder="Enter your email"
                   required
-                  className="min-w-0 flex-1 bg-transparent px-5 text-[18px] text-white outline-none placeholder:text-white/55"
+                  className="font-[family-name:var(--font-nunito)] min-w-0 flex-1 bg-transparent px-5 text-[18px] text-white outline-none placeholder:text-white/55"
                 />
                 <button
                   type="submit"
@@ -150,7 +150,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-16 border-t border-white/22 pt-10 lg:mt-[66px]">
-            <div className="grid grid-cols-1 items-center gap-6 text-[17px] leading-7 text-white/90 sm:text-[18px] lg:grid-cols-[1fr_auto_1fr]">
+            <div className="font-[family-name:var(--font-nunito)] grid grid-cols-1 items-center gap-6 text-[17px] leading-7 text-white/90 sm:text-[18px] lg:grid-cols-[1fr_auto_1fr]">
               <a
                 href="mailto:contact@ignitexsolution.com"
                 className="inline-flex items-center gap-4 transition-colors duration-200 hover:text-white"

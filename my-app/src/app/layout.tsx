@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Poppins, Oswald } from 'next/font/google';
+import { Inter, Poppins, Oswald, Nunito } from 'next/font/google';
 import './globals.css';
 import { GTMProvider, GTMNoScript } from '@/components/GTMProvider';
 import Footer from '@/components/Footer';
@@ -26,6 +26,13 @@ const oswald = Oswald({
   weight: ['400', '600', '700'],
   subsets: ['latin'],
   variable: '--font-oswald',
+  display: 'swap',
+});
+
+const nunito = Nunito({
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  variable: '--font-nunito',
   display: 'swap',
 });
 
@@ -133,7 +140,7 @@ export default function RootLayout({
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
-      <body className={`${inter.variable} ${poppins.variable} ${oswald.variable} font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen`}>
+      <body className={`${inter.variable} ${poppins.variable} ${oswald.variable} ${nunito.variable} font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen`}>
         <GTMNoScript />
         <main className="flex-grow">
           {children}

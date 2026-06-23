@@ -69,7 +69,7 @@ const AboutSection = () => {
               variants={fadeIn}
               className="text-lg text-gray-600 leading-relaxed"
             >
-              IgniteX was founded in 2025 by Rahul Kumar Mahato with the goal of providing outstanding digital solutions.  Our team is committed to providing timely services that meet the highest standards of quality.  Our top goal in everything we do is to satisfy our customers.
+              IgniteX was founded in 2022 by Rahul Kumar Mahato with the goal of providing outstanding digital solutions.  Our team is committed to providing timely services that meet the highest standards of quality.  Our top goal in everything we do is to satisfy our customers.
             </motion.p>
           </motion.div>
 
