@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "../components/ui/button";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type NavbarProps = {
   simpleBrand?: boolean;
@@ -16,6 +16,7 @@ export function Navbar({ simpleBrand = true, spacious = true }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     let ticking = false;
@@ -64,14 +65,15 @@ export function Navbar({ simpleBrand = true, spacious = true }: NavbarProps) {
     }
   }, [pathname]);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const isHomePage = window.location.pathname === '/';
+    const isHomePage = pathname === '/';
     
     if (href === '/') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (!isHomePage) {
-        window.location.href = '/';
+      if (isHomePage) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        router.push('/');
       }
     } else if (href.startsWith('#')) {
       if (isHomePage) {
@@ -80,13 +82,13 @@ export function Navbar({ simpleBrand = true, spacious = true }: NavbarProps) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       } else {
-        window.location.href = `/${href}`;
+        router.push(`/${href}`);
       }
     } else {
-      window.location.href = href;
+      router.push(href);
     }
     setIsOpen(false);
-  };
+  }, [pathname, router]);
 
   const isActive = (href: string) => {
     if (href === '/services') {

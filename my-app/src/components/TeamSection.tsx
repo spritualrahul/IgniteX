@@ -219,7 +219,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Saurav',
     role: 'Business & Finance Strategy',
     image: {
-      src: '/Saurav.jpeg',
+      src: '/Saurav.webp',
       width: 500,
       height: 500,
       alt: 'Saurav - Full Stack Developer',
@@ -237,7 +237,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Tannu',
     role: 'Graphic Designer',
     image: {
-      src: '/Tannu.jpg',
+      src: '/Tannu.webp',
       width: 500,
       height: 500,
       alt: 'Tannu - Graphic Designer',
@@ -356,7 +356,7 @@ const TeamSection = () => {
       <div className="relative">
         <div className="relative h-[690px] w-full overflow-hidden sm:h-[718px]">
           <Image
-            src="/team.png"
+            src="/team.webp"
             alt="IgniteX Team"
             fill
             priority

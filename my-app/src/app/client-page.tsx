@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import ServicesSection from '@/components/ServicesSection';
+import WorkSection from '@/components/WorkSection';
 
 // Lazy load heavy components with client-side only rendering
 const DeviceShowcase = dynamic(
@@ -16,25 +18,15 @@ const DeviceShowcase = dynamic(
   { ssr: false, loading: () => <Skeleton className="w-full h-[500px]" /> }
 );
 
-const InteractiveDemo = dynamic(
-  () => import('@/components/InteractiveDemo'),
-  { ssr: false, loading: () => <Skeleton className="w-full h-[500px]" /> }
-);
-
-// Other components with regular dynamic imports
-const PartnersSection = dynamic(
-  () => import('@/components/PartnersSection'),
-  { loading: () => <Skeleton className="w-full h-[300px]" /> }
-);
-
-const ServicesSection = dynamic(
-  () => import('@/components/ServicesSection'),
-  { loading: () => <Skeleton className="w-full h-[500px]" /> }
-);
-
+// Below-fold components — dynamic import is fine
 const TestimonialsSection = dynamic(
   () => import('@/components/TestimonialsSection'),
   { loading: () => <Skeleton className="w-full h-[400px]" /> }
+);
+
+const InteractiveDemo = dynamic(
+  () => import('@/components/InteractiveDemo'),
+  { loading: () => <Skeleton className="w-full h-[500px]" /> }
 );
 
 const StatisticsSection = dynamic(
@@ -42,14 +34,14 @@ const StatisticsSection = dynamic(
   { loading: () => <Skeleton className="w-full h-[300px]" /> }
 );
 
-const WorkSection = dynamic(
-  () => import('@/components/WorkSection'),
-  { loading: () => <Skeleton className="w-full h-[500px]" /> }
-);
-
 const ContactForm = dynamic(
   () => import('@/components/ContactForm'),
   { loading: () => <Skeleton className="w-full h-[600px]" /> }
+);
+
+const PartnersSection = dynamic(
+  () => import('@/components/PartnersSection'),
+  { loading: () => <Skeleton className="w-full h-[300px]" /> }
 );
 
 export default function ClientPage() {

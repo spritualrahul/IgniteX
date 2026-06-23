@@ -30,6 +30,7 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
     optimizeCss: true,
     scrollRestoration: true,
+    viewTransition: true,
   },
 
   async headers() {

@@ -46,12 +46,64 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsSection() {
-  const SPEED = 50;
-  const CARD_WIDTH = 400;
-  const GAP = 32;
-  const totalWidth = (CARD_WIDTH + GAP) * testimonials.length;
+const CARD_WIDTH = 400;
+const GAP = 32;
+const TOTAL_WIDTH = (CARD_WIDTH + GAP) * testimonials.length;
+const DURATION = TOTAL_WIDTH / 50; // same speed as before
 
+function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[number] }) {
+  return (
+    <div
+      className="flex-shrink-0 group"
+      style={{ width: CARD_WIDTH, marginRight: GAP }}
+    >
+      <div
+        className="relative h-full p-8 rounded-2xl border border-gray-100 backdrop-blur-sm transition-all duration-500 group-hover:border-red-500/20 group-hover:shadow-xl bg-gray-50 group-hover:bg-white"
+      >
+        {/* Quote icon */}
+        <Quote className="w-8 h-8 text-red-500/30 mb-4 group-hover:text-red-500/50 transition-colors duration-300" />
+
+        {/* Review text */}
+        <p className="text-gray-600 mb-6 leading-relaxed text-sm group-hover:text-gray-700 transition-colors duration-300">
+          &quot;{testimonial.content}&quot;
+        </p>
+
+        {/* Stars */}
+        <div className="flex gap-1 mb-5">
+          {[...Array(5)].map((_, idx) => (
+            <Star
+              key={idx}
+              className={`h-4 w-4 ${
+                idx < testimonial.rating
+                  ? 'fill-amber-400 text-amber-400'
+                  : 'text-gray-600'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Divider */}
+        <div className="h-px w-full bg-gray-200 mb-5" />
+
+        {/* Author */}
+        <div className="flex items-center gap-3">
+          <div
+            className="h-11 w-11 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
+            style={{ background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)' }}
+          >
+            {testimonial.name.split(' ').map(n => n[0]).join('')}
+          </div>
+          <div>
+            <h4 className="text-gray-900 font-semibold text-sm">{testimonial.name}</h4>
+            <p className="text-gray-500 text-xs">{testimonial.role}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
@@ -76,10 +128,10 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.4 }}
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -96,7 +148,7 @@ export default function TestimonialsSection() {
         </motion.div>
       </div>
 
-      {/* Carousel with fade edges */}
+      {/* Carousel with fade edges — pure CSS animation */}
       <div className="relative">
         <div
           className="absolute left-0 top-0 bottom-0 w-20 md:w-32 z-10 pointer-events-none"
@@ -107,71 +159,26 @@ export default function TestimonialsSection() {
           style={{ background: 'linear-gradient(to left, #ffffff 0%, transparent 100%)' }}
         />
 
-        <motion.div
+        <div
           className="flex"
-          style={{ willChange: 'transform' }}
-          animate={{ x: [0, -totalWidth] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: 'loop',
-              ease: 'linear',
-              duration: totalWidth / SPEED,
-            },
+          style={{
+            willChange: 'transform',
+            animation: `scroll-testimonials ${DURATION}s linear infinite`,
           }}
         >
           {[...testimonials, ...testimonials].map((testimonial, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 group"
-              style={{ width: CARD_WIDTH, marginRight: GAP }}
-            >
-              <div
-                className="relative h-full p-8 rounded-2xl border border-gray-100 backdrop-blur-sm transition-all duration-500 group-hover:border-red-500/20 group-hover:shadow-xl bg-gray-50 group-hover:bg-white"
-              >
-                {/* Quote icon */}
-                <Quote className="w-8 h-8 text-red-500/30 mb-4 group-hover:text-red-500/50 transition-colors duration-300" />
-
-                {/* Review text */}
-                <p className="text-gray-600 mb-6 leading-relaxed text-sm group-hover:text-gray-700 transition-colors duration-300">
-                  &quot;{testimonial.content}&quot;
-                </p>
-
-                {/* Stars */}
-                <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, idx) => (
-                    <Star
-                      key={idx}
-                      className={`h-4 w-4 ${
-                        idx < testimonial.rating
-                          ? 'fill-amber-400 text-amber-400'
-                          : 'text-gray-600'
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                {/* Divider */}
-                <div className="h-px w-full bg-gray-200 mb-5" />
-
-                {/* Author */}
-                <div className="flex items-center gap-3">
-                  <div
-                    className="h-11 w-11 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
-                    style={{ background: 'linear-gradient(135deg, #dc2626 0%, #f97316 100%)' }}
-                  >
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <h4 className="text-gray-900 font-semibold text-sm">{testimonial.name}</h4>
-                    <p className="text-gray-500 text-xs">{testimonial.role}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <TestimonialCard key={i} testimonial={testimonial} />
           ))}
-        </motion.div>
+        </div>
       </div>
+
+      <style jsx>{`
+        @keyframes scroll-testimonials {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-${TOTAL_WIDTH}px); }
+        }
+      `}</style>
     </section>
   );
 }
+
