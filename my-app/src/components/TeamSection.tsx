@@ -1,6 +1,19 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import {
+  ArrowUpRight,
+  Github,
+  Instagram,
+  Linkedin,
+  Mail,
+  Plus,
+  Rocket,
+  Smile,
+  Star,
+  UsersRound,
+} from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 
 type TeamMemberImage = {
@@ -9,243 +22,390 @@ type TeamMemberImage = {
   height: number;
   alt: string;
   priority?: boolean;
-  loading?: 'lazy' | 'eager' | string; // Allow string for now to match the data
+  loading?: 'lazy' | 'eager';
+};
+
+type CardTheme = {
+  badge: string;
+  accent: string;
+  imageAccent: string;
+  glow: string;
+  plus: string;
 };
 
 type TeamMember = {
   name: string;
   role: string;
-  image: string | TeamMemberImage;
+  image: TeamMemberImage;
   bio: string;
-  alignment: string;
+  skills: string[];
+  theme?: CardTheme;
+  imagePosition?: string;
   social: {
     linkedin: string;
-    twitter?: string;
     github?: string;
+    instagram?: string;
     email: string;
   };
-  hasImage?: boolean;
+};
+
+const cardThemes: CardTheme[] = [
+  {
+    badge: 'bg-red-50 text-red-600',
+    accent: 'bg-red-500',
+    imageAccent: 'from-red-500 to-rose-600',
+    glow: 'from-white via-white to-white',
+    plus: 'bg-red-500 hover:bg-red-600',
+  },
+  {
+    badge: 'bg-violet-50 text-violet-600',
+    accent: 'bg-violet-500',
+    imageAccent: 'from-violet-500 to-purple-600',
+    glow: 'from-white via-white to-white',
+    plus: 'bg-violet-500 hover:bg-violet-600',
+  },
+  {
+    badge: 'bg-orange-50 text-orange-600',
+    accent: 'bg-orange-500',
+    imageAccent: 'from-orange-400 to-orange-600',
+    glow: 'from-white via-white to-white',
+    plus: 'bg-orange-500 hover:bg-orange-600',
+  },
+  {
+    badge: 'bg-teal-50 text-teal-600',
+    accent: 'bg-teal-500',
+    imageAccent: 'from-teal-400 to-emerald-500',
+    glow: 'from-white via-white to-white',
+    plus: 'bg-teal-500 hover:bg-teal-600',
+  },
+  {
+    badge: 'bg-blue-50 text-blue-600',
+    accent: 'bg-blue-500',
+    imageAccent: 'from-blue-500 to-indigo-600',
+    glow: 'from-white via-white to-white',
+    plus: 'bg-blue-500 hover:bg-blue-600',
+  },
+];
+
+const badgeColors = [
+  'bg-red-100 text-red-700 border-red-200',
+  'bg-violet-100 text-violet-700 border-violet-200',
+  'bg-amber-100 text-amber-700 border-amber-200',
+  'bg-emerald-100 text-emerald-700 border-emerald-200',
+  'bg-sky-100 text-sky-700 border-sky-200',
+  'bg-rose-100 text-rose-700 border-rose-200',
+  'bg-indigo-100 text-indigo-700 border-indigo-200',
+];
+
+const teamStats: { value: string; label: string; icon: LucideIcon }[] = [
+  {
+    value: '12+',
+    label: 'Team Members',
+    icon: UsersRound,
+  },
+  {
+    value: '50+',
+    label: 'Projects Delivered',
+    icon: Star,
+  },
+  {
+    value: '98%',
+    label: 'Client Satisfaction',
+    icon: Smile,
+  },
+  {
+    value: '5+',
+    label: 'Years of Excellence',
+    icon: Rocket,
+  },
+];
+
+export const teamMembers: TeamMember[] = [
+  {
+    name: 'Rahul Kumar Mahato',
+    role: 'Founder',
+    image: {
+      src: '/images/Rahul.webp',
+      width: 500,
+      height: 500,
+      alt: 'Rahul Kumar Mahato - Founder',
+      priority: true,
+      loading: 'eager',
+    },
+    bio: 'Full-stack developer passionate about building scalable web apps, DevOps, and AI-driven solutions.',
+    skills: ['Next.js', 'Node.js', 'AWS', 'AI'],
+    imagePosition: 'center',
+    social: {
+      linkedin: 'https://linkedin.com',
+      github: 'https://github.com',
+      email: 'contact@ignitexsolution.com',
+    },
+  },
+  {
+    name: 'Abhuday Pratap Singh',
+    role: 'Co-Founder - Marketing & Performance',
+    image: {
+      src: '/images/team/Abhuday.webp',
+      width: 500,
+      height: 500,
+      alt: 'Abhuday Pratap Singh - Co-Founder - Marketing & Performance',
+      loading: 'lazy',
+    },
+    bio: 'Results-driven marketing strategist with expertise in digital marketing, brand management, and customer acquisition. Specializes in data-driven campaigns, SEO, and conversion rate optimization.',
+    skills: ['Digital Marketing', 'SEO', 'Brand Strategy', 'Growth'],
+    imagePosition: 'center',
+    social: {
+      linkedin: 'https://linkedin.com',
+      email: 'contact@ignitexsolution.com',
+    },
+  },
+  {
+    name: 'Tejaswini Gohil',
+    role: 'Core Team - Technology',
+    image: {
+      src: '/images/team/Tejaswini.webp',
+      width: 500,
+      height: 500,
+      alt: 'Tejaswini Gohil - Core Team Technology',
+      loading: 'lazy',
+    },
+    bio: 'Seasoned technical lead and full stack developer skilled in architecture, system design and scalable applications.',
+    skills: ['React', 'TypeScript', 'System Design', 'AI'],
+    imagePosition: 'center',
+    social: {
+      linkedin: 'https://www.linkedin.com/in/tejaswini-g-43751429b/',
+      github: 'https://github.com',
+      email: 'contact@ignitexsolution.com',
+    },
+  },
+  {
+    name: 'Trinath Panigrahi',
+    role: 'Consulting PMO',
+    image: {
+      src: '/images/team/Trinath.webp',
+      width: 500,
+      height: 500,
+      alt: 'Trinath Panigrahi - Consulting PMO',
+      loading: 'lazy',
+    },
+    bio: 'Results-driven analyst with expertise in data, business intelligence, process optimization and automation.',
+    skills: ['Data Analysis', 'Power BI', 'SQL', 'Excel'],
+    imagePosition: 'center',
+    social: {
+      linkedin: 'https://www.linkedin.com/in/trinath-panigrahi-07602b118/',
+      email: 'contact@ignitexsolution.com',
+    },
+  },
+  {
+    name: 'Nitesh Sahani',
+    role: 'Content & Growth',
+    image: {
+      src: '/images/team/Nitesh.webp',
+      width: 500,
+      height: 500,
+      alt: 'Nitesh Sahani - Content and Growth',
+      loading: 'lazy',
+    },
+    bio: 'Creative storyteller and content strategist specializing in engaging multimedia content and brand storytelling.',
+    skills: ['Video Editing', 'Content Strategy', 'Social Media', 'Branding'],
+    imagePosition: 'center',
+    social: {
+      linkedin: 'https://linkedin.com',
+      instagram: 'https://instagram.com',
+      email: 'contact@ignitexsolution.com',
+    },
+  },
+  {
+    name: 'Saurav',
+    role: 'Business & Finance Strategy',
+    image: {
+      src: '/Saurav.jpeg',
+      width: 500,
+      height: 500,
+      alt: 'Saurav - Full Stack Developer',
+      loading: 'lazy',
+    },
+    bio: 'MBA in Finance with a strong grasp of business strategy, financial planning, and investment analysis. Drives sustainable growth through data-backed decisions and cross-functional collaboration.',
+    skills: ['Financial Planning', 'Business Strategy', 'Investment Analysis', 'MBA Finance'],
+    imagePosition: 'center',
+    social: {
+      linkedin: 'https://linkedin.com',
+      email: 'contact@ignitexsolution.com',
+    },
+  },
+];
+
+const getTheme = (index: number, member: TeamMember) => member.theme ?? cardThemes[index % cardThemes.length];
+
+const getMailLink = (email: string) => (email.startsWith('mailto:') ? email : `mailto:${email}`);
+
+const TeamCard = ({ member, index }: { member: TeamMember; index: number }) => {
+  const theme = getTheme(index, member);
+  const socialLinks = [
+    { label: `${member.name} on LinkedIn`, href: member.social.linkedin, icon: Linkedin },
+    { label: `Email ${member.name}`, href: getMailLink(member.social.email), icon: Mail },
+    member.social.github
+      ? { label: `${member.name} on GitHub`, href: member.social.github, icon: Github }
+      : null,
+    member.social.instagram
+      ? { label: `${member.name} on Instagram`, href: member.social.instagram, icon: Instagram }
+      : null,
+  ].filter(Boolean) as { label: string; href: string; icon: LucideIcon }[];
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, delay: index * 0.06, ease: 'easeOut' }}
+      className={`group relative flex w-full basis-[min(100%,436px)] flex-col overflow-hidden rounded-[18px] border border-white/80 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.12)] ring-1 ring-slate-200/80 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_55px_rgba(15,23,42,0.16)] sm:flex-row lg:max-w-[436px]`}
+    >
+      <div className="pointer-events-none absolute right-8 top-7 grid grid-cols-5 gap-1 opacity-45">
+        {Array.from({ length: 20 }).map((_, dotIndex) => (
+          <span key={dotIndex} className="h-1 w-1 rounded-full bg-slate-300" />
+        ))}
+      </div>
+
+      <div className={`absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-gradient-to-br ${theme.imageAccent} opacity-95 blur-[1px]`} />
+
+      <div
+        className="relative h-64 w-full shrink-0 overflow-hidden sm:h-auto sm:min-h-[280px] sm:w-[44%]"
+        style={{
+          clipPath: 'polygon(0 0, 100% 0, 78% 100%, 0% 100%)',
+        }}
+      >
+        <Image
+          src={member.image.src}
+          alt={member.image.alt}
+          fill
+          priority={member.image.priority}
+          loading={member.image.priority ? undefined : member.image.loading}
+          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+          style={{ objectPosition: member.imagePosition ?? 'center' }}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 210px"
+        />
+      </div>
+
+      <div className="relative z-10 flex flex-1 flex-col px-6 py-6 sm:px-5 sm:py-5 lg:px-6">
+        <span className={`mb-2 w-fit rounded-[4px] border px-3 py-1 text-[14px] font-bold ${badgeColors[index % badgeColors.length]}`}>
+          {member.role}
+        </span>
+
+        <h3 className="text-[23px] font-black leading-tight tracking-normal text-slate-950">
+          {member.name}
+        </h3>
+
+        <p className="mt-3 text-[12.5px] font-semibold leading-[1.5] text-slate-700">
+          {member.bio}
+        </p>
+
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {member.skills.map((skill) => (
+            <span key={skill} className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold text-slate-600">
+              {skill}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-auto flex items-center justify-between pt-3">
+          <div className="flex gap-2">
+            {socialLinks.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith('mailto:') ? undefined : '_blank'}
+                rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-500 shadow-[0_8px_20px_rgba(15,23,42,0.08)] ring-1 ring-slate-200 transition hover:text-red-500 hover:ring-red-100"
+                aria-label={label}
+              >
+                <Icon className="h-4 w-4" strokeWidth={2.2} />
+              </a>
+            ))}
+          </div>
+
+        </div>
+      </div>
+    </motion.article>
+  );
 };
 
 const TeamSection = () => {
-  const teamMembers: TeamMember[] = [
-    {
-      name: 'Rahul Mahato',
-      role: 'Founder',
-      image: {
-        src: '/images/Rahul.webp',
-        width: 500,
-        height: 500,
-        alt: 'Rahul Mahato - Founder',
-        // priority: true // Preload above-the-fold images
-        loading: 'lazy',
-      },
-      bio: 'Full-stack developer with extensive experience in web development, DevOps, and cloud services. Specializes in building scalable applications using modern technologies. Proficient in both frontend and backend development, with expertise in testing, deployment, and infrastructure management. Passionate about implementing AI solutions and optimizing system performance.',
-      alignment: 'left',
-      social: {
-        linkedin: 'https://linkedin.com',
-        twitter: 'https://twitter.com',
-        email: 'mailto:contact@ignitexsolution.com'
-      },
-      hasImage: true
-    },
-
-    {
-      name: 'Abhuday Pratap Singh',
-      role: 'Co-Founder - Marketing & Performance',
-      image: {
-        src: '/images/team/Abhuday.webp',
-        width: 500,
-        height: 400,
-        alt: 'Abhuday Pratap Singh - Co-Founder - Marketing & Performance',
-        loading: 'lazy'
-      },
-      bio: 'Results-driven marketing strategist with expertise in digital marketing, brand management, and customer acquisition. Specializes in data-driven marketing campaigns, SEO, and conversion rate optimization. Proven track record of developing successful marketing strategies that drive business growth and increase market share.',
-      alignment: 'right',
-      social: {
-        linkedin: 'https://www.linkedin.com/in/abhuday-p-singh/',
-        twitter: 'https://twitter.com',
-        email: 'mailto:contact@ignitexsolution.com'
-      },
-      hasImage: true
-    },
-
-    {
-      name: 'Tejaswini Gohil',
-      role: 'Core Team Member – Technology',
-      image: {
-        src: '/images/team/Tejaswini.webp',
-        width: 500,
-        height: 500,
-        alt: 'Tejaswini Gohil - Core Team Member – Technology',
-        loading: 'lazy'
-      },
-      bio: 'Seasoned Technical Lead and Full Stack Developer. Expert in system architecture, code reviews, and mentoring development teams while actively contributing to end-to-end development. Specializes in building scalable applications, integrating AI-driven solutions. Strong background in UI/UX implementation, and performance optimization, ensuring robust and intelligent products.',
-      alignment: 'left',
-      social: {
-        linkedin: 'https://www.linkedin.com/in/tejaswini-g-43751429b/',
-        twitter: 'https://twitter.com',
-        email: 'mailto:contact@ignitexsolution.com'
-      },
-    },
-    {
-      name: 'Trinath Panigrahi',
-      role: 'Core Team Member – Consulting PMO',
-      image: {
-        src: '/images/team/Trinath.webp',
-        width: 500,
-        height: 500,
-        alt: 'Trinath panigrahi - Core Team Member – Consulting PMO',
-        loading: 'lazy'
-      },
-      bio: 'Results-driven Business and Data Analyst with expertise in Data Analysis, Business Intelligence, process optimization, and automation. Skilled in bridging the gap between business objectives and technical execution, ensuring on-time and within-budget delivery. Proficient in Agile methodologies, stakeholder communication, and process optimization to enhance project efficiency and business value.',
-      alignment: 'right',
-      social: {
-        linkedin: 'https://www.linkedin.com/in/trinath-panigrahi-07602b118/',
-        github: 'https://github.com',
-        email: 'mailto:contact@ignitexsolution.com'
-      }
-    },
-    
-    {
-      name: 'Nitesh Sahani',
-      role: 'Content Creator Expert',
-      image: {
-        src: '/images/team/Nitesh.webp',
-        width: 500,
-        height: 500,
-        alt: 'Nitesh Tiwari - Content Creator Expert',
-        loading: 'lazy'
-      },
-      bio: 'Creative content strategist and digital storyteller with expertise in creating engaging multimedia content. Specializes in video production, social media content, and brand storytelling. Skilled in developing content strategies that increase audience engagement and brand awareness across multiple digital platforms.',
-      alignment: 'left',
-      social: {
-        linkedin: 'https://linkedin.com',
-        twitter: 'https://twitter.com',
-        email: 'mailto:contact@ignitexsolution.com'
-      }
-    },
-    
-  ];
-
   return (
-    <section id="team" className="py-20 px-4 md:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Meet Our <span className="text-red-600">Team</span>
-          </h2>
-          <div className="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
-            A team of passionate individuals dedicated to delivering exceptional results.
-          </p>
-        </motion.div>
-
-        {/* Team Banner Image */}
-        {/* <div className="relative w-full h-96 mb-20 rounded-xl overflow-hidden shadow-xl">
+    <section
+      id="team"
+      className="relative isolate overflow-hidden bg-white pb-24 pt-[130px]"
+    >
+      <div className="relative">
+        <div className="relative h-[690px] w-full overflow-hidden sm:h-[718px]">
           <Image
-            src="/images/team/Team.jpg"
-            alt="Our Amazing Team"
+            src="/team.png"
+            alt="IgniteX Team"
             fill
-            className="object-cover"
             priority
+            className="translate-x-[8%] translate-y-[34px] scale-[1.08] object-cover object-[center_58%] brightness-[1.04] saturate-[0.96]"
+            sizes="100vw"
           />
-        </div> */}
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,#ffffff_0%,rgba(255,255,255,0.95)_38%,rgba(255,255,255,0.86)_100%)] sm:bg-[linear-gradient(90deg,#ffffff_0%,rgba(255,255,255,0.96)_10%,rgba(255,255,255,0.75)_20%,rgba(255,255,255,0.35)_30%,rgba(255,255,255,0.08)_42%,rgba(255,255,255,0)_55%)]" />
 
-        {/* Team Members List */}
-        <div className="space-y-32 max-w-6xl mx-auto">
-          {teamMembers.map((member, index) => {
-            const isEven = index % 2 === 0;
-            const imageSrc = typeof member.image === 'string' 
-              ? member.image.startsWith('http') 
-                ? member.image 
-                : `/images/team/${member.image.split('/').pop()}`
-              : member.image?.src || '';
-            
-            const imageAlt = typeof member.image === 'string' 
-              ? member.name 
-              : member.image?.alt || member.name;
 
-            return (
-              <motion.div 
-                key={member.name}
-                initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12`}
-              >
-               {/* Member Image */}
-<div className="w-full md:w-1/2 flex justify-center">
-  <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-xl overflow-hidden shadow-lg">
-    <Image
-      src={imageSrc}
-      alt={imageAlt}
-      width={500}
-      height={500}
-      className="object-cover w-full h-full"
-      sizes="(max-width: 768px) 100vw, 50vw"
-      loading="lazy"
-      onError={(e) => {
-        // Fallback to a placeholder image if the main image fails to load
-        const target = e.target as HTMLImageElement;
-        target.onerror = null;
-        target.src = '/images/placeholder-user.jpg';
-      }}
-    />
-  </div>
-</div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: 'easeOut' }}
+            className="absolute left-4 top-[146px] max-w-[430px] sm:left-8 md:left-12 lg:left-[50px]"
+          >
+            <p className="text-[13px] font-black uppercase tracking-[0.14em] text-red-600">
+              Our Strength
+            </p>
+            <h1 className="mt-8 text-[56px] font-black leading-[1.03] tracking-[-0.06em] text-slate-950 sm:text-[68px] md:text-[76px]">
+              Meet Our <span className="block text-red-500">Team</span>
+            </h1>
+            <p className="mt-6 max-w-[390px] text-[16px] font-medium leading-[1.72] text-slate-600 sm:text-[17px]">
+              A group of passionate creators, problem-solvers and builders working together to turn ideas into exceptional digital experiences.
+            </p>
+            <a
+              href="/contact"
+              className="mt-10 inline-flex h-[52px] items-center gap-3 rounded-[8px] bg-slate-950 px-[20px] text-[14px] font-extrabold text-white shadow-[0_18px_35px_rgba(15,23,42,0.18)] transition hover:-translate-y-0.5 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+            >
+              Work With Us
+              <ArrowUpRight className="h-4 w-4" strokeWidth={2.4} />
+            </a>
+          </motion.div>
+        </div>
 
-                {/* Member Details */}
-                <div className={`w-full md:w-1/2 ${isEven ? 'md:pr-8' : 'md:pl-8'}`}>
-                  <h3 className="text-3xl font-bold text-gray-900 mb-3">{member.name}</h3>
-                  <p className="text-red-600 text-lg font-medium mb-6">{member.role}</p>
-                  <p className="text-gray-600 mb-6 leading-relaxed">{member.bio}</p>
-                  
-                  <div className="flex space-x-4">
-                    <a 
-                      href={member.social.linkedin} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-gray-500 hover:text-red-600 transition-colors"
-                      aria-label={`${member.name}'s LinkedIn`}
-                    >
-                      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                      </svg>
-                    </a>
-                    {member.social.github && (
-                      <a 
-                        href={member.social.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-red-600 transition-colors"
-                        aria-label={`${member.name}'s GitHub`}
-                      >
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                          <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.49.5.09.682-.217.682-.48 0-.236-.008-.866-.013-1.7-2.782.602-3.369-1.337-3.369-1.337-.454-1.151-1.11-1.458-1.11-1.458-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.254-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025.798-.223 1.654-.334 2.505-.338.85.004 1.707.115 2.505.338 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.577.688.48C19.138 20.16 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
-                        </svg>
-                      </a>
-                    )}
-                    <a 
-                      href={`mailto:${member.social.email}`}
-                      className="text-gray-500 hover:text-red-600 transition-colors"
-                      aria-label={`Email ${member.name}`}
-                    >
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="relative z-10 mx-auto -mt-[26px] grid w-[calc(100%-2rem)] max-w-[1356px] overflow-hidden rounded-[18px] border border-white/90 bg-white/95 px-5 py-8 shadow-[0_24px_60px_rgba(15,23,42,0.11)] backdrop-blur-md sm:w-[calc(100%-4rem)] sm:grid-cols-2 sm:px-10 lg:grid-cols-4 lg:px-14 lg:py-14"
+        >
+          {teamStats.map(({ value, label, icon: Icon }) => (
+            <div
+              key={label}
+              className="flex items-center gap-5 py-4 sm:px-6 lg:border-r lg:border-slate-200 lg:py-0 lg:last:border-r-0"
+            >
+              <span className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-red-100/70 text-red-500">
+                <Icon className="h-7 w-7" strokeWidth={2.15} />
+              </span>
+              <span>
+                <span className="block text-[26px] font-black leading-none tracking-[-0.03em] text-slate-950">
+                  {value}
+                </span>
+                <span className="mt-2 block text-[15px] font-medium leading-none text-slate-600">
+                  {label}
+                </span>
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mt-20 flex max-w-[1360px] flex-wrap justify-center gap-6">
+          {teamMembers.map((member, index) => (
+            <TeamCard key={member.name} member={member} index={index} />
+          ))}
         </div>
       </div>
     </section>

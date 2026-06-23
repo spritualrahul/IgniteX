@@ -50,7 +50,7 @@ export default function TeamPage() {
           { name: 'Team', url: 'https://www.ignitexsolution.com/team' },
         ]}
       />
-      <Navbar />
+      <Navbar simpleBrand spacious />
       <TeamSection />
     </>
   );

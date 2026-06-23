@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { usePathname } from 'next/navigation';
 
 const ChatBot = dynamic(() => import('@/components/ChatBotWrapper'), {
   ssr: false,
@@ -16,8 +17,11 @@ const WhatsAppWidget = dynamic(() => import('@/components/WhatsAppWidget'), {
  */
 export default function DeferredWidgets() {
   const [show, setShow] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname === '/team') return;
+
     // Use requestIdleCallback where available, otherwise setTimeout
     if ('requestIdleCallback' in window) {
       const id = window.requestIdleCallback(() => setShow(true), { timeout: 3000 });
@@ -26,9 +30,9 @@ export default function DeferredWidgets() {
       const timer = setTimeout(() => setShow(true), 2000);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [pathname]);
 
-  if (!show) return null;
+  if (!show || pathname === '/team') return null;
 
   return (
     <>

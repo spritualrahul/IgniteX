@@ -2,11 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { usePathname } from "next/navigation";
 
-export function Navbar() {
+type NavbarProps = {
+  simpleBrand?: boolean;
+  spacious?: boolean;
+};
+
+export function Navbar({ simpleBrand = true, spacious = true }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -101,19 +106,47 @@ export function Navbar() {
     { name: "Teams", href: "/team" },
     { name: "Careers", href: "/careers" },
     { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "#contact" },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-white/95 backdrop-blur-sm"
+        isScrolled
+          ? "bg-white shadow-md"
+          : "bg-white/95 backdrop-blur-sm"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div
+        className={`mx-auto px-4 sm:px-6 ${
+          spacious ? "max-w-[1440px] lg:px-0" : "max-w-7xl lg:px-8"
+        }`}
+      >
+        <div className={`flex items-center justify-between ${spacious ? "h-[118px]" : "h-20"}`}>
           <div className="flex-shrink-0">
-<Link href="/" className="flex items-center text-3xl font-bold" style={{ fontFamily: 'Poppins, sans-serif' }}>
+<Link
+  href="/"
+  aria-label={simpleBrand ? "IgniteX" : undefined}
+  className="flex items-center text-3xl font-bold"
+  style={{ fontFamily: 'Poppins, sans-serif' }}
+>
+  {simpleBrand ? (
+    <span className="group relative flex items-end text-[31px] font-black leading-none tracking-[-0.05em] text-slate-950 md:text-[34px]">
+      <span>ignite</span>
+      <span className="relative ml-0.5 text-[35px] md:text-[38px]">
+        <span className="text-slate-950">X</span>
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 text-red-600 transition-colors duration-300 group-hover:text-red-500"
+          style={{
+            clipPath: 'polygon(0 0, 52% 0, 52% 100%, 0 100%)',
+            WebkitClipPath: 'polygon(0 0, 52% 0, 52% 100%, 0 100%)'
+          }}
+        >
+          X
+        </span>
+      </span>
+    </span>
+  ) : (
   <div className="flex flex-col group">
     <div className="relative flex items-end pb-1">
       <span className="text-3xl md:text-4xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-red-600 via-red-700 to-red-800 transition-all duration-500 group-hover:from-red-500 group-hover:to-red-700">
@@ -136,10 +169,11 @@ className="absolute inset-0 text-4xl md:text-5xl font-black leading-none bg-clip
       Beyond Deadline. Before Time.
     </div>
   </div>
+  )}
             </Link>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className={`ml-10 flex items-baseline ${spacious ? "space-x-9" : "space-x-8"}`}>
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -166,9 +200,17 @@ className="absolute inset-0 text-4xl md:text-5xl font-black leading-none bg-clip
                   <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-red-400/50 to-orange-400/50 transition-all duration-300 ease-out group-hover:w-full" />
                 </Link>
               ))}
-              <Button className="ml-4 bg-primary hover:bg-primary/90">
-                Get a Quote
-              </Button>
+              <Link
+                href="/contact"
+                className={`ml-4 inline-flex items-center gap-3 rounded-[14px] bg-red-600 font-extrabold text-white shadow-[0_14px_28px_rgba(239,68,68,0.26)] transition hover:bg-red-700 ${
+                  spacious ? "h-12 px-6 text-[15px]" : "h-11 px-5 text-sm"
+                }`}
+              >
+                Let&apos;s Connect
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
+                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.6} />
+                </span>
+              </Link>
             </div>
           </div>
           <div className="md:hidden">
@@ -208,9 +250,16 @@ className="absolute inset-0 text-4xl md:text-5xl font-black leading-none bg-clip
                   )}
                 </Link>
               ))}
-              <Button className="w-full mt-2 bg-primary hover:bg-primary/90">
-                Get a Quote
-              </Button>
+              <Link
+                href="/contact"
+                onClick={() => setIsOpen(false)}
+                className="mt-2 inline-flex h-11 w-full items-center justify-center gap-3 rounded-[14px] bg-red-600 px-5 text-sm font-extrabold text-white shadow-[0_14px_28px_rgba(239,68,68,0.22)] transition hover:bg-red-700"
+              >
+                Let&apos;s Connect
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/20">
+                  <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.6} />
+                </span>
+              </Link>
             </div>
           </div>
         )}
