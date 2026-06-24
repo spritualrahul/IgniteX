@@ -48,8 +48,10 @@ const testimonials = [
 
 const CARD_WIDTH = 400;
 const GAP = 32;
-const TOTAL_WIDTH = (CARD_WIDTH + GAP) * testimonials.length;
-const DURATION = TOTAL_WIDTH / 50; // same speed as before
+// Carousel scrolls through duplicated list; keyframe uses -50% so duration
+// is based on the single-set pixel width for consistent speed.
+const SINGLE_SET_WIDTH = (CARD_WIDTH + GAP) * testimonials.length;
+const DURATION = SINGLE_SET_WIDTH / 50;
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[number] }) {
   return (
@@ -166,18 +168,14 @@ export default function TestimonialsSection() {
             animation: `scroll-testimonials ${DURATION}s linear infinite`,
           }}
         >
+          {/* Duplicate the list so the loop is seamless */}
           {[...testimonials, ...testimonials].map((testimonial, i) => (
             <TestimonialCard key={i} testimonial={testimonial} />
           ))}
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes scroll-testimonials {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-${TOTAL_WIDTH}px); }
-        }
-      `}</style>
+      {/* @keyframes scroll-testimonials is defined in globals.css */}
     </section>
   );
 }

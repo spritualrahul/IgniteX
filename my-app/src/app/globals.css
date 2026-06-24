@@ -41,6 +41,15 @@
   }
 }
 
+@keyframes scroll-testimonials {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes whatsapp-pulse {
   0% {
     transform: scale(1);
