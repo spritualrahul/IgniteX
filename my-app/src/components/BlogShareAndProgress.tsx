@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Share2, Link2, Check, MessageSquare } from 'lucide-react';
+import { Share2, Link2, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface BlogShareAndProgressProps {
@@ -10,7 +10,7 @@ interface BlogShareAndProgressProps {
   description: string;
 }
 
-export function BlogShareAndProgress({ title, slug, description }: BlogShareAndProgressProps) {
+export function BlogShareAndProgress({ title, slug }: BlogShareAndProgressProps) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [copied, setCopied] = useState(false);
   const [shareUrl, setShareUrl] = useState('');

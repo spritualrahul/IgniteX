@@ -7,7 +7,6 @@ import {
   Instagram,
   Linkedin,
   Mail,
-  Plus,
   Rocket,
   Smile,
   Star,
@@ -125,8 +124,8 @@ export const teamMembers: TeamMember[] = [
   {
     name: 'Rahul Kumar Mahato',
     role: 'Founder & CEO',
-    image: {
-      src: '/images/Rahul.jpg',
+    image: { 
+      src: '/images/team/Rahul.png',    
       width: 500,
       height: 500,
       alt: 'Rahul Kumar Mahato - Founder & CEO',
