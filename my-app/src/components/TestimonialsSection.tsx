@@ -45,6 +45,14 @@ const testimonials = [
       'IgniteX built a stunning, modern website for Kalam Study Hall that perfectly captures our educational vision. The responsive design and smooth user experience have significantly boosted our online enrollments.',
     rating: 5,
   },
+  {
+    id: 6,
+    name: 'Dr. P. Manorama',
+    role: 'Founder & Director, CHES',
+    content:
+      'IgniteX understood the heart of our NGO and built a website that presents our work with dignity and clarity. The new design helps visitors understand our mission, explore our projects, and support the children and communities we serve.',
+    rating: 5,
+  },
 ];
 
 // Card width/gap must match the Tailwind classes on TestimonialCard below

@@ -67,6 +67,18 @@ const projects = [
     }
   },
   {
+    title: 'CHES Chennai',
+    description: 'A compassionate NGO website for CHES (Community Health Education Society), Chennai, built to showcase programs, projects, gallery moments, donation pathways, and impact stories with a clear, accessible interface.',
+    image: '/images/projects/ches-chennai.webp',
+    url: 'https://www.cheschennnai.com',
+    technologies: ['Next.js', 'Tailwind CSS', 'Responsive Design', 'Donation UX'],
+    testimonial: {
+      text: "IgniteX understood the heart of our NGO and built a website that presents our work with dignity and clarity. The new design helps visitors understand our mission, explore our projects, and support the children and communities we serve.",
+      author: "Dr. P. Manorama",
+      role: "Founder & Director, CHES"
+    }
+  },
+  {
     title : "Edutrack",
     description : "EduTrack is a comprehensive school management system designed to streamline administrative tasks and enhance the educational experience for schools, teachers, and parents.",
     image : "/edutrack.webp",

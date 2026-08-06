@@ -63,9 +63,10 @@ export default function Home() {
           { author: 'Priya Patel', datePublished: '2024-07-10', reviewBody: 'Working with IgniteX was a game-changer for our digital marketing strategy. Their innovative approach delivered outstanding results.', ratingValue: 5 },
           { author: 'Amit Verma', datePublished: '2024-06-05', reviewBody: 'The team at IgniteX built us a robust fintech solution that handles thousands of transactions daily with zero downtime.', ratingValue: 5 },
           { author: 'Dhivya Mohan', datePublished: '2025-03-12', reviewBody: 'IgniteX built a stunning, modern website for Kalam Study Hall that perfectly captures our educational vision. The responsive design and smooth user experience have significantly boosted our online enrollments.', ratingValue: 5 },
+          { author: 'Dr. P. Manorama', datePublished: '2026-08-06', reviewBody: 'IgniteX understood the heart of our NGO and built a website that presents our work with dignity and clarity. The new design helps visitors understand our mission, explore our projects, and support the children and communities we serve.', ratingValue: 5 },
         ]}
       />
-      <AggregateRatingSchema ratingValue={5} reviewCount={5} />
+      <AggregateRatingSchema ratingValue={5} reviewCount={6} />
 
       {/* Structured Data - Service */}
       <ServiceSchema name="Web Development" description="Custom, high-performance websites and web applications built with cutting-edge technologies like React, Next.js, and Node.js." url="https://www.ignitexsolution.com/services/web-development" />
