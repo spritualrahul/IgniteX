@@ -3,9 +3,10 @@ import { Inter, Poppins, Oswald, Nunito } from 'next/font/google';
 import './globals.css';
 import { GTMProvider, GTMNoScript } from '@/components/GTMProvider';
 import Footer from '@/components/Footer';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from '@/components/JsonLd';
 import DeferredWidgets from '@/components/DeferredWidgets';
+import CookieConsentBanner from '@/components/CookieConsentBanner';
+import ConsentControlledSpeedInsights from '@/components/ConsentControlledSpeedInsights';
 
 
 // Configure fonts
@@ -136,9 +137,6 @@ export default function RootLayout({
         <OrganizationSchema />
         <WebSiteSchema />
         <LocalBusinessSchema />
-        
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} ${oswald.variable} ${nunito.variable} font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen`}>
         <GTMNoScript />
@@ -147,7 +145,8 @@ export default function RootLayout({
         </main>
         <Footer />
         <DeferredWidgets />
-        <SpeedInsights />
+        <CookieConsentBanner />
+        <ConsentControlledSpeedInsights />
       </body>
     </html>
   );

@@ -37,6 +37,7 @@ const ContactForm: React.FC = () => {
     subject: '',
     message: '',
   });
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   // Auto-switch to meeting tab if ?tab=meeting is in URL
@@ -77,6 +78,7 @@ const ContactForm: React.FC = () => {
       .then(() => {
         alert("Your enquiry has been sent successfully!");
         setForm({ name: '', phone: '', email: '', subject: '', message: '' });
+        setPrivacyAccepted(false);
         setLoading(false);
       })
       .catch((error: unknown) => {
@@ -191,9 +193,25 @@ const ContactForm: React.FC = () => {
                   className="w-full rounded px-4 py-3 bg-gray-50 text-gray-900"
                   placeholder="Type your message here..."
                 />
+                <label className="flex items-start gap-3 rounded-md border border-gray-200 bg-gray-50 px-4 py-3 text-sm leading-6 text-gray-700">
+                  <input
+                    type="checkbox"
+                    checked={privacyAccepted}
+                    onChange={(e) => setPrivacyAccepted(e.target.checked)}
+                    required
+                    className="mt-1 h-4 w-4 shrink-0 accent-red-600"
+                  />
+                  <span>
+                    I consent to IgniteX processing my contact details and message to respond to this enquiry, and I understand I can withdraw consent or request access, correction, or erasure through the{' '}
+                    <a href="/privacy" className="font-semibold text-red-600 hover:text-red-700">
+                      Privacy Policy
+                    </a>
+                    .
+                  </span>
+                </label>
                 <Button
                   type="submit"
-                  disabled={loading}
+                  disabled={loading || !privacyAccepted}
                   className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded transition-colors duration-200"
                 >
                   {loading ? "Submitting..." : "Submit"}

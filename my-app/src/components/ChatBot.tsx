@@ -26,6 +26,7 @@ const SERVICES = [
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [callbackConsent, setCallbackConsent] = useState(false);
   const [selectedService, setSelectedService] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [, setShowServiceSelection] = useState(false);
@@ -152,6 +153,7 @@ export default function ChatBot() {
       
       setMessages((prev) => [...prev, botMessage]);
       setPhoneNumber('');
+      setCallbackConsent(false);
       setShowPhoneInput(false);
       setIsSuccess(true);
       
@@ -312,24 +314,42 @@ export default function ChatBot() {
                     ) : message.type === 'phone-input' ? (
                       <div className="w-full">
                         <p className="mb-2 text-gray-900">{message.text}</p>
-                        <form onSubmit={handlePhoneSubmit} className="flex space-x-2">
-                          <input
-                            type="tel"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            placeholder="Enter your phone number"
-                            className="flex-1 px-3 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                          />
-                          <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className={`px-4 py-2 text-sm font-medium text-white rounded-lg ${
-                              isSubmitting ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'
-                            } transition-colors`}
-                          >
-                            {isSubmitting ? 'Sending...' : 'Submit'}
-                          </button>
+                        <form onSubmit={handlePhoneSubmit} className="space-y-2">
+                          <div className="flex space-x-2">
+                            <input
+                              type="tel"
+                              value={phoneNumber}
+                              onChange={(e) => setPhoneNumber(e.target.value)}
+                              placeholder="Enter your phone number"
+                              className="min-w-0 flex-1 px-3 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              required
+                            />
+                            <button
+                              type="submit"
+                              disabled={isSubmitting || !callbackConsent}
+                              className={`px-4 py-2 text-sm font-medium text-white rounded-lg ${
+                                isSubmitting || !callbackConsent ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'
+                              } transition-colors`}
+                            >
+                              {isSubmitting ? 'Sending...' : 'Submit'}
+                            </button>
+                          </div>
+                          <label className="flex items-start gap-2 text-xs leading-5 text-gray-600">
+                            <input
+                              type="checkbox"
+                              checked={callbackConsent}
+                              onChange={(e) => setCallbackConsent(e.target.checked)}
+                              required
+                              className="mt-1 h-3.5 w-3.5 shrink-0 accent-blue-600"
+                            />
+                            <span>
+                              I consent to IgniteX using my phone number to contact me about this service request. Rights and withdrawal details are in the{' '}
+                              <a href="/privacy" className="font-semibold text-blue-600 hover:text-blue-700">
+                                Privacy Policy
+                              </a>
+                              .
+                            </span>
+                          </label>
                         </form>
                       </div>
                     ) : message.type === 'confirmation' ? (

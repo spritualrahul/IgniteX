@@ -100,6 +100,7 @@ const MeetingBooking: React.FC = () => {
   const [bookingResult, setBookingResult] = useState<BookingResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
 
   const [form, setForm] = useState<BookingForm>({
     name: '',
@@ -523,9 +524,26 @@ const MeetingBooking: React.FC = () => {
           </div>
         )}
 
+        <label className="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-xs leading-5 text-gray-700">
+          <input
+            type="checkbox"
+            checked={privacyAccepted}
+            onChange={(e) => setPrivacyAccepted(e.target.checked)}
+            required
+            className="mt-1 h-4 w-4 shrink-0 accent-red-600"
+          />
+          <span>
+            I consent to IgniteX processing these details to schedule and manage this consultation, including sending meeting information by email. I can withdraw consent or request access, correction, or erasure through the{' '}
+            <a href="/privacy" className="font-semibold text-red-600 hover:text-red-700">
+              Privacy Policy
+            </a>
+            .
+          </span>
+        </label>
+
         <Button
           onClick={handleBooking}
-          disabled={booking || !form.name || !form.email}
+          disabled={booking || !form.name || !form.email || !privacyAccepted}
           className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition-all duration-200 disabled:opacity-50"
         >
           {booking ? (

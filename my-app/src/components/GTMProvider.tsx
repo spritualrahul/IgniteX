@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, Suspense } from 'react';
+import { useEffect, Suspense, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 
 const GTM_ID = 'GTM-KQ83S7ML';
+const CONSENT_STORAGE_KEY = 'ignitex_cookie_consent';
 
 // This component wraps the GTMProvider to handle Suspense
 export function GTMProvider() {
@@ -19,8 +20,26 @@ export function GTMProvider() {
 function GTMProviderContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [hasAnalyticsConsent, setHasAnalyticsConsent] = useState(false);
 
   useEffect(() => {
+    const syncConsent = () => {
+      setHasAnalyticsConsent(localStorage.getItem(CONSENT_STORAGE_KEY) === 'accepted');
+    };
+
+    syncConsent();
+    window.addEventListener('ignitex-consent-change', syncConsent);
+    window.addEventListener('storage', syncConsent);
+
+    return () => {
+      window.removeEventListener('ignitex-consent-change', syncConsent);
+      window.removeEventListener('storage', syncConsent);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hasAnalyticsConsent) return;
+
     // Initialize dataLayer
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -36,11 +55,11 @@ function GTMProviderContent() {
       page_title: document.title,
       page_location: window.location.href,
     });
-  }, []);
+  }, [hasAnalyticsConsent]);
 
   // Handle route changes
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.dataLayer) {
+    if (hasAnalyticsConsent && typeof window !== 'undefined' && window.dataLayer) {
       window.dataLayer.push({
         event: 'page_view',
         page_path: window.location.pathname + window.location.search,
@@ -48,7 +67,11 @@ function GTMProviderContent() {
         page_location: window.location.href,
       });
     }
-  }, [pathname, searchParams]);
+  }, [hasAnalyticsConsent, pathname, searchParams]);
+
+  if (!hasAnalyticsConsent) {
+    return null;
+  }
 
   return (
     <Script
@@ -59,13 +82,4 @@ function GTMProviderContent() {
   );
 }
 
-export const GTMNoScript = () => (
-  <noscript>
-    <iframe
-      src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-      height="0"
-      width="0"
-      style={{ display: 'none', visibility: 'hidden' }}
-    />
-  </noscript>
-);
+export const GTMNoScript = () => null;
