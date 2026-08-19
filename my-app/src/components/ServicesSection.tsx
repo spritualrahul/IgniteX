@@ -150,14 +150,14 @@ export default function ServicesSection({ showAll = false }) {
   };
 
   return (
-    <section id="services" className="py-16 px-4 md:px-8 bg-gray-50">
+    <section id="services" className="py-8 md:py-16 px-4 md:px-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {displayServices.map((service, index) => {
             const cardClasses =
-              "group relative block h-full w-full bg-white rounded-2xl p-7 cursor-pointer border border-gray-100 hover:border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-left";
+              "group relative flex flex-col h-full w-full bg-white rounded-2xl p-3 md:p-7 cursor-pointer border border-gray-100 hover:border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-left";
             const cardContent = (
               <>
                 {/* Colored top accent */}
@@ -168,7 +168,7 @@ export default function ServicesSection({ showAll = false }) {
 
                 {/* Icon */}
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110"
+                  className="w-8 h-8 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-2 md:mb-5 transition-all duration-500 group-hover:scale-110"
                   style={{
                     backgroundColor: `${service.color}10`,
                     color: service.color,
@@ -177,19 +177,19 @@ export default function ServicesSection({ showAll = false }) {
                   {service.icon}
                 </div>
 
-                <h3 className="text-lg font-bold mb-3 text-gray-900 group-hover:text-gray-800 transition-colors">
+                <h3 className="text-sm md:text-lg font-bold mb-1 md:mb-3 text-gray-900 group-hover:text-gray-800 transition-colors">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-500 text-sm leading-relaxed mb-5">
+                <p className="text-gray-500 text-xs md:text-sm leading-snug md:leading-relaxed mb-2 md:mb-5 line-clamp-3 md:line-clamp-none">
                   {service.description}
                 </p>
 
                 <div
-                  className="inline-flex items-center text-sm font-semibold transition-all duration-300 group-hover:gap-2"
+                  className="inline-flex items-center text-xs md:text-sm font-semibold transition-all duration-300 group-hover:gap-2 mt-auto"
                   style={{ color: service.color }}
                 >
-                  Learn more <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  Learn more <ArrowRight className="ml-1 h-3.5 w-3.5 md:h-4 md:w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </>
             );
@@ -201,7 +201,7 @@ export default function ServicesSection({ showAll = false }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className={!showAll && index >= 3 ? 'hidden md:block' : ''}
+                className={!showAll && index >= 4 ? 'hidden md:block' : ''}
               >
                 {service.href ? (
                   <Link href={service.href} className={cardClasses}>
@@ -226,7 +226,7 @@ export default function ServicesSection({ showAll = false }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mt-14"
+            className="text-center mt-7 md:mt-14"
           >
             <Link
               href="/services"
