@@ -8,6 +8,9 @@ const PartnersSection = () => {
     { name: 'Tata Foundation', logo: '/images/partners/tata-foundation.svg', alt: 'Tata Foundation Partner' },
     { name: 'Artivatic', logo: '/images/partners/artivatic.svg', alt: 'Artivatic Partner' },
     { name: 'AWS', logo: '/images/partners/aws.svg', alt: 'AWS Partner' },
+    { name: 'Ches', logo: '/images/partners/ches.jpeg', alt: 'Ches Partner' },
+    { name: 'Kalam', logo: '/images/partners/kalam.png', alt: 'Kalam Partner' },
+    { name: 'Lucent', logo: '/images/partners/lucent.png', alt: 'Lucent Partner' },
     { name: 'Shopify', logo: '/images/partners/shopify.svg', alt: 'Shopify Partner' },
     { name: 'WordPress', logo: '/images/partners/wordpress.svg', alt: 'WordPress Partner' },
     { name: 'HubSpot', logo: '/images/partners/hubspot.svg', alt: 'HubSpot Partner' },
@@ -40,16 +43,16 @@ const PartnersSection = () => {
 
       {/* Infinite scrolling carousel with faded edges */}
       <div className="relative">
-        {/* Left fade gradient */}
+        {/* Left fade gradient - narrowed so logos aren't clipped as much */}
         <div
-          className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-40 z-10 pointer-events-none"
+          className="absolute left-0 top-0 bottom-0 w-6 sm:w-10 md:w-24 z-10 pointer-events-none"
           style={{
             background: 'linear-gradient(to right, rgb(249 250 251) 0%, transparent 100%)',
           }}
         />
-        {/* Right fade gradient */}
+        {/* Right fade gradient - narrowed so logos aren't clipped as much */}
         <div
-          className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-40 z-10 pointer-events-none"
+          className="absolute right-0 top-0 bottom-0 w-6 sm:w-10 md:w-24 z-10 pointer-events-none"
           style={{
             background: 'linear-gradient(to left, rgb(249 250 251) 0%, transparent 100%)',
           }}

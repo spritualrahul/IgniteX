@@ -116,7 +116,7 @@ export default function ClientPage() {
       <ServicesSection />
       <WorkSection />
       <TestimonialsSection />
-      <InteractiveDemo />
+      {/* <InteractiveDemo /> */}
       <StatisticsSection />
       <section id="contact" className="scroll-mt-20">
         <Suspense fallback={<Skeleton className="w-full h-[600px]" />}>
