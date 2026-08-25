@@ -9,4 +9,3 @@ Host: https://www.ignitexsolution.com
 
 # Sitemaps
 Sitemap: https://www.ignitexsolution.com/sitemap.xml
-Sitemap: https://www.ignitexsolution.com/server-sitemap.xml

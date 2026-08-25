@@ -5,7 +5,7 @@ import ServicesSection from '@/components/ServicesSection';
 import ServicesHero from './ServicesHero';
 
 export const metadata: Metadata = {
-  title: 'Web Development, Digital Marketing & Creative Solutions',
+  title: 'Our Services — Web, SEO & Marketing | IgniteX',
   description: 'Explore our comprehensive range of digital services including web development, mobile apps, digital marketing, SEO, UI/UX design, and e-commerce solutions. 50+ projects delivered, 80% average ROI.',
   keywords: [
     'web development services',

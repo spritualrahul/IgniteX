@@ -5,9 +5,32 @@ import { BlogListClient } from '@/components/BlogListClient';
 
 export const metadata: Metadata = {
   title: 'Blog | IgniteX — Web Development & Digital Marketing Insights',
-  description: 'Tips, guides, and insights on web development, SEO, and digital marketing for Indian businesses.',
+  description: 'Tips, guides, and insights on web development, SEO, and digital marketing for Indian businesses. Learn from IgniteX experts in Jamshedpur.',
   alternates: {
     canonical: 'https://www.ignitexsolution.com/blog',
+  },
+  openGraph: {
+    title: 'Blog | IgniteX — Web Development & Digital Marketing Insights',
+    description: 'Tips, guides, and insights on web development, SEO, and digital marketing for Indian businesses.',
+    url: 'https://www.ignitexsolution.com/blog',
+    siteName: 'IgniteX',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'IgniteX Blog — Digital Marketing & Web Dev Insights',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'IgniteX Blog — Digital Marketing & Web Dev Insights',
+    description: 'Actionable advice on web development, SEO, and digital marketing to help your business grow.',
+    images: ['/images/og-image.jpg'],
+    creator: '@ignitex',
   },
 };
 

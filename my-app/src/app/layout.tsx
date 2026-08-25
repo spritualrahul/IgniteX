@@ -73,9 +73,6 @@ export const metadata: Metadata = {
   creator: 'IgniteX',
   publisher: 'IgniteX',
   metadataBase: new URL('https://www.ignitexsolution.com'),
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     title: 'IgniteX - Premium Web Development & Digital Marketing Agency',
     description: 'Transform your digital presence with premium web development, SEO, and digital marketing. 50+ projects, 98% client satisfaction, 80% average ROI.',

@@ -30,16 +30,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `https://www.ignitexsolution.com/blog/${post.slug}`,
     },
+    keywords: post.tags,
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
       url: `https://www.ignitexsolution.com/blog/${post.slug}`,
       publishedTime: post.date,
+      modifiedTime: post.date,
       authors: [post.author],
+      siteName: 'IgniteX',
       images: post.coverImage
         ? [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }]
-        : [],
+        : [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -68,12 +71,32 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'Organization',
       name: 'IgniteX Solution',
       url: 'https://www.ignitexsolution.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.ignitexsolution.com/logo.webp',
+      },
     },
     datePublished: post.date,
+    dateModified: post.date,
     url: `https://www.ignitexsolution.com/blog/${post.slug}`,
     image: post.coverImage
       ? `https://www.ignitexsolution.com${post.coverImage}`
       : undefined,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://www.ignitexsolution.com/blog/${post.slug}`,
+    },
+    keywords: post.tags?.join(', '),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.ignitexsolution.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.ignitexsolution.com/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://www.ignitexsolution.com/blog/${post.slug}` },
+    ],
   };
 
   return (
@@ -81,6 +104,10 @@ export default async function BlogPostPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
 
       <Navbar />
