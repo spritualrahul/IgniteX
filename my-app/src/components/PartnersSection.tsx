@@ -1,9 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { useSectionMotion } from './useSectionMotion';
 
 const PartnersSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionMotion(sectionRef);
   const partners = [
     { name: 'Tata Foundation', logo: '/images/partners/tata-foundation.svg', alt: 'Tata Foundation Partner' },
     { name: 'Artivatic', logo: '/images/partners/artivatic.svg', alt: 'Artivatic Partner' },
@@ -22,15 +25,9 @@ const PartnersSection = () => {
   const duplicated = [...partners, ...partners];
 
   return (
-    <section className="w-full py-16 bg-gray-50 overflow-hidden">
+    <section ref={sectionRef} data-gsap-section className="w-full py-16 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our <span className="text-red-600">Partners</span>
           </h2>
@@ -38,7 +35,7 @@ const PartnersSection = () => {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             We&apos;re proud to partner with industry leaders to deliver exceptional solutions to our clients.
           </p>
-        </motion.div>
+        </div>
       </div>
 
       {/* Infinite scrolling carousel with faded edges */}

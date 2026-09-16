@@ -1,8 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useSectionMotion } from './useSectionMotion';
 
 const DISPLAY_FONT = "'Oswald', sans-serif";
 const LABEL_FONT =
@@ -40,12 +41,8 @@ const StatCard = ({ value, suffix, label, fill, index }: Stat & { index: number 
   }, [inView, value]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
       className="flex flex-col"
     >
       {/* Number */}
@@ -112,11 +109,13 @@ const StatCard = ({ value, suffix, label, fill, index }: Stat & { index: number 
           style={{ transformOrigin: `${endX}px 7px` }}
         />
       </svg>
-    </motion.div>
+    </div>
   );
 };
 
 const StatisticsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionMotion(sectionRef, '[data-stat-grid] > *');
   const stats: Stat[] = [
     { value: 50, suffix: '+', label: 'Projects Delivered', fill: 58 },
     { value: 98, suffix: '%', label: 'Client Satisfaction', fill: 98 },
@@ -125,16 +124,10 @@ const StatisticsSection = () => {
   ];
 
   return (
-    <section className="relative py-24 px-4 md:px-8 bg-gray-50">
+    <section ref={sectionRef} data-gsap-section className="relative py-24 px-4 md:px-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.4 }}
-          className="mb-16 md:mb-20 max-w-2xl"
-        >
+        <div className="mb-16 md:mb-20 max-w-2xl">
           <span
             className="text-red-500 text-sm font-semibold tracking-[0.2em] uppercase"
             style={{ fontFamily: LABEL_FONT }}
@@ -150,10 +143,10 @@ const StatisticsSection = () => {
           <p className="text-lg text-gray-500 leading-relaxed">
             Our journey in numbers - showcasing our growth and impact in the digital world.
           </p>
-        </motion.div>
+        </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-8">
+        <div data-stat-grid className="grid grid-cols-2 lg:grid-cols-4 gap-y-14 gap-x-8">
           {stats.map((stat, index) => (
             <div key={stat.label} className="relative pr-2">
               <StatCard {...stat} index={index} />

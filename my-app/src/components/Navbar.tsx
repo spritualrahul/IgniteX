@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { usePathname, useRouter } from "next/navigation";
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 type NavbarProps = {
   simpleBrand?: boolean;
@@ -17,6 +19,31 @@ export function Navbar({ simpleBrand = true, spacious = true }: NavbarProps) {
   const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
   const router = useRouter();
+  const navRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    gsap.fromTo(navRef.current, { autoAlpha: 0, y: -20 }, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.72,
+      ease: 'power3.out',
+      clearProps: 'transform,visibility',
+    });
+  }, { scope: navRef });
+
+  useGSAP(() => {
+    if (!isOpen) return;
+    const menu = navRef.current?.querySelector<HTMLElement>('[data-mobile-menu]');
+    if (!menu) return;
+    gsap.fromTo(menu, { autoAlpha: 0, y: -12, scale: 0.98 }, {
+      autoAlpha: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.36,
+      ease: 'power3.out',
+      clearProps: 'transform,visibility',
+    });
+  }, { scope: navRef, dependencies: [isOpen], revertOnUpdate: true });
 
   useEffect(() => {
     let ticking = false;
@@ -112,6 +139,7 @@ export function Navbar({ simpleBrand = true, spacious = true }: NavbarProps) {
 
   return (
     <nav
+      ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white shadow-md"
@@ -228,7 +256,7 @@ className="absolute inset-0 text-4xl md:text-5xl font-black leading-none bg-clip
           </div>
         </div>
         {isOpen && (
-          <div className="md:hidden bg-white rounded-lg shadow-lg mt-2 py-2">
+          <div data-mobile-menu className="md:hidden bg-white rounded-lg shadow-lg mt-2 py-2">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
                 <Link

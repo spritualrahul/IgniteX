@@ -1,10 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Send, ChevronDown } from 'lucide-react';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const exploreLinks = [
   { label: 'Home', href: '/#home' },
@@ -104,9 +109,31 @@ function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) 
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const footerRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const columns = footerRef.current?.querySelectorAll('[data-footer-reveal]');
+    if (!columns?.length) return;
+
+    gsap.fromTo(columns, { autoAlpha: 0, y: 24 }, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.65,
+      stagger: 0.09,
+      ease: 'power3.out',
+      clearProps: 'transform,visibility',
+      scrollTrigger: {
+        trigger: footerRef.current,
+        start: 'top 82%',
+        once: true,
+      },
+    });
+  }, { scope: footerRef });
 
   return (
-    <footer className="bg-black text-white" aria-labelledby="footer-brand">
+    <footer ref={footerRef} className="bg-black text-white" aria-labelledby="footer-brand">
       <div className="relative h-[148px] overflow-hidden bg-white sm:h-[220px] lg:h-[296px]">
         <Image
           src="/footer-skyline.webp"
@@ -121,7 +148,7 @@ export default function Footer() {
       <div className="bg-black">
         <div className="mx-auto max-w-[1536px] px-6 pb-32 pt-14 sm:px-10 sm:pb-24 sm:pt-20 lg:px-[76px] lg:pb-[98px] lg:pt-[128px]">
           <div className="grid grid-cols-1 gap-x-10 gap-y-2 md:grid-cols-2 md:gap-y-14 xl:grid-cols-[1.65fr_0.82fr_1.05fr_1.35fr_1.75fr] xl:gap-x-11">
-            <section className="max-w-[340px] border-b border-white/12 pb-7 md:border-none md:pb-0">
+            <section data-footer-reveal className="max-w-[340px] border-b border-white/12 pb-7 md:border-none md:pb-0">
               <h2 id="footer-brand" className="font-[family-name:var(--font-nunito)] text-[42px] font-extrabold leading-none text-white sm:text-[56px]">
                 IgniteX
               </h2>
@@ -144,11 +171,11 @@ export default function Footer() {
               </div>
             </section>
 
-            <FooterColumn title="Explore" links={exploreLinks} />
-            <FooterColumn title="Services" links={serviceLinks} />
-            <FooterColumn title="Solutions" links={solutionLinks} />
+            <div data-footer-reveal><FooterColumn title="Explore" links={exploreLinks} /></div>
+            <div data-footer-reveal><FooterColumn title="Services" links={serviceLinks} /></div>
+            <div data-footer-reveal><FooterColumn title="Solutions" links={solutionLinks} /></div>
 
-            <section className="pt-5 md:pt-0">
+            <section data-footer-reveal className="pt-5 md:pt-0">
               <p className="font-[family-name:var(--font-nunito)] text-[18px] font-bold uppercase leading-none tracking-wide text-white sm:text-[20px]">
                 Stay Connected
               </p>
@@ -179,7 +206,7 @@ export default function Footer() {
             </section>
           </div>
 
-          <div className="mt-12 border-t border-white/15 pt-9 sm:mt-16 sm:pt-10 lg:mt-[66px]">
+          <div data-footer-reveal className="mt-12 border-t border-white/15 pt-9 sm:mt-16 sm:pt-10 lg:mt-[66px]">
             <div className="font-[family-name:var(--font-nunito)] flex flex-col items-center gap-5 text-center text-[15px] leading-7 text-white/70 sm:gap-6 sm:text-[17px] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:text-left lg:text-[18px]">
               <a
                 href="mailto:contact@ignitexsolution.com"

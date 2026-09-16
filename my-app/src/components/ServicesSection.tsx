@@ -1,9 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { X, ArrowRight, Globe, BarChart3, Bot, Smartphone, Search, Share2 } from "lucide-react";
+import { useSectionMotion } from './useSectionMotion';
 
 interface Service {
   title: string;
@@ -132,6 +133,8 @@ const services: Service[] = [
 ];
 
 export default function ServicesSection({ showAll = false }) {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionMotion(sectionRef, '[data-service-grid] > *');
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -150,11 +153,11 @@ export default function ServicesSection({ showAll = false }) {
   };
 
   return (
-    <section id="services" className="py-8 md:py-16 px-4 md:px-8 bg-gray-50">
+    <section ref={sectionRef} id="services" data-gsap-section className="py-8 md:py-16 px-4 md:px-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
 
         {/* Service Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+        <div data-service-grid className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {displayServices.map((service, index) => {
             const cardClasses =
               "group relative flex flex-col h-full w-full bg-white rounded-2xl p-3 md:p-7 cursor-pointer border border-gray-100 hover:border-gray-200 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 text-left";
@@ -195,12 +198,8 @@ export default function ServicesSection({ showAll = false }) {
             );
 
             return (
-              <motion.div
+              <div
                 key={service.slug}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
                 className={!showAll && index >= 4 ? 'hidden md:block' : ''}
               >
                 {service.href ? (
@@ -216,7 +215,7 @@ export default function ServicesSection({ showAll = false }) {
                     {cardContent}
                   </button>
                 )}
-              </motion.div>
+              </div>
             );
           })}
         </div>

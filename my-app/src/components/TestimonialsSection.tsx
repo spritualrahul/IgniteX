@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
+import { useSectionMotion } from './useSectionMotion';
 
 const testimonials = [
   {
@@ -130,6 +131,8 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[num
 }
 
 export default function TestimonialsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionMotion(sectionRef);
   const [duration, setDuration] = useState(() =>
     getDuration(typeof window !== 'undefined' ? window.innerWidth : 1024)
   );
@@ -149,7 +152,9 @@ export default function TestimonialsSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="testimonials"
+      data-gsap-section
       className="relative py-16 sm:py-20 md:py-24 px-4 md:px-8 overflow-hidden bg-white"
     >
       {/* Decorative background elements */}

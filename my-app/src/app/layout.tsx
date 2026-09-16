@@ -7,6 +7,7 @@ import { OrganizationSchema, WebSiteSchema, LocalBusinessSchema } from '@/compon
 import DeferredWidgets from '@/components/DeferredWidgets';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
 import ConsentControlledSpeedInsights from '@/components/ConsentControlledSpeedInsights';
+import { SiteMotion } from '@/components/SiteMotion';
 
 
 // Configure fonts
@@ -138,7 +139,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable} ${oswald.variable} ${nunito.variable} font-sans antialiased text-gray-900 bg-white flex flex-col min-h-screen`}>
         <GTMNoScript />
         <main className="flex-grow">
-          {children}
+          <SiteMotion>{children}</SiteMotion>
         </main>
         <Footer />
         <DeferredWidgets />

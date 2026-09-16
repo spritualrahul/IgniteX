@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import { useSectionMotion } from './useSectionMotion';
 
 const projects = [
   {
@@ -93,6 +94,8 @@ const projects = [
 ];
 
 export default function WorkSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionMotion(sectionRef);
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -121,11 +124,14 @@ export default function WorkSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="work"
+      data-gsap-section
       className="relative py-24 px-4 md:px-8 overflow-hidden bg-white"
     >
       {/* Subtle diagonal accent */}
       <div
+        data-gsap-parallax
         className="absolute top-0 right-0 w-1/2 h-full opacity-3 pointer-events-none"
         style={{ background: 'linear-gradient(135deg, transparent 0%, #dc262610 100%)' }}
       />
